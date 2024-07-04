@@ -7,5 +7,20 @@ namespace ControleDeBar.Dominio
 {
     public class Mesa
     {
+        public int Numero
+        {
+            get => default;
+            set
+            {
+            }
+        }
+
+        public Conta Conta
+        {
+            get => default;
+            set
+            {
+            }
+        }
     }
 }

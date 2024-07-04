@@ -2,7 +2,7 @@
 {
     public class Conta
     {
-        public int Pedido
+        public List<Pedido> Pedidos
         {
             get => default;
             set
@@ -10,7 +10,7 @@
             }
         }
 
-        public int Mesa
+        public Mesa Mesa
         {
             get => default;
             set
@@ -19,6 +19,22 @@
         }
 
         public int ValorTotal
+        {
+            get => default;
+            set
+            {
+            }
+        }
+
+        public Garcom Garcom
+        {
+            get => default;
+            set
+            {
+            }
+        }
+
+        public bool ContaPaga
         {
             get => default;
             set

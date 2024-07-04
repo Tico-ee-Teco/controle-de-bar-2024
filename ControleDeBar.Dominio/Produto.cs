@@ -7,5 +7,20 @@ namespace ControleDeBar.Dominio
 {
     public class Produto
     {
+        public string Produto
+        {
+            get => default;
+            set
+            {
+            }
+        }
+
+        public int Valor
+        {
+            get => default;
+            set
+            {
+            }
+        }
     }
 }

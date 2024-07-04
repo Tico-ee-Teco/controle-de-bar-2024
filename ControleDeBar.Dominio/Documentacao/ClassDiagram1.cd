@@ -1,46 +1,65 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="ControleDeBar.Dominio.Conta">
-    <Position X="0.5" Y="0.75" Width="1.5" />
+    <Position X="4" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAIEAAAAAAAAAAAAAAIAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAEAgIAAAAAAAAAAAAAAAIAACAAAAAAAAAA=</HashCode>
       <FileName>Conta.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Mesa" />
+      <Property Name="Garcom" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="Pedidos" />
+    </ShowAsCollectionAssociation>
   </Class>
   <Class Name="ControleDeBar.Dominio.Garcom">
-    <Position X="5" Y="0.75" Width="1.5" />
+    <Position X="6.5" Y="3.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAEAAAA=</HashCode>
       <FileName>Garcom.cs</FileName>
     </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Mesa" />
+    </ShowAsCollectionAssociation>
   </Class>
   <Class Name="ControleDeBar.Dominio.Mesa">
-    <Position X="7" Y="0.75" Width="1.5" />
+    <Position X="7" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABgAA=</HashCode>
       <FileName>Mesa.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Conta" />
+    </ShowAsAssociation>
   </Class>
   <Class Name="ControleDeBar.Dominio.Produto">
-    <Position X="2.75" Y="2" Width="1.5" />
+    <Position X="0.75" Y="3.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAE=</HashCode>
       <FileName>Produto.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="ControleDeBar.Dominio.Faturamento">
-    <Position X="2.75" Y="3.5" Width="1.5" />
+    <Position X="3.5" Y="3.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAQAAAAAAAAAgAAAAABAAAAAAAAAAgAE=</HashCode>
       <FileName>Faturamento.cs</FileName>
     </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Conta" />
+    </ShowAsCollectionAssociation>
   </Class>
   <Class Name="ControleDeBar.Dominio.Pedido">
-    <Position X="2.75" Y="0.75" Width="1.5" />
+    <Position X="0.75" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAABAAEAAAAAAQAAAAAAAAAAAE=</HashCode>
       <FileName>Pedido.cs</FileName>
     </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Produto" />
+    </ShowAsCollectionAssociation>
   </Class>
   <Font Name="Segoe UI" Size="9" />
 </ClassDiagram>

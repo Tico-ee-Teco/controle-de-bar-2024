@@ -7,5 +7,20 @@ namespace ControleDeBar.Dominio
 {
     public class Garcom
     {
+        public string Nome
+        {
+            get => default;
+            set
+            {
+            }
+        }
+
+        public List<Mesa> Mesa
+        {
+            get => default;
+            set
+            {
+            }
+        }
     }
 }
