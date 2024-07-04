@@ -14,13 +14,5 @@ namespace ControleDeBar.Dominio
             {
             }
         }
-
-        public List<Mesa> Mesa
-        {
-            get => default;
-            set
-            {
-            }
-        }
     }
 }

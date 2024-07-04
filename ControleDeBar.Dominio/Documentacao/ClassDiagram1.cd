@@ -17,12 +17,9 @@
   <Class Name="ControleDeBar.Dominio.Garcom">
     <Position X="6.5" Y="3.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAEAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAA=</HashCode>
       <FileName>Garcom.cs</FileName>
     </TypeIdentifier>
-    <ShowAsCollectionAssociation>
-      <Property Name="Mesa" />
-    </ShowAsCollectionAssociation>
   </Class>
   <Class Name="ControleDeBar.Dominio.Mesa">
     <Position X="7" Y="0.5" Width="1.5" />
