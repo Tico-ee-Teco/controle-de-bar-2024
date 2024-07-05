@@ -31,13 +31,6 @@
       <Property Name="Conta" />
     </ShowAsAssociation>
   </Class>
-  <Class Name="ControleDeBar.Dominio.Produto">
-    <Position X="0.75" Y="3.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAE=</HashCode>
-      <FileName>Produto.cs</FileName>
-    </TypeIdentifier>
-  </Class>
   <Class Name="ControleDeBar.Dominio.Faturamento">
     <Position X="3.5" Y="3.25" Width="1.5" />
     <TypeIdentifier>
@@ -54,9 +47,13 @@
       <HashCode>AAAAAAAAAAAAAAAAAAAABAAEAAAAAAQAAAAAAAAAAAE=</HashCode>
       <FileName>Pedido.cs</FileName>
     </TypeIdentifier>
-    <ShowAsCollectionAssociation>
-      <Property Name="Produto" />
-    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="ControleDeBar.Dominio.ModuloProduto.Produto">
+    <Position X="1" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEAAAABACEAAAAAQQAAAAAAAEBAAA=</HashCode>
+      <FileName>ModuloProduto\Produto.cs</FileName>
+    </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />
 </ClassDiagram>
