@@ -1,3 +1,5 @@
+using ControleDeBar.WinApp.Compartilhado;
+
 namespace ControleDeBar.WinApp
 {
     public partial class TelaPrincipalForm : Form
@@ -21,7 +23,7 @@ namespace ControleDeBar.WinApp
 
         }
 
-     
+
         //private void disciplinaMenuItem_Click(object sender, EventArgs e)
         //{
         //    controlador = new ControladorDisciplina(repositorioDisciplina);
@@ -86,14 +88,14 @@ namespace ControleDeBar.WinApp
 
         //}
 
-        //private void ConfigurarListagem(ControladorBase controladorSelecionado)
-        //{
-        //    UserControl listagemContato = controladorSelecionado.ObterListagem();
-        //    listagemContato.Dock = DockStyle.Fill;
+        private void ConfigurarListagem(ControladorBase controladorSelecionado)
+        {
+            UserControl listagemContato = controladorSelecionado.ObterListagem();
+            listagemContato.Dock = DockStyle.Fill;
 
-        //    pnlRegistros.Controls.Clear();
-        //    pnlRegistros.Controls.Add(listagemContato);
-        //}
+            pnlRegistros.Controls.Clear();
+            pnlRegistros.Controls.Add(listagemContato);
+        }
 
     }
 }
