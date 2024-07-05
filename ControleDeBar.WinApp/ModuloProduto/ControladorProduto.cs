@@ -54,18 +54,20 @@ namespace ControleDeBar.WinApp.ModuloProduto
 
         public override UserControl ObterListagem()
         {
-            if (tabelaProduto == null)
-                tabelaProduto = new TabelaProdutoControl();
+            if (tabelaProduto == null) 
+                tabelaProduto = new TabelaProdutoControl(); //erro
 
             CarregarRegistros();
 
             return tabelaProduto;
+
         }
         public override void CarregarRegistros()
         {
             List<Produto> produtos = repositorioProduto.SelecionarTodos();
 
             tabelaProduto.AtualizarRegistros(produtos);
+
         }
     }
 }

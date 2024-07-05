@@ -40,7 +40,7 @@ namespace ControleDeBar.Dominio.ModuloProduto
 
         public override string ToString()
         {
-            return $"Nome: {Nome}, Valor: {Valor}, Qtde: {Qtde}";
+            return $"Nome: {Nome}, Valor: {Valor}";
         }
     }
 }

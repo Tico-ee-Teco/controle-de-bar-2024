@@ -23,7 +23,7 @@ namespace ControleDeBar.Dominio
             }
         }
 
-        public Date Data
+        public DateTime Data
         {
             get => default;
             set

@@ -84,8 +84,7 @@
             // 
             statusLabelPrincipal.Name = "statusLabelPrincipal";
             statusLabelPrincipal.Size = new Size(141, 17);
-            statusLabelPrincipal.Text = "Visualizando 0 registro(s).";
-            statusLabelPrincipal.Click += statusLabelPrincipal_Click;
+            statusLabelPrincipal.Text = "Visualizando 0 registro(s).";            
             // 
             // toolStrip1
             // 
