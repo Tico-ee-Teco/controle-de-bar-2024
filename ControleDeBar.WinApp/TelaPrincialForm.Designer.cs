@@ -31,11 +31,11 @@
             components = new System.ComponentModel.Container();
             menuStrip1 = new MenuStrip();
             CadastroMenuItem = new ToolStripMenuItem();
-            produtosToolStripMenuItem = new ToolStripMenuItem();
+            produtosMenuItem = new ToolStripMenuItem();
             statusStrip1 = new StatusStrip();
             statusLabelPrincipal = new ToolStripStatusLabel();
             toolStrip1 = new ToolStrip();
-            bntAdicionar = new ToolStripButton();
+            btnAdicionar = new ToolStripButton();
             btnEditar = new ToolStripButton();
             btnExcluir = new ToolStripButton();
             toolStripSeparator1 = new ToolStripSeparator();
@@ -59,16 +59,17 @@
             // 
             // CadastroMenuItem
             // 
-            CadastroMenuItem.DropDownItems.AddRange(new ToolStripItem[] { produtosToolStripMenuItem });
+            CadastroMenuItem.DropDownItems.AddRange(new ToolStripItem[] { produtosMenuItem });
             CadastroMenuItem.Name = "CadastroMenuItem";
             CadastroMenuItem.Size = new Size(66, 20);
             CadastroMenuItem.Text = "Cadastro";
             // 
-            // produtosToolStripMenuItem
+            // produtosMenuItem
             // 
-            produtosToolStripMenuItem.Name = "produtosToolStripMenuItem";
-            produtosToolStripMenuItem.Size = new Size(122, 22);
-            produtosToolStripMenuItem.Text = "Produtos";
+            produtosMenuItem.Name = "produtosMenuItem";
+            produtosMenuItem.Size = new Size(122, 22);
+            produtosMenuItem.Text = "Produtos";
+            produtosMenuItem.Click += produtosMenuItem_Click;
             // 
             // statusStrip1
             // 
@@ -84,25 +85,26 @@
             statusLabelPrincipal.Name = "statusLabelPrincipal";
             statusLabelPrincipal.Size = new Size(141, 17);
             statusLabelPrincipal.Text = "Visualizando 0 registro(s).";
+            statusLabelPrincipal.Click += statusLabelPrincipal_Click;
             // 
             // toolStrip1
             // 
-            toolStrip1.Items.AddRange(new ToolStripItem[] { bntAdicionar, btnEditar, btnExcluir, toolStripSeparator1, btnRelatorio, lblTipoCadastro });
+            toolStrip1.Items.AddRange(new ToolStripItem[] { btnAdicionar, btnEditar, btnExcluir, toolStripSeparator1, btnRelatorio, lblTipoCadastro });
             toolStrip1.Location = new Point(0, 24);
             toolStrip1.Name = "toolStrip1";
             toolStrip1.Size = new Size(622, 25);
             toolStrip1.TabIndex = 3;
             toolStrip1.Text = "toolStrip1";
             // 
-            // bntAdicionar
+            // btnAdicionar
             // 
-            bntAdicionar.DisplayStyle = ToolStripItemDisplayStyle.Image;
-            bntAdicionar.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            bntAdicionar.Image = Properties.Resources.btnAdicionar;
-            bntAdicionar.ImageTransparentColor = Color.Magenta;
-            bntAdicionar.Name = "bntAdicionar";
-            bntAdicionar.Size = new Size(23, 22);
-            bntAdicionar.Text = "Adicionar";
+            btnAdicionar.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            btnAdicionar.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnAdicionar.Image = Properties.Resources.btnAdicionar;
+            btnAdicionar.ImageTransparentColor = Color.Magenta;
+            btnAdicionar.Name = "btnAdicionar";
+            btnAdicionar.Size = new Size(23, 22);
+            btnAdicionar.Text = "Adicionar";
             // 
             // btnEditar
             // 
@@ -187,8 +189,8 @@
         private ToolStripLabel lblTipoCadastro;
         private ToolTip toolTip1;
         private ToolStripMenuItem CadastroMenuItem;
-        private ToolStripMenuItem produtosToolStripMenuItem;
-        private ToolStripButton bntAdicionar;
+        private ToolStripMenuItem produtosMenuItem;
+        private ToolStripButton btnAdicionar;
         private ToolStripButton btnEditar;
         private ToolStripButton btnExcluir;
         private ToolStripSeparator toolStripSeparator1;

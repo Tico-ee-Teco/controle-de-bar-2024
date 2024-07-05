@@ -3,6 +3,7 @@
     public abstract class ControladorBase
     {
         public abstract string TipoCadastro { get; }
+
         public abstract string ToolTipAdicionar { get; }
         public abstract string ToolTipEditar { get; }
         public abstract string ToolTipExcluir { get; }
