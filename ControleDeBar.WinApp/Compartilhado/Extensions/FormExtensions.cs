@@ -10,7 +10,6 @@
             form.StartPosition = FormStartPosition.CenterScreen;
             form.MaximizeBox = false;
             form.MinimizeBox = false;
-
         }
     }
 }

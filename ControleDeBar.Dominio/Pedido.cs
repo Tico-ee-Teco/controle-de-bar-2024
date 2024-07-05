@@ -8,7 +8,7 @@ namespace ControleDeBar.Dominio
 {
     public class Pedido
     {
-        public List<Produto> Produto
+        public Produto Produto
         {
             get => default;
             set

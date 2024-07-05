@@ -33,7 +33,7 @@
             CadastroMenuItem = new ToolStripMenuItem();
             produtosToolStripMenuItem = new ToolStripMenuItem();
             statusStrip1 = new StatusStrip();
-            StatusLabel1 = new ToolStripStatusLabel();
+            statusLabelPrincipal = new ToolStripStatusLabel();
             toolStrip1 = new ToolStrip();
             bntAdicionar = new ToolStripButton();
             btnEditar = new ToolStripButton();
@@ -67,23 +67,23 @@
             // produtosToolStripMenuItem
             // 
             produtosToolStripMenuItem.Name = "produtosToolStripMenuItem";
-            produtosToolStripMenuItem.Size = new Size(180, 22);
+            produtosToolStripMenuItem.Size = new Size(122, 22);
             produtosToolStripMenuItem.Text = "Produtos";
             // 
             // statusStrip1
             // 
-            statusStrip1.Items.AddRange(new ToolStripItem[] { StatusLabel1 });
-            statusStrip1.Location = new Point(0, 377);
+            statusStrip1.Items.AddRange(new ToolStripItem[] { statusLabelPrincipal });
+            statusStrip1.Location = new Point(0, 336);
             statusStrip1.Name = "statusStrip1";
             statusStrip1.Size = new Size(622, 22);
             statusStrip1.TabIndex = 2;
             statusStrip1.Text = "statusStrip1";
             // 
-            // StatusLabel1
+            // statusLabelPrincipal
             // 
-            StatusLabel1.Name = "StatusLabel1";
-            StatusLabel1.Size = new Size(141, 17);
-            StatusLabel1.Text = "Visualizando 0 registro(s).";
+            statusLabelPrincipal.Name = "statusLabelPrincipal";
+            statusLabelPrincipal.Size = new Size(141, 17);
+            statusLabelPrincipal.Text = "Visualizando 0 registro(s).";
             // 
             // toolStrip1
             // 
@@ -151,14 +151,14 @@
             pnlRegistros.Dock = DockStyle.Fill;
             pnlRegistros.Location = new Point(0, 49);
             pnlRegistros.Name = "pnlRegistros";
-            pnlRegistros.Size = new Size(622, 328);
+            pnlRegistros.Size = new Size(622, 287);
             pnlRegistros.TabIndex = 4;
             // 
             // TelaPrincipalForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(622, 399);
+            ClientSize = new Size(622, 358);
             Controls.Add(pnlRegistros);
             Controls.Add(toolStrip1);
             Controls.Add(statusStrip1);
@@ -193,7 +193,7 @@
         private ToolStripButton btnExcluir;
         private ToolStripSeparator toolStripSeparator1;
         private ToolStripButton btnRelatorio;
-        private ToolStripStatusLabel StatusLabel1;
+        private ToolStripStatusLabel statusLabelPrincipal;
         private Panel pnlRegistros;
     }
 }

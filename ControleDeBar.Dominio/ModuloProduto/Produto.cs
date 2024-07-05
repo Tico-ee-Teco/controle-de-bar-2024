@@ -6,17 +6,15 @@ namespace ControleDeBar.Dominio.ModuloProduto
     {
         public string Nome { get; set;}        
 
-        public int Valor { get; set; }
-
-        public int Qtde { get; set; }
+        public int Valor { get; set; }       
 
         public Produto() { }
 
-        public Produto(string nome, int valor, int qtde)
+        public Produto(string nome, int valor)
         {
             Nome = nome;
             Valor = valor;
-            Qtde = qtde;
+            
         }
 
         public override List<string> Validar()
@@ -27,10 +25,7 @@ namespace ControleDeBar.Dominio.ModuloProduto
                 erros.Add("Nome do produto é obrigatório");
 
             if(Valor < 1)
-                erros.Add("Valor do produto deve ser maior do zero");
-
-            if(Qtde < 1)
-                erros.Add("Quantidade do produto deve ser maior do zero");
+                erros.Add("Valor do produto deve ser maior do zero");            
 
             return erros;
         }
@@ -40,17 +35,8 @@ namespace ControleDeBar.Dominio.ModuloProduto
             Produto novoProduto = (Produto)novoRegistro;
 
             Nome = novoProduto.Nome;
-            Valor = novoProduto.Valor;
-            Qtde = novoProduto.Qtde;
-        }
-        public void RemoverProduto(int qtde)
-        {
-            Qtde -= qtde;
-        }
-        public void AdicionarProduto(int qtde)
-        {
-            Qtde += qtde;
-        }
+            Valor = novoProduto.Valor;           
+        }        
 
         public override string ToString()
         {

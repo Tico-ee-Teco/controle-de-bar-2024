@@ -23,6 +23,11 @@ namespace ControleDeBar.WinApp
 
         }
 
+        public void AtualizarRodape(string texto)
+        {
+            statusLabelPrincipal.Text = texto;
+        }
+
 
         //private void disciplinaMenuItem_Click(object sender, EventArgs e)
         //{

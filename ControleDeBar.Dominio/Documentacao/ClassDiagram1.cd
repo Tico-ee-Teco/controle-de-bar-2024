@@ -47,11 +47,14 @@
       <HashCode>AAAAAAAAAAAAAAAAAAAABAAEAAAAAAQAAAAAAAAAAAE=</HashCode>
       <FileName>Pedido.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Produto" />
+    </ShowAsAssociation>
   </Class>
   <Class Name="ControleDeBar.Dominio.ModuloProduto.Produto">
-    <Position X="1" Y="3.25" Width="1.5" />
+    <Position X="0.75" Y="2.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAEAAAABACEAAAAAQQAAAAAAAEBAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAEAAAAAACEAAAAAQAAAAAAAAEAAAA=</HashCode>
       <FileName>ModuloProduto\Produto.cs</FileName>
     </TypeIdentifier>
   </Class>
