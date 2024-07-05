@@ -37,7 +37,11 @@ namespace ControleDeBar.Dominio.ModuloProduto
 
         public override void AtualizarRegistro(EntidadeBase novoRegistro)
         {
-            throw new NotImplementedException();
+            Produto novoProduto = (Produto)novoRegistro;
+
+            Nome = novoProduto.Nome;
+            Valor = novoProduto.Valor;
+            Qtde = novoProduto.Qtde;
         }
         public void RemoverProduto(int qtde)
         {
