@@ -13,8 +13,7 @@ namespace ControleDeBar.Dominio.ModuloProduto
         public Produto(string nome, int valor)
         {
             Nome = nome;
-            Valor = valor;
-            
+            Valor = valor;            
         }
 
         public override List<string> Validar()

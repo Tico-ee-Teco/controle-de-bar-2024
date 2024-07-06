@@ -20,7 +20,11 @@ namespace ControleDeBar.WinApp.ModuloProduto
             grid.Rows.Clear();
 
             foreach (Produto p in produtos)
-                grid.Rows.Add(p.Id, p.Nome, p.Valor);
+                grid.Rows.Add(
+                    p.Id, 
+                    p.Nome, 
+                    p.Valor
+                 );
         }
 
         public int ObterRegistroSelecionado()

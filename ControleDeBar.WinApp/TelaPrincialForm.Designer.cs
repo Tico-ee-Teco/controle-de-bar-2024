@@ -84,7 +84,7 @@
             // 
             statusLabelPrincipal.Name = "statusLabelPrincipal";
             statusLabelPrincipal.Size = new Size(141, 17);
-            statusLabelPrincipal.Text = "Visualizando 0 registro(s).";            
+            statusLabelPrincipal.Text = "Visualizando 0 registro(s).";
             // 
             // toolStrip1
             // 
@@ -104,6 +104,7 @@
             btnAdicionar.Name = "btnAdicionar";
             btnAdicionar.Size = new Size(23, 22);
             btnAdicionar.Text = "Adicionar";
+            btnAdicionar.Click += btnAdicionar_Click;
             // 
             // btnEditar
             // 

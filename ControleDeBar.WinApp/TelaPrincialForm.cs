@@ -1,4 +1,6 @@
 using ControleDeBar.Dominio.ModuloProduto;
+using ControleDeBar.Infra.Compartilhado;
+using ControleDeBar.Infra.ModuloProduto;
 using ControleDeBar.WinApp.Compartilhado;
 using ControleDeBar.WinApp.ModuloProduto;
 
@@ -19,9 +21,9 @@ namespace ControleDeBar.WinApp
             lblTipoCadastro.Text = string.Empty;
             Instancia = this;
 
-            //GeradorTestesDbContext dbContext = new GeradorTestesDbContext();
+            ControleDeBarDbContext dbContext = new ControleDeBarDbContext();
 
-            //repositorioDisciplina = new RepositorioDisciplinaEmOrm(dbContext);
+            repositorioProduto = new RepositorioProduto(dbContext);
 
         }
 
@@ -35,11 +37,15 @@ namespace ControleDeBar.WinApp
         {
             statusLabelPrincipal.Text = texto;
         }
-       
         private void btnAdicionar_Click(object sender, EventArgs e)
         {
             controlador.Adicionar();
         }
+
+        //private void btnAdicionar_Click(object sender, EventArgs e)
+        //{
+        //    controlador.Adicionar();
+        //}
         private void btnEditar_Click(object sender, EventArgs e)
         {
             controlador.Editar();
@@ -95,6 +101,6 @@ namespace ControleDeBar.WinApp
             pnlRegistros.Controls.Clear();
             pnlRegistros.Controls.Add(listagemContato);
         }
-        
+
     }
 }

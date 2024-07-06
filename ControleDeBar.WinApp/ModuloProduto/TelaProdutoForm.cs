@@ -23,6 +23,7 @@ namespace ControleDeBar.WinApp.ModuloProduto
         {
             InitializeComponent();
             this.ConfigurarDialog();
+
             this.produtosCadastrados = produtosCadastrados;
         }
 

@@ -17,6 +17,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ControleDeBar.Dominio\ControleDeBar.Dominio.csproj" />
+    <ProjectReference Include="..\ControleDeBar.Infra\ControleDeBar.Infra.csproj" />
   </ItemGroup>
 
   <ItemGroup>

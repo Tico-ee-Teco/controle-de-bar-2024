@@ -5,6 +5,10 @@ namespace ControleDeBar.WinApp.ModuloProduto
 {
     public class ControladorProduto : ControladorBase
     {
+        TabelaProdutoControl tabelaProduto;
+
+        IRepositorioProduto repositorioProduto;
+
         public override string TipoCadastro => "Produtos";
 
         public override string ToolTipAdicionar => "Cadastrar um novo produto";
@@ -13,17 +17,15 @@ namespace ControleDeBar.WinApp.ModuloProduto
 
         public override string ToolTipExcluir => "Excluir um produto existe";
 
-        TabelaProdutoControl tabelaProduto;
-
-        IRepositorioProduto repositorioProduto;
 
         public ControladorProduto(IRepositorioProduto repositorioProduto)
         {
-            this.repositorioProduto = repositorioProduto;            
+            this.repositorioProduto = repositorioProduto; 
+            
         }
 
         public override void Adicionar()
-        {
+        {           
             List<Produto> produtosCadastrados = repositorioProduto.SelecionarTodos();
 
             TelaProdutoForm telaProduto = new TelaProdutoForm(produtosCadastrados);
@@ -39,7 +41,9 @@ namespace ControleDeBar.WinApp.ModuloProduto
 
             CarregarRegistros();
 
-            TelaPrincipalForm.Instancia.AtualizarRodape($"Produto {novoRegistro.Nome} foi adicionado com sucesso");
+            TelaPrincipalForm
+                .Instancia
+                .AtualizarRodape($"Produto {novoRegistro.Nome} foi adicionado com sucesso");
         }
 
         public override void Editar()
@@ -55,7 +59,7 @@ namespace ControleDeBar.WinApp.ModuloProduto
         public override UserControl ObterListagem()
         {
             if (tabelaProduto == null) 
-                tabelaProduto = new TabelaProdutoControl(); //erro
+                tabelaProduto = new TabelaProdutoControl();
 
             CarregarRegistros();
 
@@ -64,7 +68,7 @@ namespace ControleDeBar.WinApp.ModuloProduto
         }
         public override void CarregarRegistros()
         {
-            List<Produto> produtos = repositorioProduto.SelecionarTodos();
+            List<Produto> produtos = repositorioProduto.SelecionarTodos()!;
 
             tabelaProduto.AtualizarRegistros(produtos);
 
