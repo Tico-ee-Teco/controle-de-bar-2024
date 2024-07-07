@@ -6,11 +6,11 @@ namespace ControleDeBar.Dominio.ModuloProduto
     {
         public string Nome { get; set;}        
 
-        public int Valor { get; set; }       
+        public decimal Valor { get; set; }       
 
         public Produto() { }
 
-        public Produto(string nome, int valor)
+        public Produto(string nome, decimal valor)
         {
             Nome = nome;
             Valor = valor;            
@@ -23,7 +23,7 @@ namespace ControleDeBar.Dominio.ModuloProduto
             if(string.IsNullOrEmpty(Nome))
                 erros.Add("Nome do produto é obrigatório");
 
-            if(Valor < 1)
+            if(Valor <= 0)
                 erros.Add("Valor do produto deve ser maior do zero");            
 
             return erros;

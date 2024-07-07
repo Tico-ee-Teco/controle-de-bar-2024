@@ -29,7 +29,9 @@ namespace ControleDeBar.WinApp.ModuloProduto
 
         private void btnGravar_Click(object sender, EventArgs e)
         {
-            produto = new Produto(txtNome.Text, 0);
+            decimal preco = Convert.ToDecimal(txtValor.Text);
+
+            produto = new Produto(txtNome.Text, preco);
 
             List<string> erros = produto.Validar();
 
