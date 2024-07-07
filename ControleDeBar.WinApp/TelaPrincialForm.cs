@@ -42,18 +42,16 @@ namespace ControleDeBar.WinApp
             controlador.Adicionar();
         }
 
-        //private void btnAdicionar_Click(object sender, EventArgs e)
-        //{
-        //    controlador.Adicionar();
-        //}
         private void btnEditar_Click(object sender, EventArgs e)
         {
             controlador.Editar();
         }
+
         private void btnExcluir_Click(object sender, EventArgs e)
         {
             controlador.Excluir();
         }
+
 
         //private void btnVisualizar_Click(object sender, EventArgs e)
         //{

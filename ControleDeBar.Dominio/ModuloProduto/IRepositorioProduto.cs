@@ -3,8 +3,8 @@
     public interface IRepositorioProduto
     {
         void Adicionar(Produto produto);
-        void Editar(Produto produto);
-        void Excluir(Produto produto);
+        bool Editar(int id, Produto produto);
+        bool Excluir(int id);
 
         Produto SelecionarPorId(int id);
         List<Produto> SelecionarTodos();

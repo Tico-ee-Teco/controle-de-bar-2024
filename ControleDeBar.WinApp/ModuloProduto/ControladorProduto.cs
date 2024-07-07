@@ -48,12 +48,76 @@ namespace ControleDeBar.WinApp.ModuloProduto
 
         public override void Editar()
         {
-            throw new NotImplementedException();
+            int idSelecionado = tabelaProduto.ObterRegistroSelecionado();
+
+            Produto produtoSelecionado = repositorioProduto.SelecionarPorId(idSelecionado);
+
+            if(produtoSelecionado == null)
+            {
+                MessageBox.Show(
+                    "Você precisa selecionar um registro para executar esta ação!",
+                    "Aviso",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+
+                return;
+            }
+
+            List<Produto> produtosCadastrados = repositorioProduto.SelecionarTodos();
+
+            TelaProdutoForm telaProduto = new TelaProdutoForm(produtosCadastrados);
+
+            telaProduto.Produto = produtoSelecionado;
+
+            DialogResult resultado = telaProduto.ShowDialog();
+
+            if (resultado != DialogResult.OK)
+                return;
+
+            Produto produtoEditado = telaProduto.Produto;
+
+            repositorioProduto.Editar(idSelecionado, produtoEditado);
+
+            CarregarRegistros();
+
+            TelaPrincipalForm
+                .Instancia
+                .AtualizarRodape($"O registro \"{produtoEditado.Nome}\" foi editado com sucesso!");
         }
 
         public override void Excluir()
         {
-            throw new NotImplementedException();
+            int idSelecionado = tabelaProduto.ObterRegistroSelecionado();
+
+            Produto produtoSelecionado = repositorioProduto.SelecionarPorId(idSelecionado);
+
+            if(produtoSelecionado == null)
+            {
+                MessageBox.Show(
+                    "Você precisa selecionar um registro para executar esta ação!",
+                    "Aviso",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+
+                return;
+            }
+
+            DialogResult resultado = MessageBox.Show(
+                $"Tem certeza que deseja excluir o produto \"{produtoSelecionado.Nome}\"?",
+                "Excluir Produto",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question);
+
+            if(resultado != DialogResult.Yes)
+                return;
+
+            repositorioProduto.Excluir(idSelecionado);
+
+            CarregarRegistros();
+
+            TelaPrincipalForm
+                .Instancia
+                .AtualizarRodape($"O registro \"{produtoSelecionado.Nome}\" foi excluído com sucesso!");
         }
 
         public override UserControl ObterListagem()

@@ -115,6 +115,7 @@
             btnEditar.Name = "btnEditar";
             btnEditar.Size = new Size(23, 22);
             btnEditar.Text = "Editar";
+            btnEditar.Click += btnEditar_Click;
             // 
             // btnExcluir
             // 
@@ -125,6 +126,7 @@
             btnExcluir.Name = "btnExcluir";
             btnExcluir.Size = new Size(23, 22);
             btnExcluir.Text = "Excluir";
+            btnExcluir.Click += btnExcluir_Click;
             // 
             // toolStripSeparator1
             // 

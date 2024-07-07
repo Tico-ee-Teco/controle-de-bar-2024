@@ -18,14 +18,36 @@ namespace ControleDeBar.Infra.ModuloProduto
             dbContext.SaveChanges();
         }
 
-        public void Editar(Produto produto)
+        public bool Editar(int id,Produto produtoAtualizado)
         {
-            throw new NotImplementedException();
+            Produto produto = dbContext.Produtos.Find(id)!;
+
+            if(produto == null)
+            {
+                return false;
+            }
+
+            produto.AtualizarRegistro(produtoAtualizado);
+
+            dbContext.Produtos.Update(produto);
+            dbContext.SaveChanges();
+
+            return true;
         }
 
-        public void Excluir(Produto produto)
+        public bool Excluir(int id)
         {
-            throw new NotImplementedException();
+            Produto produto = dbContext.Produtos.Find(id)!;
+
+            if(produto == null)
+            {
+                return false;
+            }
+
+            dbContext.Produtos.Remove(produto);
+            dbContext.SaveChanges();
+
+            return true;
         }
 
         public Produto SelecionarPorId(int id)
