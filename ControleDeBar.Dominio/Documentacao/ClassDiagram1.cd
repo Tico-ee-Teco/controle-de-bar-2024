@@ -24,9 +24,6 @@
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABgAA=</HashCode>
       <FileName>Mesa.cs</FileName>
     </TypeIdentifier>
-    <ShowAsAssociation>
-      <Property Name="Conta" />
-    </ShowAsAssociation>
   </Class>
   <Class Name="ControleDeBar.Dominio.Faturamento">
     <Position X="4.25" Y="3.5" Width="1.5" />
@@ -34,9 +31,6 @@
       <HashCode>AAAAAAAAAAAAAQAAAAAAAAAgAAAAABAAAAAAAAAAgAE=</HashCode>
       <FileName>Faturamento.cs</FileName>
     </TypeIdentifier>
-    <ShowAsCollectionAssociation>
-      <Property Name="Conta" />
-    </ShowAsCollectionAssociation>
   </Class>
   <Class Name="ControleDeBar.Dominio.ModuloProduto.Produto">
     <Position X="2.25" Y="4" Width="1.5" />
