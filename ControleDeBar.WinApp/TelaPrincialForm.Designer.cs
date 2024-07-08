@@ -32,7 +32,7 @@
             menuStrip1 = new MenuStrip();
             CadastroMenuItem = new ToolStripMenuItem();
             produtosMenuItem = new ToolStripMenuItem();
-            pedidosMenuItem = new ToolStripMenuItem();
+            contasMenuItem = new ToolStripMenuItem();
             statusStrip1 = new StatusStrip();
             statusLabelPrincipal = new ToolStripStatusLabel();
             toolStrip1 = new ToolStrip();
@@ -44,6 +44,7 @@
             lblTipoCadastro = new ToolStripLabel();
             toolTip1 = new ToolTip(components);
             pnlRegistros = new Panel();
+            pedidosSubMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             statusStrip1.SuspendLayout();
             toolStrip1.SuspendLayout();
@@ -60,7 +61,7 @@
             // 
             // CadastroMenuItem
             // 
-            CadastroMenuItem.DropDownItems.AddRange(new ToolStripItem[] { produtosMenuItem, pedidosMenuItem });
+            CadastroMenuItem.DropDownItems.AddRange(new ToolStripItem[] { produtosMenuItem, contasMenuItem });
             CadastroMenuItem.Name = "CadastroMenuItem";
             CadastroMenuItem.Size = new Size(66, 20);
             CadastroMenuItem.Text = "Cadastro";
@@ -72,12 +73,13 @@
             produtosMenuItem.Text = "Produtos";
             produtosMenuItem.Click += produtosMenuItem_Click;
             // 
-            // pedidosMenuItem
+            // contasMenuItem
             // 
-            pedidosMenuItem.Name = "pedidosMenuItem";
-            pedidosMenuItem.Size = new Size(180, 22);
-            pedidosMenuItem.Text = "Pedidos";
-            pedidosMenuItem.Click += pedidosMenuItem_Click;
+            contasMenuItem.DropDownItems.AddRange(new ToolStripItem[] { pedidosSubMenuItem });
+            contasMenuItem.Name = "contasMenuItem";
+            contasMenuItem.Size = new Size(180, 22);
+            contasMenuItem.Text = "Contas";
+            
             // 
             // statusStrip1
             // 
@@ -166,6 +168,12 @@
             pnlRegistros.Size = new Size(622, 287);
             pnlRegistros.TabIndex = 4;
             // 
+            // pedidosSubMenuItem
+            // 
+            pedidosSubMenuItem.Name = "pedidosSubMenuItem";
+            pedidosSubMenuItem.Size = new Size(180, 22);
+            pedidosSubMenuItem.Text = "Pedidos";
+            // 
             // TelaPrincipalForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -207,6 +215,7 @@
         private ToolStripButton btnRelatorio;
         private ToolStripStatusLabel statusLabelPrincipal;
         private Panel pnlRegistros;
-        private ToolStripMenuItem pedidosMenuItem;
+        private ToolStripMenuItem contasMenuItem;
+        private ToolStripMenuItem pedidosSubMenuItem;
     }
 }
