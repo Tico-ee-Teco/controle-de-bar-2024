@@ -1,4 +1,6 @@
-﻿namespace ControleDeBar.Dominio
+﻿using ControleDeBar.Dominio.ModuloPedido;
+
+namespace ControleDeBar.Dominio
 {
     public class Conta
     {
