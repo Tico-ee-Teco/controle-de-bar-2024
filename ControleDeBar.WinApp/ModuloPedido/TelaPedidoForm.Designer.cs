@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             label1 = new Label();
-            textBox1 = new TextBox();
+            txtId = new TextBox();
             label2 = new Label();
-            textBox2 = new TextBox();
-            textBox3 = new TextBox();
+            txtNumeroMesa = new TextBox();
+            txtNumeroPedido = new TextBox();
             label3 = new Label();
             label4 = new Label();
             cmbItem = new ComboBox();
@@ -56,12 +56,12 @@
             label1.TabIndex = 0;
             label1.Text = "Id:";
             // 
-            // textBox1
+            // txtId
             // 
-            textBox1.Location = new Point(63, 35);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(41, 27);
-            textBox1.TabIndex = 1;
+            txtId.Location = new Point(63, 35);
+            txtId.Name = "txtId";
+            txtId.Size = new Size(41, 27);
+            txtId.TabIndex = 1;
             // 
             // label2
             // 
@@ -72,19 +72,19 @@
             label2.TabIndex = 2;
             label2.Text = "N Mesa:";
             // 
-            // textBox2
+            // txtNumeroMesa
             // 
-            textBox2.Location = new Point(344, 35);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(100, 27);
-            textBox2.TabIndex = 3;
+            txtNumeroMesa.Location = new Point(344, 35);
+            txtNumeroMesa.Name = "txtNumeroMesa";
+            txtNumeroMesa.Size = new Size(100, 27);
+            txtNumeroMesa.TabIndex = 3;
             // 
-            // textBox3
+            // txtNumeroPedido
             // 
-            textBox3.Location = new Point(194, 35);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(69, 27);
-            textBox3.TabIndex = 5;
+            txtNumeroPedido.Location = new Point(194, 35);
+            txtNumeroPedido.Name = "txtNumeroPedido";
+            txtNumeroPedido.Size = new Size(69, 27);
+            txtNumeroPedido.TabIndex = 5;
             // 
             // label3
             // 
@@ -164,6 +164,7 @@
             btnGravar.TabIndex = 12;
             btnGravar.Text = "Gravar";
             btnGravar.UseVisualStyleBackColor = true;
+            btnGravar.Click += btnGravar_Click;
             // 
             // TelaPedidoForm
             // 
@@ -178,11 +179,11 @@
             Controls.Add(label5);
             Controls.Add(cmbItem);
             Controls.Add(label4);
-            Controls.Add(textBox3);
+            Controls.Add(txtNumeroPedido);
             Controls.Add(label3);
-            Controls.Add(textBox2);
+            Controls.Add(txtNumeroMesa);
             Controls.Add(label2);
-            Controls.Add(textBox1);
+            Controls.Add(txtId);
             Controls.Add(label1);
             Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             Margin = new Padding(3, 4, 3, 4);
@@ -197,10 +198,10 @@
         #endregion
 
         private Label label1;
-        private TextBox textBox1;
+        private TextBox txtId;
         private Label label2;
-        private TextBox textBox2;
-        private TextBox textBox3;
+        private TextBox txtNumeroMesa;
+        private TextBox txtNumeroPedido;
         private Label label3;
         private Label label4;
         private ComboBox cmbItem;
