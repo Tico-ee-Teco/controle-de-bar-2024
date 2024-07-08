@@ -49,7 +49,6 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Enabled = false;
             label1.Location = new Point(32, 38);
             label1.Name = "label1";
             label1.Size = new Size(25, 20);
@@ -58,6 +57,7 @@
             // 
             // txtId
             // 
+            txtId.Enabled = false;
             txtId.Location = new Point(63, 35);
             txtId.Name = "txtId";
             txtId.Size = new Size(41, 27);
@@ -77,14 +77,14 @@
             txtNumeroMesa.Location = new Point(344, 35);
             txtNumeroMesa.Name = "txtNumeroMesa";
             txtNumeroMesa.Size = new Size(100, 27);
-            txtNumeroMesa.TabIndex = 3;
+            txtNumeroMesa.TabIndex = 2;
             // 
             // txtNumeroPedido
             // 
             txtNumeroPedido.Location = new Point(194, 35);
             txtNumeroPedido.Name = "txtNumeroPedido";
             txtNumeroPedido.Size = new Size(69, 27);
-            txtNumeroPedido.TabIndex = 5;
+            txtNumeroPedido.TabIndex = 1;
             // 
             // label3
             // 
@@ -110,7 +110,7 @@
             cmbItem.Location = new Point(63, 94);
             cmbItem.Name = "cmbItem";
             cmbItem.Size = new Size(381, 28);
-            cmbItem.TabIndex = 7;
+            cmbItem.TabIndex = 3;
             // 
             // label5
             // 
@@ -126,7 +126,7 @@
             nudQtde.Location = new Point(63, 144);
             nudQtde.Name = "nudQtde";
             nudQtde.Size = new Size(64, 27);
-            nudQtde.TabIndex = 9;
+            nudQtde.TabIndex = 4;
             // 
             // label6
             // 
@@ -143,7 +143,7 @@
             nudPreco.Location = new Point(226, 144);
             nudPreco.Name = "nudPreco";
             nudPreco.Size = new Size(89, 27);
-            nudPreco.TabIndex = 11;
+            nudPreco.TabIndex = 5;
             // 
             // btnCancelar
             // 

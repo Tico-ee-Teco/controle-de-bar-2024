@@ -1,4 +1,6 @@
-﻿using ControleDeBar.Dominio.ModuloProduto;
+﻿using ControleDeBar.Dominio.ModuloPedido;
+using ControleDeBar.Dominio.ModuloProduto;
+using ControleDeBar.Infra.ModuloPedido;
 using ControleDeBar.WinApp.Compartilhado;
 
 namespace ControleDeBar.WinApp.ModuloProduto
@@ -26,7 +28,7 @@ namespace ControleDeBar.WinApp.ModuloProduto
 
         public override void Adicionar()
         {           
-            List<Produto> produtosCadastrados = repositorioProduto.SelecionarTodos();
+            List<Produto> produtosCadastrados = repositorioProduto.SelecionarTodos();            
 
             TelaProdutoForm telaProduto = new TelaProdutoForm(produtosCadastrados);
 

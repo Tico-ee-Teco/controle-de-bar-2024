@@ -24,8 +24,9 @@ namespace ControleDeBar.WinApp.ModuloPedido
                     p.Id,
                     p.Produto.Nome,                   
                     p.Qtde,
-                    p.Preco
-                 );
+                    p.Preco,
+                    p.NumeroMesa
+                );
         }
 
         public int ObterRegistroSelecionado()
@@ -40,7 +41,8 @@ namespace ControleDeBar.WinApp.ModuloPedido
                 new DataGridViewTextBoxColumn { DataPropertyName = "Id", HeaderText = "Id" },
                 new DataGridViewTextBoxColumn { DataPropertyName = "Item", HeaderText = "Item" },
                 new DataGridViewTextBoxColumn { DataPropertyName = "Qtde", HeaderText = "Qtde" },
-                new DataGridViewTextBoxColumn { DataPropertyName = "Preco", HeaderText = "Preco" }
+                new DataGridViewTextBoxColumn { DataPropertyName = "Preco", HeaderText = "Preço" },
+                new DataGridViewTextBoxColumn { DataPropertyName = "NumeroMesa", HeaderText = "Número da Mesa" }
             };
         }
     }

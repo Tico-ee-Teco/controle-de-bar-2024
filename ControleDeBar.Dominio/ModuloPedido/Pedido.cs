@@ -5,7 +5,8 @@ namespace ControleDeBar.Dominio.ModuloPedido
 {
     public class Pedido : EntidadeBase
     {        
-        public Produto Produto { get; set; }  
+        public Produto Produto { get; set; } 
+        
         public int NumeroPedido { get; set; }
 
         public int NumeroMesa { get; set; }
@@ -58,6 +59,26 @@ namespace ControleDeBar.Dominio.ModuloPedido
             NumeroMesa = pedidoEditado.NumeroMesa;
             Qtde = pedidoEditado.Qtde;            
             Preco = pedidoEditado.Preco;
+        }
+
+        public bool AtribuirProduto(Produto produto)
+        {
+            bool conseguiuAtribuir = produto.AdiconarPedido(this);
+
+            if (conseguiuAtribuir)
+                Produto = produto;
+            return conseguiuAtribuir;
+        }
+
+        public bool RemoverProduto()
+        {
+            if (Produto == null)
+                return false;
+
+            Produto.Pedidos.Remove(this);
+            Produto = null;
+
+            return true;
         }
     }
 }

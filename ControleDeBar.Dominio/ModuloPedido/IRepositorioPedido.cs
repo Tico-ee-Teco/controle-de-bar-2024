@@ -3,7 +3,7 @@
     public interface IRepositorioPedido
     {
         void Adicionar(Pedido pedido);
-        bool Editar(int id, Pedido pedido);
+        bool Editar(int id, Pedido pedidoAtualizado);
         bool Excluir(int id);
 
         Pedido SelecionarPorId(int id);

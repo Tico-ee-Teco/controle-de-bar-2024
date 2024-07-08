@@ -1,7 +1,10 @@
+using ControleDeBar.Dominio.ModuloPedido;
 using ControleDeBar.Dominio.ModuloProduto;
 using ControleDeBar.Infra.Compartilhado;
+using ControleDeBar.Infra.ModuloPedido;
 using ControleDeBar.Infra.ModuloProduto;
 using ControleDeBar.WinApp.Compartilhado;
+using ControleDeBar.WinApp.ModuloPedido;
 using ControleDeBar.WinApp.ModuloProduto;
 
 namespace ControleDeBar.WinApp
@@ -11,6 +14,7 @@ namespace ControleDeBar.WinApp
         ControladorBase controlador;
 
         IRepositorioProduto repositorioProduto;
+        IRepositorioPedido repositorioPedido;
 
         public static TelaPrincipalForm Instancia { get; private set; }
 
@@ -24,6 +28,7 @@ namespace ControleDeBar.WinApp
             ControleDeBarDbContext dbContext = new ControleDeBarDbContext();
 
             repositorioProduto = new RepositorioProduto(dbContext);
+            repositorioPedido = new RepositorioPedido(dbContext);
 
         }
 
@@ -33,6 +38,13 @@ namespace ControleDeBar.WinApp
 
             ConfigurarTelaPrincipal(controlador);
         }
+        private void pedidosMenuItem_Click(object sender, EventArgs e)
+        {
+            controlador = new ControladorPedido(repositorioPedido, repositorioProduto);
+
+            ConfigurarTelaPrincipal(controlador);
+        }
+
         public void AtualizarRodape(string texto)
         {
             statusLabelPrincipal.Text = texto;
@@ -58,8 +70,6 @@ namespace ControleDeBar.WinApp
         //    if (controlador is IControladorVisualizavel controladorVisualizavel)
         //        controladorVisualizavel.VisualizarTeste();
         //}
-
-
 
         private void ConfigurarTelaPrincipal(ControladorBase controladorSelecionado)
         {

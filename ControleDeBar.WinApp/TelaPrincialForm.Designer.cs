@@ -32,6 +32,7 @@
             menuStrip1 = new MenuStrip();
             CadastroMenuItem = new ToolStripMenuItem();
             produtosMenuItem = new ToolStripMenuItem();
+            pedidosMenuItem = new ToolStripMenuItem();
             statusStrip1 = new StatusStrip();
             statusLabelPrincipal = new ToolStripStatusLabel();
             toolStrip1 = new ToolStrip();
@@ -59,7 +60,7 @@
             // 
             // CadastroMenuItem
             // 
-            CadastroMenuItem.DropDownItems.AddRange(new ToolStripItem[] { produtosMenuItem });
+            CadastroMenuItem.DropDownItems.AddRange(new ToolStripItem[] { produtosMenuItem, pedidosMenuItem });
             CadastroMenuItem.Name = "CadastroMenuItem";
             CadastroMenuItem.Size = new Size(66, 20);
             CadastroMenuItem.Text = "Cadastro";
@@ -67,9 +68,16 @@
             // produtosMenuItem
             // 
             produtosMenuItem.Name = "produtosMenuItem";
-            produtosMenuItem.Size = new Size(122, 22);
+            produtosMenuItem.Size = new Size(180, 22);
             produtosMenuItem.Text = "Produtos";
             produtosMenuItem.Click += produtosMenuItem_Click;
+            // 
+            // pedidosMenuItem
+            // 
+            pedidosMenuItem.Name = "pedidosMenuItem";
+            pedidosMenuItem.Size = new Size(180, 22);
+            pedidosMenuItem.Text = "Pedidos";
+            pedidosMenuItem.Click += pedidosMenuItem_Click;
             // 
             // statusStrip1
             // 
@@ -199,5 +207,6 @@
         private ToolStripButton btnRelatorio;
         private ToolStripStatusLabel statusLabelPrincipal;
         private Panel pnlRegistros;
+        private ToolStripMenuItem pedidosMenuItem;
     }
 }
