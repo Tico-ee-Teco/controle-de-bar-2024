@@ -1,6 +1,6 @@
-﻿namespace ControleDeBar.WinApp.ModuloProduto
+﻿namespace ControleDeBar.WinApp.ModuloGarcon
 {
-    partial class TabelaProdutoControl
+    partial class TabelaGarconControl
     {
         /// <summary> 
         /// Required designer variable.
@@ -35,10 +35,9 @@
             // grid
             // 
             grid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            grid.Dock = DockStyle.Fill;
             grid.Location = new Point(0, 0);
             grid.Name = "grid";
-            grid.Size = new Size(460, 354);
+            grid.Size = new Size(1091, 533);
             grid.TabIndex = 0;
             // 
             // TabelaGarconControl
@@ -47,7 +46,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(grid);
             Name = "TabelaGarconControl";
-            Size = new Size(460, 354);
+            Size = new Size(534, 420);
             ((System.ComponentModel.ISupportInitialize)grid).EndInit();
             ResumeLayout(false);
         }

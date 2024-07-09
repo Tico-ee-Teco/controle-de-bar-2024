@@ -124,6 +124,7 @@
             Controls.Add(txtId);
             Controls.Add(label1);
             Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            FormBorderStyle = FormBorderStyle.FixedDialog;
             Margin = new Padding(3, 4, 3, 4);
             Name = "TelaProdutoForm";
             Text = "Cadastro de Produto";

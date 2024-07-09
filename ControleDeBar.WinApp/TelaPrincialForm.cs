@@ -1,7 +1,10 @@
+using ControleDeBar.Dominio.ModuloGarçon;
 using ControleDeBar.Dominio.ModuloProduto;
 using ControleDeBar.Infra.Compartilhado;
+using ControleDeBar.Infra.ModuloGarcon;
 using ControleDeBar.Infra.ModuloProduto;
 using ControleDeBar.WinApp.Compartilhado;
+using ControleDeBar.WinApp.ModuloGarcon;
 using ControleDeBar.WinApp.ModuloProduto;
 
 namespace ControleDeBar.WinApp
@@ -11,6 +14,7 @@ namespace ControleDeBar.WinApp
         ControladorBase controlador;
 
         IRepositorioProduto repositorioProduto;
+        IRepositorioGarcon repositorioGarcon;
 
         public static TelaPrincipalForm Instancia { get; private set; }
 
@@ -24,14 +28,21 @@ namespace ControleDeBar.WinApp
             ControleDeBarDbContext dbContext = new ControleDeBarDbContext();
 
             repositorioProduto = new RepositorioProduto(dbContext);
+            repositorioGarcon = new RepositorioGarcon(dbContext);
 
         }
-
         private void produtosMenuItem_Click(object sender, EventArgs e)
         {
             controlador = new ControladorProduto(repositorioProduto);
 
             ConfigurarTelaPrincipal(controlador);
+        }
+        private void garçonsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            controlador = new ControladorGarcon(repositorioGarcon);
+
+            ConfigurarTelaPrincipal(controlador);
+
         }
         public void AtualizarRodape(string texto)
         {

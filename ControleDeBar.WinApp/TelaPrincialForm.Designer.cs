@@ -43,6 +43,7 @@
             lblTipoCadastro = new ToolStripLabel();
             toolTip1 = new ToolTip(components);
             pnlRegistros = new Panel();
+            garçonsToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             statusStrip1.SuspendLayout();
             toolStrip1.SuspendLayout();
@@ -59,7 +60,7 @@
             // 
             // CadastroMenuItem
             // 
-            CadastroMenuItem.DropDownItems.AddRange(new ToolStripItem[] { produtosMenuItem });
+            CadastroMenuItem.DropDownItems.AddRange(new ToolStripItem[] { produtosMenuItem, garçonsToolStripMenuItem });
             CadastroMenuItem.Name = "CadastroMenuItem";
             CadastroMenuItem.Size = new Size(66, 20);
             CadastroMenuItem.Text = "Cadastro";
@@ -67,7 +68,7 @@
             // produtosMenuItem
             // 
             produtosMenuItem.Name = "produtosMenuItem";
-            produtosMenuItem.Size = new Size(122, 22);
+            produtosMenuItem.Size = new Size(180, 22);
             produtosMenuItem.Text = "Produtos";
             produtosMenuItem.Click += produtosMenuItem_Click;
             // 
@@ -158,6 +159,13 @@
             pnlRegistros.Size = new Size(923, 454);
             pnlRegistros.TabIndex = 4;
             // 
+            // garçonsToolStripMenuItem
+            // 
+            garçonsToolStripMenuItem.Name = "garçonsToolStripMenuItem";
+            garçonsToolStripMenuItem.Size = new Size(180, 22);
+            garçonsToolStripMenuItem.Text = "Garçons";
+            garçonsToolStripMenuItem.Click += garçonsToolStripMenuItem_Click;
+            // 
             // TelaPrincipalForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -200,5 +208,6 @@
         private ToolStripButton btnRelatorio;
         private ToolStripStatusLabel statusLabelPrincipal;
         private Panel pnlRegistros;
+        private ToolStripMenuItem garçonsToolStripMenuItem;
     }
 }
