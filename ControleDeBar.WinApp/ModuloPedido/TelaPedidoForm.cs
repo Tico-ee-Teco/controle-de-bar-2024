@@ -11,8 +11,7 @@ namespace ControleDeBar.WinApp.ModuloPedido
             get => pedido;
             set
             {
-                txtId.Text = value.Id.ToString();
-                txtNumeroPedido.Text = value.NumeroPedido.ToString();
+                txtId.Text = value.Id.ToString();                
                 txtNumeroMesa.Text = value.NumeroMesa.ToString();                
                 nudQtde.Value = value.Qtde;
                 nudPreco.Value = value.Preco;
@@ -51,7 +50,7 @@ namespace ControleDeBar.WinApp.ModuloPedido
             int qtde = Convert.ToInt32(nudQtde.Value);
             decimal preco = Convert.ToInt32(nudPreco.Value);
 
-            pedido = new Pedido(numeroPedido, numeroMesa, produto, qtde, preco);
+           // pedido = new Pedido(numeroPedido, numeroMesa, produto, qtde, preco);
 
             List<string> erros = pedido.Validar();
 

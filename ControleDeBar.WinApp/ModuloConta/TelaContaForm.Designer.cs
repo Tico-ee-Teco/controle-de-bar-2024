@@ -136,6 +136,7 @@
             btnRemoverPedido.TabIndex = 8;
             btnRemoverPedido.Text = "Remover";
             btnRemoverPedido.UseVisualStyleBackColor = true;
+            btnRemoverPedido.Click += btnRemoverPedido_Click;
             // 
             // btnEditarPedido
             // 

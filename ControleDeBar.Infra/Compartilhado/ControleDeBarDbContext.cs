@@ -1,4 +1,5 @@
-﻿using ControleDeBar.Dominio.ModuloPedido;
+﻿
+using ControleDeBar.Dominio.ModuloConta;
 using ControleDeBar.Dominio.ModuloProduto;
 using Microsoft.EntityFrameworkCore;
 
@@ -8,7 +9,9 @@ namespace ControleDeBar.Infra.Compartilhado
     {
         public DbSet<Produto> Produtos { get; set; }
 
-        public DbSet<Pedido> Pedidos { get; set; }
+        public DbSet<Conta> Contas { get; set;}
+
+        
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -39,36 +42,36 @@ namespace ControleDeBar.Infra.Compartilhado
                     .HasColumnType("decimal");
             });
 
-            modelBuilder.Entity<Pedido>(pedidoBuilder =>
-            {
-                pedidoBuilder.ToTable("TBPedido");
+            //modelBuilder.Entity<Pedido>(pedidoBuilder =>
+            //{
+            //    pedidoBuilder.ToTable("TBPedido");
 
-                pedidoBuilder.Property(p => p.Id)
-                    .IsRequired()
-                    .ValueGeneratedOnAdd();
+            //    pedidoBuilder.Property(p => p.Id)
+            //        .IsRequired()
+            //        .ValueGeneratedOnAdd();
 
-                pedidoBuilder.Property(p => p.NumeroPedido)
-                    .IsRequired()
-                    .HasColumnType("int");
+            //    //pedidoBuilder.Property(p => p.NumeroPedido)
+            //    //    .IsRequired()
+            //    //    .HasColumnType("int");
 
-                pedidoBuilder.Property(p => p.NumeroMesa)
-                    .IsRequired()
-                    .HasColumnType("int");               
+            //    pedidoBuilder.Property(p => p.NumeroMesa)
+            //        .IsRequired()
+            //        .HasColumnType("int");               
 
-                pedidoBuilder.Property(p => p.Qtde)
-                    .IsRequired()
-                    .HasColumnType("int");
+            //    pedidoBuilder.Property(p => p.Qtde)
+            //        .IsRequired()
+            //        .HasColumnType("int");
 
-                pedidoBuilder.Property(p => p.Preco)
-                   .IsRequired()
-                   .HasColumnType("decimal");
+            //    pedidoBuilder.Property(p => p.Preco)
+            //       .IsRequired()
+            //       .HasColumnType("decimal");
 
-                pedidoBuilder.HasOne(p => p.Produto)
-                    .WithMany(x => x.Pedidos)
-                    .HasForeignKey("Produto_Id")
-                    .HasConstraintName("FK_TBPedido_TBProdutos")
-                    .OnDelete(DeleteBehavior.Restrict);                    
-            });
+            //    pedidoBuilder.HasOne(p => p.Produto)
+            //        .WithMany(x => x.Pedidos)
+            //        .HasForeignKey("Produto_Id")
+            //        .HasConstraintName("FK_TBPedido_TBProdutos")
+            //        .OnDelete(DeleteBehavior.Restrict);                    
+            //});
 
             base.OnModelCreating(modelBuilder);
         }

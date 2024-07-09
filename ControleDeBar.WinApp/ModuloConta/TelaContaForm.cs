@@ -18,6 +18,9 @@ namespace ControleDeBar.WinApp.ModuloConta
                 cmbGarcom.SelectedItem = value.Garcom.Nome;
                 cmbProduto.SelectedItem =
                     produtosCadastrados.Find(p => p.Nome == value.Produto.Nome);
+
+                foreach (Pedido pedido in value.Pedidos)
+                    listPedido.Items.Add(pedido);
             }
         }
 
@@ -43,6 +46,8 @@ namespace ControleDeBar.WinApp.ModuloConta
 
             foreach (Garcom garcom in garconsCadastrados)
                 cmbGarcom.Items.Add(garcom.Nome);
+
+            //carregar pedidos
         }
 
         private void btnAddPedido_Click(object sender, EventArgs e)
@@ -53,9 +58,38 @@ namespace ControleDeBar.WinApp.ModuloConta
             int quantide = (int)nudQuantidade.Value;
             decimal valorTotal = produto.Valor * quantide;
 
-            Pedido pedido = new Pedido(mesa.Numero, garcom, produto, quantide,valorTotal);
+            Pedido pedido = new Pedido(mesa.Numero, garcom, produto, quantide, valorTotal);
 
             listPedido.Items.Add(pedido);
+        }
+
+        private void btnRemoverPedido_Click(object sender, EventArgs e)
+        {
+            Pedido pedido = (Pedido)listPedido.SelectedItem;
+
+            if (pedido == null)
+                return;
+
+            listPedido.Items.Remove(pedido);
+
+            RecarregarPedidos();
+        }
+
+        private void RecarregarPedidos()
+        {
+            List<Pedido> pedidos = new List<Pedido>();
+
+            listPedido.Items.Clear();
+
+            foreach (Pedido p in pedidos)
+            {
+                Mesa mesa = mesasCadastradas.Find(m => m.Numero == Convert.ToInt32(cmbMesa.SelectedItem));
+
+               Pedido pedido = new Pedido(mesa.Numero, p.Garcom, p.Produto, p.Qtde, p.Preco);
+
+                listPedido.Items.Add(pedido);
+
+            }
         }
     }
 }

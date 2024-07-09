@@ -6,8 +6,6 @@ namespace ControleDeBar.Dominio.ModuloConta
 {
     public class Conta : EntidadeBase
     {
-        //public Pedido Pedidos { get; set;}
-
         public Mesa Mesa { get; set; }        
 
         public decimal ValorTotal { get; set; }
@@ -20,6 +18,7 @@ namespace ControleDeBar.Dominio.ModuloConta
        
         public Produto Produto { get; set; }
         public List<Produto> Produtos { get; set; }
+        public List<Pedido> Pedidos { get; set; }
 
         public Conta() { }
 

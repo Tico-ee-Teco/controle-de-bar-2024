@@ -36,8 +36,8 @@ namespace ControleDeBar.Dominio.ModuloPedido
             if (Produto == null)
                 erros.Add($"O campo Produto é obrigatório!");   
             
-            if(NumeroPedido <= 0 || NumeroPedido == null)
-                erros.Add($"O campo Número do Pedido precisa de um número maior que zero!");
+            //if(NumeroPedido <= 0 || NumeroPedido == null)
+            //    erros.Add($"O campo Número do Pedido precisa de um número maior que zero!");
 
             if (NumeroMesa <= 0 || NumeroMesa == null)
                 erros.Add($"O campo Número da Mesa precisa não pode ser zero!");
@@ -56,7 +56,7 @@ namespace ControleDeBar.Dominio.ModuloPedido
             Pedido pedidoEditado = (Pedido)novoRegistro;
 
             Produto = pedidoEditado.Produto; 
-            NumeroPedido = pedidoEditado.NumeroPedido;
+            //NumeroPedido = pedidoEditado.NumeroPedido;
             NumeroMesa = pedidoEditado.NumeroMesa;
             Qtde = pedidoEditado.Qtde;            
             Preco = pedidoEditado.Preco;

@@ -6,45 +6,22 @@ namespace ControleDeBar.WinApp.ModuloPedido
 {
     internal class ControladorPedido : ControladorBase
     {
-        TabelaPedidoControl tabelaPedido;
+        public override string TipoCadastro => throw new NotImplementedException();
 
-        IRepositorioPedido repositorioPedido;
-        IRepositorioProduto repositorioProduto;
-        public override string TipoCadastro => "Pedidos";
+        public override string ToolTipAdicionar => throw new NotImplementedException();
 
-        public override string ToolTipAdicionar => "Cadastrar um novo pedido";
+        public override string ToolTipEditar => throw new NotImplementedException();
 
-        public override string ToolTipEditar => "Editar um pedido existe";
+        public override string ToolTipExcluir => throw new NotImplementedException();
 
-        public override string ToolTipExcluir => "Excluir um pedido existe";
-
-        public ControladorPedido(IRepositorioPedido repositorioPedido, IRepositorioProduto repositorioProduto)
-        {
-            this.repositorioPedido = repositorioPedido;
-            this.repositorioProduto = repositorioProduto;
-        }
-        
         public override void Adicionar()
-        { 
-            List<Pedido> pedidosCadastrados = repositorioPedido.SelecionarTodos();
-            List<Produto> produtosCadastrados = repositorioProduto.SelecionarTodos();
- 
-            TelaPedidoForm telaPedido = new TelaPedidoForm(pedidosCadastrados, produtosCadastrados);
+        {
+            throw new NotImplementedException();
+        }
 
-            DialogResult resultado = telaPedido.ShowDialog(); ;
-
-            if (resultado != DialogResult.OK)
-                return;
-
-            Pedido novoRegistro = telaPedido.Pedido;
-
-            repositorioPedido.Adicionar(novoRegistro);
-
-            CarregarRegistros();
-
-            TelaPrincipalForm
-                .Instancia
-                .AtualizarRodape($"Pedido {novoRegistro.NumeroPedido} foi adicionado com sucesso");
+        public override void CarregarRegistros()
+        {
+            throw new NotImplementedException();
         }
 
         public override void Editar()
@@ -59,18 +36,7 @@ namespace ControleDeBar.WinApp.ModuloPedido
 
         public override UserControl ObterListagem()
         {
-            if (tabelaPedido == null)
-                tabelaPedido = new TabelaPedidoControl();
-
-            CarregarRegistros();
-
-            return tabelaPedido;
-        }
-        public override void CarregarRegistros()
-        {
-            List<Pedido> pedidos = repositorioPedido.SelecionarTodos()!;
-
-            tabelaPedido.AtualizarRegistros(pedidos);
+            throw new NotImplementedException();
         }
     }
 }

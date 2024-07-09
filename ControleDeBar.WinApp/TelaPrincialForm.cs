@@ -14,7 +14,7 @@ namespace ControleDeBar.WinApp
         ControladorBase controlador;
 
         IRepositorioProduto repositorioProduto;
-        //IRepositorioPedido repositorioPedido;
+       
 
         public static TelaPrincipalForm Instancia { get; private set; }
 
@@ -28,7 +28,7 @@ namespace ControleDeBar.WinApp
             ControleDeBarDbContext dbContext = new ControleDeBarDbContext();
 
             repositorioProduto = new RepositorioProduto(dbContext);
-            //repositorioPedido = new RepositorioPedido(dbContext);
+           
 
         }
 
@@ -38,7 +38,10 @@ namespace ControleDeBar.WinApp
 
             ConfigurarTelaPrincipal(controlador);
         }
-       
+        private void contasMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
 
         public void AtualizarRodape(string texto)
         {
