@@ -8,7 +8,6 @@
     </TypeIdentifier>
     <ShowAsAssociation>
       <Property Name="Mesa" />
-      <Property Name="Garcom" />
     </ShowAsAssociation>
     <ShowAsCollectionAssociation>
       <Property Name="Pedidos" />
