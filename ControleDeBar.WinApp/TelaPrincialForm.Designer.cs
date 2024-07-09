@@ -53,7 +53,7 @@
             menuStrip1.Items.AddRange(new ToolStripItem[] { CadastroMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(622, 24);
+            menuStrip1.Size = new Size(923, 24);
             menuStrip1.TabIndex = 1;
             menuStrip1.Text = "menuStrip1";
             // 
@@ -74,9 +74,9 @@
             // statusStrip1
             // 
             statusStrip1.Items.AddRange(new ToolStripItem[] { statusLabelPrincipal });
-            statusStrip1.Location = new Point(0, 336);
+            statusStrip1.Location = new Point(0, 503);
             statusStrip1.Name = "statusStrip1";
-            statusStrip1.Size = new Size(622, 22);
+            statusStrip1.Size = new Size(923, 22);
             statusStrip1.TabIndex = 2;
             statusStrip1.Text = "statusStrip1";
             // 
@@ -91,7 +91,7 @@
             toolStrip1.Items.AddRange(new ToolStripItem[] { btnAdicionar, btnEditar, btnExcluir, toolStripSeparator1, btnRelatorio, lblTipoCadastro });
             toolStrip1.Location = new Point(0, 24);
             toolStrip1.Name = "toolStrip1";
-            toolStrip1.Size = new Size(622, 25);
+            toolStrip1.Size = new Size(923, 25);
             toolStrip1.TabIndex = 3;
             toolStrip1.Text = "toolStrip1";
             // 
@@ -155,14 +155,14 @@
             pnlRegistros.Dock = DockStyle.Fill;
             pnlRegistros.Location = new Point(0, 49);
             pnlRegistros.Name = "pnlRegistros";
-            pnlRegistros.Size = new Size(622, 287);
+            pnlRegistros.Size = new Size(923, 454);
             pnlRegistros.TabIndex = 4;
             // 
             // TelaPrincipalForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(622, 358);
+            ClientSize = new Size(923, 525);
             Controls.Add(pnlRegistros);
             Controls.Add(toolStrip1);
             Controls.Add(statusStrip1);
@@ -172,6 +172,7 @@
             Margin = new Padding(3, 4, 3, 4);
             Name = "TelaPrincipalForm";
             ShowIcon = false;
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Controle de Bar 1.0";
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();

@@ -35,7 +35,8 @@
             btnGravar = new Button();
             btnCancelar = new Button();
             label4 = new Label();
-            txtValor = new TextBox();
+            txtValor = new NumericUpDown();
+            ((System.ComponentModel.ISupportInitialize)txtValor).BeginInit();
             SuspendLayout();
             // 
             // label1
@@ -103,9 +104,10 @@
             // 
             // txtValor
             // 
-            txtValor.Location = new Point(64, 127);
+            txtValor.DecimalPlaces = 2;
+            txtValor.Location = new Point(67, 128);
             txtValor.Name = "txtValor";
-            txtValor.Size = new Size(100, 27);
+            txtValor.Size = new Size(103, 27);
             txtValor.TabIndex = 9;
             // 
             // TelaProdutoForm
@@ -125,6 +127,7 @@
             Margin = new Padding(3, 4, 3, 4);
             Name = "TelaProdutoForm";
             Text = "Cadastro de Produto";
+            ((System.ComponentModel.ISupportInitialize)txtValor).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -138,6 +141,6 @@
         private Button btnGravar;
         private Button btnCancelar;
         private Label label4;
-        private TextBox txtValor;
+        private NumericUpDown txtValor;
     }
 }

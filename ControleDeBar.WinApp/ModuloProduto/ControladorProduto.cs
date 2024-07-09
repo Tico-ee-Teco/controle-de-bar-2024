@@ -1,5 +1,6 @@
 ﻿using ControleDeBar.Dominio.ModuloProduto;
 using ControleDeBar.WinApp.Compartilhado;
+using System.Drawing.Drawing2D;
 
 namespace ControleDeBar.WinApp.ModuloProduto
 {
@@ -36,6 +37,17 @@ namespace ControleDeBar.WinApp.ModuloProduto
                 return;
 
             Produto novoRegistro = telaProduto.Produto;
+
+            if (repositorioProduto.SelecionarTodos().Any(m => m.Nome.Equals(novoRegistro.Nome.Trim(), StringComparison.OrdinalIgnoreCase)))
+            {
+                MessageBox.Show(
+                    $"Já existe uma matéria com o nome \"{novoRegistro.Nome}\".",
+                    "Erro",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error
+                );
+                return;
+            }
 
             repositorioProduto.Adicionar(novoRegistro);
 
@@ -75,6 +87,19 @@ namespace ControleDeBar.WinApp.ModuloProduto
                 return;
 
             Produto produtoEditado = telaProduto.Produto;
+
+            Produto novoRegistro = telaProduto.Produto;
+
+            if (repositorioProduto.SelecionarTodos().Any(m => m.Nome.Equals(produtoEditado.Nome.Trim(), StringComparison.OrdinalIgnoreCase)))
+            {
+                MessageBox.Show(
+                    $"Já existe uma matéria com o nome \"{produtoEditado.Nome}\".",
+                    "Erro",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error
+                );
+                return;
+            }
 
             repositorioProduto.Editar(idSelecionado, produtoEditado);
 
