@@ -13,7 +13,7 @@ namespace ControleDeBar.Dominio.ModuloGarçon
         bool Editar(int id, Garcom garcom);
         bool Excluir(int id);
 
-        Produto SelecionarPorId(int id);
+        Garcom SelecionarPorId(int id);
         List<Garcom> SelecionarTodos();
     }
 }
