@@ -12,20 +12,23 @@ namespace ControleDeBar.Dominio.ModuloConta
 
         public decimal ValorTotal { get; set; }
        
-        public Garcom Garcom { get; set; }        
+        public Garcom Garcom { get; set; }  
+        
+        public int Quantidade { get; set; }
 
-        public bool ContaPaga { get; set; } = false;
+        public bool ContaPaga { get; set; } = false;       
 
         public List<Produto> Produtos { get; set; }
 
         public Conta() { }
 
-        public Conta(Pedido pedidos, Mesa mesa, decimal valorTotal, Garcom garcom, bool contaPaga, List<Produto> produtos)
+        public Conta(Pedido pedidos, Mesa mesa, decimal valorTotal, Garcom garcom, int quantidade, bool contaPaga, List<Produto> produtos)
         {
             Pedidos = pedidos;
             Mesa = mesa;
             ValorTotal = valorTotal;
             Garcom = garcom;
+            Quantidade = quantidade;
             ContaPaga = contaPaga;
             Produtos = produtos;
         }
@@ -52,6 +55,8 @@ namespace ControleDeBar.Dominio.ModuloConta
            if (Garcom == null)
                 erros.Add($"O campo Garçom é obrigatório!");
 
+           if (Quantidade <= 0)
+                erros.Add($"O campo Quantidade precisa ser maior do zero!");
 
             return erros;
         }
@@ -65,7 +70,8 @@ namespace ControleDeBar.Dominio.ModuloConta
             ValorTotal = contaEditado.ValorTotal;
             Garcom = contaEditado.Garcom;
             ContaPaga = contaEditado.ContaPaga;
-            Produtos = contaEditado.Produtos;            
+            Produtos = contaEditado.Produtos;  
+            Quantidade = contaEditado.Quantidade;
         }
     }
 }
