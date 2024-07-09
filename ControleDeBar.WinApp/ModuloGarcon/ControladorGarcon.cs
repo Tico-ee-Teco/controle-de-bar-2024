@@ -84,14 +84,14 @@ namespace ControleDeBar.WinApp.ModuloGarcon
 
             TelaGarconForm telaGarcon = new TelaGarconForm(garconsCadastrados);
 
-            telaGarcon.garcom = garconSelecionado;
+            telaGarcon.Garcom = garconSelecionado;
 
             DialogResult resultado = telaGarcon.ShowDialog();
 
             if (resultado != DialogResult.OK)
                 return;
 
-            Garcom garconEditado = telaGarcon.garcom;
+            Garcom garconEditado = telaGarcon.Garcom;
 
             if (repositorioGarcon.SelecionarTodos().Any(m => m.Nome.Equals(garconEditado.Nome.Trim(), StringComparison.OrdinalIgnoreCase) && m.Id != garconEditado.Id))
             {
