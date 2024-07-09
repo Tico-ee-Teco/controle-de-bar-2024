@@ -1,5 +1,4 @@
 ﻿using ControleDeBar.Dominio.ModuloConta;
-using ControleDeBar.Dominio.ModuloPedido;
 using ControleDeBar.WinApp.Compartilhado.Extensions;
 
 namespace ControleDeBar.WinApp.ModuloConta

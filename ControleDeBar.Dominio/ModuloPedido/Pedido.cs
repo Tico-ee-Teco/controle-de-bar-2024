@@ -7,7 +7,8 @@ namespace ControleDeBar.Dominio.ModuloPedido
     {        
         public Produto Produto { get; set; } 
         
-        public int NumeroPedido { get; set; }
+        //public int NumeroPedido { get; set; }
+        public Garcom Garcom { get; set; }
 
         public int NumeroMesa { get; set; }
 
@@ -19,10 +20,10 @@ namespace ControleDeBar.Dominio.ModuloPedido
 
         public Pedido() { }
 
-        public Pedido (int numeroPedido, int numeroMesa, Produto produto, int qtde, decimal preco)
-        {
-            NumeroPedido = numeroPedido;
+        public Pedido (int numeroMesa, Garcom garcom, Produto produto, int qtde, decimal preco)
+        {            
             NumeroMesa = numeroMesa;
+            Garcom = garcom;
             Produto = produto;
             Qtde = qtde;           
             Preco = preco;

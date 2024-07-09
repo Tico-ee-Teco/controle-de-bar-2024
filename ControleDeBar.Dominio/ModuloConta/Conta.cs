@@ -6,7 +6,7 @@ namespace ControleDeBar.Dominio.ModuloConta
 {
     public class Conta : EntidadeBase
     {
-        public Pedido Pedidos { get; set;}
+        //public Pedido Pedidos { get; set;}
 
         public Mesa Mesa { get; set; }        
 
@@ -16,21 +16,20 @@ namespace ControleDeBar.Dominio.ModuloConta
         
         public int Quantidade { get; set; }
 
-        public bool ContaPaga { get; set; } = false;       
-
+        public bool ContaPaga { get; set; } = false;
+       
+        public Produto Produto { get; set; }
         public List<Produto> Produtos { get; set; }
 
         public Conta() { }
 
-        public Conta(Pedido pedidos, Mesa mesa, decimal valorTotal, Garcom garcom, int quantidade, bool contaPaga, List<Produto> produtos)
-        {
-            Pedidos = pedidos;
+        public Conta(Mesa mesa, decimal valorTotal, Garcom garcom, int quantidade, Produto produto)
+        {            
             Mesa = mesa;
             ValorTotal = valorTotal;
             Garcom = garcom;
-            Quantidade = quantidade;
-            ContaPaga = contaPaga;
-            Produtos = produtos;
+            Quantidade = quantidade;           
+            Produto = produto;
         }
 
         public override List<string> Validar()
@@ -40,8 +39,8 @@ namespace ControleDeBar.Dominio.ModuloConta
             if (Produtos == null)
                 erros.Add($"O campo Produto é obrigatório!");
 
-           if(Pedidos == null)
-                erros.Add($"O campo Pedido é obrigatório!");
+           //if(Pedidos == null)
+           //     erros.Add($"O campo Pedido é obrigatório!");
 
            if (Mesa == null)
                 erros.Add($"O campo Mesa é obrigatório!");
@@ -64,13 +63,12 @@ namespace ControleDeBar.Dominio.ModuloConta
         public override void AtualizarRegistro(EntidadeBase novoRegistro)
         {
             Conta contaEditado = (Conta)novoRegistro;
-
-            Pedidos = contaEditado.Pedidos;
+            
             Mesa = contaEditado.Mesa;
             ValorTotal = contaEditado.ValorTotal;
             Garcom = contaEditado.Garcom;
             ContaPaga = contaEditado.ContaPaga;
-            Produtos = contaEditado.Produtos;  
+            Produto = contaEditado.Produto;  
             Quantidade = contaEditado.Quantidade;
         }
     }

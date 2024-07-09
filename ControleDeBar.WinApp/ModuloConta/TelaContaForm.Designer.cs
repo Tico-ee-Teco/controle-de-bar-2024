@@ -29,26 +29,26 @@
         private void InitializeComponent()
         {
             label1 = new Label();
-            textBox1 = new TextBox();
+            txtId = new TextBox();
             label2 = new Label();
             cmbMesa = new ComboBox();
             label3 = new Label();
             cmbGarcom = new ComboBox();
             gpbRegistroPedidos = new GroupBox();
-            label4 = new Label();
-            comboBox1 = new ComboBox();
-            label5 = new Label();
-            numericUpDown1 = new NumericUpDown();
-            btnAddPedido = new Button();
-            btnEditarPedido = new Button();
-            btnRemoverPedido = new Button();
             listPedido = new ListBox();
+            btnRemoverPedido = new Button();
+            btnEditarPedido = new Button();
+            btnAddPedido = new Button();
+            nudQuantidade = new NumericUpDown();
+            label5 = new Label();
+            cmbProduto = new ComboBox();
+            label4 = new Label();
             label6 = new Label();
-            textBox2 = new TextBox();
+            txtValorTotal = new TextBox();
             btnCancelar = new Button();
             btnGravar = new Button();
             gpbRegistroPedidos.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)nudQuantidade).BeginInit();
             SuspendLayout();
             // 
             // label1
@@ -60,13 +60,13 @@
             label1.TabIndex = 0;
             label1.Text = "Id:";
             // 
-            // textBox1
+            // txtId
             // 
-            textBox1.Enabled = false;
-            textBox1.Location = new Point(65, 47);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(66, 27);
-            textBox1.TabIndex = 1;
+            txtId.Enabled = false;
+            txtId.Location = new Point(65, 47);
+            txtId.Name = "txtId";
+            txtId.Size = new Size(66, 27);
+            txtId.TabIndex = 1;
             // 
             // label2
             // 
@@ -108,9 +108,9 @@
             gpbRegistroPedidos.Controls.Add(btnRemoverPedido);
             gpbRegistroPedidos.Controls.Add(btnEditarPedido);
             gpbRegistroPedidos.Controls.Add(btnAddPedido);
-            gpbRegistroPedidos.Controls.Add(numericUpDown1);
+            gpbRegistroPedidos.Controls.Add(nudQuantidade);
             gpbRegistroPedidos.Controls.Add(label5);
-            gpbRegistroPedidos.Controls.Add(comboBox1);
+            gpbRegistroPedidos.Controls.Add(cmbProduto);
             gpbRegistroPedidos.Controls.Add(label4);
             gpbRegistroPedidos.Location = new Point(12, 137);
             gpbRegistroPedidos.Name = "gpbRegistroPedidos";
@@ -119,56 +119,14 @@
             gpbRegistroPedidos.TabStop = false;
             gpbRegistroPedidos.Text = "Registro de Pedidos";
             // 
-            // label4
+            // listPedido
             // 
-            label4.AutoSize = true;
-            label4.Location = new Point(32, 34);
-            label4.Name = "label4";
-            label4.Size = new Size(65, 20);
-            label4.TabIndex = 0;
-            label4.Text = "Produto:";
-            // 
-            // comboBox1
-            // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(103, 31);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(258, 28);
-            comboBox1.TabIndex = 3;
-            // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Location = new Point(7, 72);
-            label5.Name = "label5";
-            label5.Size = new Size(90, 20);
-            label5.TabIndex = 4;
-            label5.Text = "Quantidade:";
-            // 
-            // numericUpDown1
-            // 
-            numericUpDown1.Location = new Point(103, 70);
-            numericUpDown1.Name = "numericUpDown1";
-            numericUpDown1.Size = new Size(54, 27);
-            numericUpDown1.TabIndex = 5;
-            // 
-            // btnAddPedido
-            // 
-            btnAddPedido.Location = new Point(172, 70);
-            btnAddPedido.Name = "btnAddPedido";
-            btnAddPedido.Size = new Size(83, 27);
-            btnAddPedido.TabIndex = 6;
-            btnAddPedido.Text = "Adicionar";
-            btnAddPedido.UseVisualStyleBackColor = true;
-            // 
-            // btnEditarPedido
-            // 
-            btnEditarPedido.Location = new Point(261, 70);
-            btnEditarPedido.Name = "btnEditarPedido";
-            btnEditarPedido.Size = new Size(83, 27);
-            btnEditarPedido.TabIndex = 7;
-            btnEditarPedido.Text = "Editar";
-            btnEditarPedido.UseVisualStyleBackColor = true;
+            listPedido.FormattingEnabled = true;
+            listPedido.ItemHeight = 20;
+            listPedido.Location = new Point(7, 104);
+            listPedido.Name = "listPedido";
+            listPedido.Size = new Size(425, 184);
+            listPedido.TabIndex = 9;
             // 
             // btnRemoverPedido
             // 
@@ -179,14 +137,57 @@
             btnRemoverPedido.Text = "Remover";
             btnRemoverPedido.UseVisualStyleBackColor = true;
             // 
-            // listPedido
+            // btnEditarPedido
             // 
-            listPedido.FormattingEnabled = true;
-            listPedido.ItemHeight = 20;
-            listPedido.Location = new Point(7, 104);
-            listPedido.Name = "listPedido";
-            listPedido.Size = new Size(425, 184);
-            listPedido.TabIndex = 9;
+            btnEditarPedido.Location = new Point(261, 70);
+            btnEditarPedido.Name = "btnEditarPedido";
+            btnEditarPedido.Size = new Size(83, 27);
+            btnEditarPedido.TabIndex = 7;
+            btnEditarPedido.Text = "Editar";
+            btnEditarPedido.UseVisualStyleBackColor = true;
+            // 
+            // btnAddPedido
+            // 
+            btnAddPedido.Location = new Point(172, 70);
+            btnAddPedido.Name = "btnAddPedido";
+            btnAddPedido.Size = new Size(83, 27);
+            btnAddPedido.TabIndex = 6;
+            btnAddPedido.Text = "Adicionar";
+            btnAddPedido.UseVisualStyleBackColor = true;
+            btnAddPedido.Click += btnAddPedido_Click;
+            // 
+            // nudQuantidade
+            // 
+            nudQuantidade.Location = new Point(103, 70);
+            nudQuantidade.Name = "nudQuantidade";
+            nudQuantidade.Size = new Size(54, 27);
+            nudQuantidade.TabIndex = 5;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new Point(7, 72);
+            label5.Name = "label5";
+            label5.Size = new Size(90, 20);
+            label5.TabIndex = 4;
+            label5.Text = "Quantidade:";
+            // 
+            // cmbProduto
+            // 
+            cmbProduto.FormattingEnabled = true;
+            cmbProduto.Location = new Point(103, 31);
+            cmbProduto.Name = "cmbProduto";
+            cmbProduto.Size = new Size(258, 28);
+            cmbProduto.TabIndex = 3;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(32, 34);
+            label4.Name = "label4";
+            label4.Size = new Size(65, 20);
+            label4.TabIndex = 0;
+            label4.Text = "Produto:";
             // 
             // label6
             // 
@@ -198,16 +199,16 @@
             label6.TabIndex = 5;
             label6.Text = "Valor Total:";
             // 
-            // textBox2
+            // txtValorTotal
             // 
-            textBox2.BackColor = SystemColors.Control;
-            textBox2.BorderStyle = BorderStyle.None;
-            textBox2.ForeColor = Color.FromArgb(0, 192, 0);
-            textBox2.Location = new Point(78, 451);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(74, 20);
-            textBox2.TabIndex = 6;
-            textBox2.Text = "R$ 200,00";
+            txtValorTotal.BackColor = SystemColors.Control;
+            txtValorTotal.BorderStyle = BorderStyle.None;
+            txtValorTotal.ForeColor = Color.FromArgb(0, 192, 0);
+            txtValorTotal.Location = new Point(78, 451);
+            txtValorTotal.Name = "txtValorTotal";
+            txtValorTotal.Size = new Size(74, 20);
+            txtValorTotal.TabIndex = 6;
+            txtValorTotal.Text = "R$ 200,00";
             // 
             // btnCancelar
             // 
@@ -236,14 +237,14 @@
             ClientSize = new Size(457, 495);
             Controls.Add(btnCancelar);
             Controls.Add(btnGravar);
-            Controls.Add(textBox2);
+            Controls.Add(txtValorTotal);
             Controls.Add(label6);
             Controls.Add(gpbRegistroPedidos);
             Controls.Add(cmbGarcom);
             Controls.Add(label3);
             Controls.Add(cmbMesa);
             Controls.Add(label2);
-            Controls.Add(textBox1);
+            Controls.Add(txtId);
             Controls.Add(label1);
             Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             Margin = new Padding(3, 4, 3, 4);
@@ -251,7 +252,7 @@
             Text = "Cadastro de Conta";
             gpbRegistroPedidos.ResumeLayout(false);
             gpbRegistroPedidos.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)nudQuantidade).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -259,22 +260,22 @@
         #endregion
 
         private Label label1;
-        private TextBox textBox1;
+        private TextBox txtId;
         private Label label2;
         private ComboBox cmbMesa;
         private Label label3;
         private ComboBox cmbGarcom;
         private GroupBox gpbRegistroPedidos;
-        private ComboBox comboBox1;
+        private ComboBox cmbProduto;
         private Label label4;
         private Button btnAddPedido;
-        private NumericUpDown numericUpDown1;
+        private NumericUpDown nudQuantidade;
         private Label label5;
         private ListBox listPedido;
         private Button btnRemoverPedido;
         private Button btnEditarPedido;
         private Label label6;
-        private TextBox textBox2;
+        private TextBox txtValorTotal;
         private Button btnCancelar;
         private Button btnGravar;
     }
