@@ -1,4 +1,5 @@
 ﻿using ControleDeBar.Dominio.Compartilhar;
+using ControleDeBar.Dominio.ModuloConta;
 
 namespace ControleDeBar.Dominio.ModuloProduto
 {
@@ -6,11 +7,16 @@ namespace ControleDeBar.Dominio.ModuloProduto
     {
         public string Nome { get; set;}        
 
-        public decimal Valor { get; set; }       
+        public decimal Valor { get; set; }  
+        
+        public List<Pedido> Pedidos { get; set; }
 
-        public Produto() { }
+        public Produto() 
+        {
+            Pedidos = new List<Pedido>();
+        }
 
-        public Produto(string nome, decimal valor)
+        public Produto(string nome, decimal valor) : this()
         {
             Nome = nome;
             Valor = valor;            
@@ -40,6 +46,16 @@ namespace ControleDeBar.Dominio.ModuloProduto
         public override string ToString()
         {
             return $"Nome: {Nome}, Valor: {Valor}";
+        }
+
+        public bool AdiconarPedido(Pedido pedido)
+        {
+            if(Pedidos.Contains(pedido))
+                return false;
+
+            Pedidos.Add(pedido);
+
+            return true;
         }
     }
 }

@@ -32,6 +32,7 @@
             menuStrip1 = new MenuStrip();
             CadastroMenuItem = new ToolStripMenuItem();
             produtosMenuItem = new ToolStripMenuItem();
+            contasMenuItem = new ToolStripMenuItem();
             statusStrip1 = new StatusStrip();
             statusLabelPrincipal = new ToolStripStatusLabel();
             toolStrip1 = new ToolStrip();
@@ -61,6 +62,7 @@
             // CadastroMenuItem
             // 
             CadastroMenuItem.DropDownItems.AddRange(new ToolStripItem[] { produtosMenuItem, garçonsToolStripMenuItem });
+            CadastroMenuItem.DropDownItems.AddRange(new ToolStripItem[] { produtosMenuItem, contasMenuItem });
             CadastroMenuItem.Name = "CadastroMenuItem";
             CadastroMenuItem.Size = new Size(66, 20);
             CadastroMenuItem.Text = "Cadastro";
@@ -71,6 +73,13 @@
             produtosMenuItem.Size = new Size(180, 22);
             produtosMenuItem.Text = "Produtos";
             produtosMenuItem.Click += produtosMenuItem_Click;
+            // 
+            // contasMenuItem
+            // 
+            contasMenuItem.Name = "contasMenuItem";
+            contasMenuItem.Size = new Size(180, 22);
+            contasMenuItem.Text = "Contas";
+            contasMenuItem.Click += contasMenuItem_Click;
             // 
             // statusStrip1
             // 
@@ -209,5 +218,6 @@
         private ToolStripStatusLabel statusLabelPrincipal;
         private Panel pnlRegistros;
         private ToolStripMenuItem garçonsToolStripMenuItem;
+        private ToolStripMenuItem contasMenuItem;
     }
 }

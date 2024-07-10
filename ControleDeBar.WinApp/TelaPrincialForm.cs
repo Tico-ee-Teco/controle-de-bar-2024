@@ -1,9 +1,12 @@
+using ControleDeBar.Dominio.ModuloConta;
 using ControleDeBar.Dominio.ModuloGarçon;
 using ControleDeBar.Dominio.ModuloProduto;
 using ControleDeBar.Infra.Compartilhado;
+using ControleDeBar.Infra.ModuloConta;
 using ControleDeBar.Infra.ModuloGarcon;
 using ControleDeBar.Infra.ModuloProduto;
 using ControleDeBar.WinApp.Compartilhado;
+using ControleDeBar.WinApp.ModuloConta;
 using ControleDeBar.WinApp.ModuloGarcon;
 using ControleDeBar.WinApp.ModuloProduto;
 
@@ -14,6 +17,9 @@ namespace ControleDeBar.WinApp
         ControladorBase controlador;
 
         IRepositorioProduto repositorioProduto;
+        IRepositorioConta repositorioConta;
+       
+
         IRepositorioGarcon repositorioGarcon;
 
         public static TelaPrincipalForm Instancia { get; private set; }
@@ -29,6 +35,7 @@ namespace ControleDeBar.WinApp
 
             repositorioProduto = new RepositorioProduto(dbContext);
             repositorioGarcon = new RepositorioGarcon(dbContext);
+            repositorioConta = new RepositorioConta(dbContext);          
 
         }
         private void produtosMenuItem_Click(object sender, EventArgs e)
@@ -44,6 +51,13 @@ namespace ControleDeBar.WinApp
             ConfigurarTelaPrincipal(controlador);
 
         }
+        private void contasMenuItem_Click(object sender, EventArgs e)
+        {
+            controlador = new ControladorConta(repositorioConta, repositorioProduto);
+
+            ConfigurarTelaPrincipal(controlador);
+        }
+
         public void AtualizarRodape(string texto)
         {
             statusLabelPrincipal.Text = texto;
@@ -69,8 +83,6 @@ namespace ControleDeBar.WinApp
         //    if (controlador is IControladorVisualizavel controladorVisualizavel)
         //        controladorVisualizavel.VisualizarTeste();
         //}
-
-
 
         private void ConfigurarTelaPrincipal(ControladorBase controladorSelecionado)
         {
