@@ -1,8 +1,6 @@
-﻿using ControleDeBar.Dominio;
-using ControleDeBar.Dominio.ModuloConta;
+﻿using ControleDeBar.Dominio.ModuloConta;
 using ControleDeBar.Dominio.ModuloProduto;
 using Microsoft.EntityFrameworkCore;
-using System.Reflection.Emit;
 
 namespace ControleDeBar.Infra.Compartilhado
 {
@@ -10,9 +8,7 @@ namespace ControleDeBar.Infra.Compartilhado
     {
         public DbSet<Produto> Produtos { get; set; }          
         public DbSet<Pedido> Pedidos { get; set; }        
-        public DbSet<Conta> Contas { get; set;}     
-        
-        public DbSet<Garcom> Garcons { get; set;}
+        public DbSet<Conta> Contas { get; set;}       
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -91,9 +87,7 @@ namespace ControleDeBar.Infra.Compartilhado
                     .HasForeignKey("Conta_Id")
                     .HasConstraintName("FK_TBPedido_TBConta")
                     .OnDelete(DeleteBehavior.Restrict);
-            });
-
-           
+            });           
 
             base.OnModelCreating(modelBuilder);
         }

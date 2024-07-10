@@ -14,13 +14,19 @@ namespace ControleDeBar.Dominio.ModuloConta
        
         public List<Pedido> Pedidos { get; set; }
 
+        public DateTime Abertura { get; set; }
+
+        public DateTime? Fechamento { get; set; }
+
         public Conta() { }
 
-        public Conta(Mesa mesa, Garcom garcom, List<Pedido> pedidos)
+        public Conta(Mesa mesa, Garcom garcom, List<Pedido> pedidos, DateTime abertura, DateTime? fechamento)
         {
             Mesa = mesa;
             Garcom = garcom;
             Pedidos = pedidos;
+            Abertura = DateTime.Now;
+            Fechamento = fechamento;
         }
 
         public override List<string> Validar()
