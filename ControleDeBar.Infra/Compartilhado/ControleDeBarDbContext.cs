@@ -37,6 +37,7 @@ namespace ControleDeBar.Infra.Compartilhado
                     .IsRequired()
                     .HasColumnType("decimal");
             });
+
             modelBuilder.Entity<Garcom>(GarcomBuilder =>
             {
                 GarcomBuilder.ToTable("TBGarcom");

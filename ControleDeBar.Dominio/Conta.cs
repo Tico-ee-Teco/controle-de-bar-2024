@@ -1,4 +1,5 @@
 ﻿using ControleDeBar.Dominio.ModuloGarçon;
+using ControleDeBar.Dominio.ModuloMesa;
 
 namespace ControleDeBar.Dominio
 {
