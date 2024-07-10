@@ -1,4 +1,4 @@
-﻿using ControleDeBar.Dominio.ModuloPedido;
+﻿using ControleDeBar.Dominio.ModuloConta;
 using ControleDeBar.Dominio.ModuloProduto;
 using ControleDeBar.WinApp.Compartilhado.Extensions;
 
@@ -12,9 +12,9 @@ namespace ControleDeBar.WinApp.ModuloPedido
             set
             {
                 txtId.Text = value.Id.ToString();                
-                txtNumeroMesa.Text = value.NumeroMesa.ToString();                
+                //txtNumeroMesa.Text = value.NumeroMesa.ToString();                
                 nudQtde.Value = value.Qtde;
-                nudPreco.Value = value.Preco;
+                //nudPreco.Value = value.Preco;
 
                 Produto produtoSelecionado = produtosCadastrados.Find(p => p.Nome == value.Produto.Nome);
 

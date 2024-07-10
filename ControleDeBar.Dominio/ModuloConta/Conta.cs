@@ -1,6 +1,4 @@
 ﻿using ControleDeBar.Dominio.Compartilhar;
-using ControleDeBar.Dominio.ModuloPedido;
-using ControleDeBar.Dominio.ModuloProduto;
 
 namespace ControleDeBar.Dominio.ModuloConta
 {
@@ -8,53 +6,35 @@ namespace ControleDeBar.Dominio.ModuloConta
     {
         public Mesa Mesa { get; set; }        
 
-        public decimal ValorTotal { get; set; }
+        public decimal ValorTotal { get; }
        
-        public Garcom Garcom { get; set; }  
-        
-        public int Quantidade { get; set; }
+        public Garcom Garcom { get; set; }         
 
-        public bool ContaPaga { get; set; } = false;
+        public bool ContaPaga { get; set; } = false;       
        
-        public Produto Produto { get; set; }
-        public List<Produto> Produtos { get; set; }
         public List<Pedido> Pedidos { get; set; }
 
         public Conta() { }
 
-        public Conta(Mesa mesa, decimal valorTotal, Garcom garcom, int quantidade, Produto produto)
-        {            
+        public Conta(Mesa mesa, Garcom garcom, List<Pedido> pedidos)
+        {
             Mesa = mesa;
-            ValorTotal = valorTotal;
             Garcom = garcom;
-            Quantidade = quantidade;           
-            Produto = produto;
+            Pedidos = pedidos;
         }
 
         public override List<string> Validar()
         {
             List<string> erros = new List<string>();
-
-            if (Produtos == null)
-                erros.Add($"O campo Produto é obrigatório!");
-
-           //if(Pedidos == null)
-           //     erros.Add($"O campo Pedido é obrigatório!");
-
+           
            if (Mesa == null)
-                erros.Add($"O campo Mesa é obrigatório!");
-
-           //if((Mesa != null) && (Mesa.NumeroMesa <= 0 || Mesa.NumeroMesa == null))
-           //     erros.Add($"O campo Número da Mesa precisa não pode ser zero!");
-
-           if (ValorTotal <= 0)
-                 erros.Add($"O campo Valor Total precisa ser maior do zero!");
+                erros.Add($"O campo Mesa é obrigatório!");           
 
            if (Garcom == null)
-                erros.Add($"O campo Garçom é obrigatório!");
-
-           if (Quantidade <= 0)
-                erros.Add($"O campo Quantidade precisa ser maior do zero!");
+                erros.Add($"O campo Garçom é obrigatório!"); 
+           
+           if (Pedidos == null || Pedidos.Count == 0)
+                erros.Add($"A conta deve ter pelo menos um pedido!");
 
             return erros;
         }
@@ -64,11 +44,31 @@ namespace ControleDeBar.Dominio.ModuloConta
             Conta contaEditado = (Conta)novoRegistro;
             
             Mesa = contaEditado.Mesa;
-            ValorTotal = contaEditado.ValorTotal;
             Garcom = contaEditado.Garcom;
-            ContaPaga = contaEditado.ContaPaga;
-            Produto = contaEditado.Produto;  
-            Quantidade = contaEditado.Quantidade;
+            Pedidos = contaEditado.Pedidos;
+
+            ContaPaga = contaEditado.ContaPaga;     
+        }
+
+        public void AdicionarPedido(Pedido pedido)
+        {
+            if(Pedidos == null)
+                Pedidos = new List<Pedido>();
+
+            Pedidos.Add(pedido);
+        }
+
+        public void RemoverPedido(Pedido pedido)
+        {
+            if (pedido == null)
+                return;
+
+            Pedidos.Remove(pedido);
+        }
+
+        public override string ToString()
+        {
+            return $"Mesa: {Mesa.Numero} - Garçom: {Garcom.Nome} - Valor Total: {ValorTotal}";
         }
     }
 }

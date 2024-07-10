@@ -1,4 +1,4 @@
-﻿using ControleDeBar.Dominio.ModuloPedido;
+﻿using ControleDeBar.Dominio.ModuloConta;
 using ControleDeBar.WinApp.Compartilhado.Extensions;
 
 namespace ControleDeBar.WinApp.ModuloPedido
@@ -24,8 +24,8 @@ namespace ControleDeBar.WinApp.ModuloPedido
                     p.Id,
                     p.Produto.Nome,                   
                     p.Qtde,
-                    p.Preco,
-                    p.NumeroMesa
+                    p.Preco
+                  
                 );
         }
 

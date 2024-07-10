@@ -1,6 +1,4 @@
-﻿using ControleDeBar.Dominio.ModuloPedido;
-using ControleDeBar.Dominio.ModuloProduto;
-using ControleDeBar.Infra.ModuloPedido;
+﻿using ControleDeBar.Dominio.ModuloProduto;
 using ControleDeBar.WinApp.Compartilhado;
 
 namespace ControleDeBar.WinApp.ModuloProduto

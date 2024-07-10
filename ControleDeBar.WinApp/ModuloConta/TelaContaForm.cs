@@ -1,6 +1,5 @@
 ﻿using ControleDeBar.Dominio;
 using ControleDeBar.Dominio.ModuloConta;
-using ControleDeBar.Dominio.ModuloPedido;
 using ControleDeBar.Dominio.ModuloProduto;
 using ControleDeBar.WinApp.Compartilhado.Extensions;
 
@@ -16,80 +15,109 @@ namespace ControleDeBar.WinApp.ModuloConta
                 txtId.Text = value.Id.ToString();
                 cmbMesa.SelectedItem = value.Mesa.Numero.ToString();
                 cmbGarcom.SelectedItem = value.Garcom.Nome;
-                cmbProduto.SelectedItem =
-                    produtosCadastrados.Find(p => p.Nome == value.Produto.Nome);
 
                 foreach (Pedido pedido in value.Pedidos)
                     listPedido.Items.Add(pedido);
             }
         }
 
-        public Conta conta;
+        private Conta conta;
 
-        public List<Produto> produtosCadastrados = new List<Produto>();
-        public List<Mesa> mesasCadastradas = new List<Mesa>();
-        public List<Garcom> garconsCadastrados = new List<Garcom>();
-        public List<Conta> contasCadastradas = new List<Conta>();
-        public TelaContaForm(List<Conta> contasCadastradas)
+        public List<Produto> produtosCadastrados;
+        public List<Mesa> mesasCadastradas;
+        public List<Garcom> garconsCadastrados;
+        public List<Pedido> pedidos;
+        public TelaContaForm(List<Mesa> mesas, List<Garcom> garcons, List<Produto> produtos)
         {
             InitializeComponent();
 
             this.ConfigurarDialog();
 
-            this.contasCadastradas = contasCadastradas;
+            mesasCadastradas = mesas;
+            garconsCadastrados = garcons;
+            produtosCadastrados = produtos;
+            pedidos = new List<Pedido>();
 
-            foreach (Produto produto in produtosCadastrados)
-                cmbProduto.Items.Add(produto.Nome);
+            CarregarInformacao();
 
-            foreach (Mesa mesa in mesasCadastradas)
-                cmbMesa.Items.Add(mesa.Numero);
+        }
 
-            foreach (Garcom garcom in garconsCadastrados)
-                cmbGarcom.Items.Add(garcom.Nome);
-
-            //carregar pedidos
+        private void CarregarInformacao()
+        {
+            cmbMesa.Items.Add(mesasCadastradas);
+            cmbGarcom.Items.Add(garconsCadastrados);
+            cmbProduto.Items.Add(produtosCadastrados);
         }
 
         private void btnAddPedido_Click(object sender, EventArgs e)
         {
-            Mesa mesa = mesasCadastradas.Find(m => m.Numero == Convert.ToInt32(cmbMesa.SelectedItem));
-            Garcom garcom = garconsCadastrados.Find(g => g.Nome == cmbGarcom.SelectedItem.ToString());
-            Produto produto = produtosCadastrados.Find(p => p.Nome == cmbProduto.SelectedItem.ToString());
-            int quantide = (int)nudQuantidade.Value;
-            decimal valorTotal = produto.Valor * quantide;
+            Produto produtoSelecionado = (Produto)cmbProduto.SelectedItem;
+            int quantidade = (int)nudQuantidade.Value;
 
-            Pedido pedido = new Pedido(mesa.Numero, garcom, produto, quantide, valorTotal);
+            if (produtoSelecionado == null || quantidade <= 0)
+            {
+                MessageBox.Show("Selecione um produto e informe a quantidade");
 
-            listPedido.Items.Add(pedido);
+                return;
+            }
+
+            Pedido pedido = new Pedido(produtoSelecionado, quantidade);
+            pedidos.Add(pedido);
+            AtualizarListaPedidos();
+            AtualizarValorTotal();
+
         }
-
         private void btnRemoverPedido_Click(object sender, EventArgs e)
         {
-            Pedido pedido = (Pedido)listPedido.SelectedItem;
+            Pedido pedidoSelecionado = (Pedido)listPedido.SelectedItem;
 
-            if (pedido == null)
-                return;
-
-            listPedido.Items.Remove(pedido);
-
-            RecarregarPedidos();
+            if (pedidoSelecionado != null)
+            {
+                pedidos.Remove(pedidoSelecionado);
+                AtualizarListaPedidos();
+                AtualizarValorTotal();
+            }
         }
 
-        private void RecarregarPedidos()
+        private void AtualizarValorTotal()
         {
-            List<Pedido> pedidos = new List<Pedido>();
+            decimal valorTotal = pedidos.Sum(p => p.Produto.Valor * p.Qtde);
 
+            txtValorTotal.Text = valorTotal.ToString("C");
+        }
+
+        private void AtualizarListaPedidos()
+        {
             listPedido.Items.Clear();
 
-            foreach (Pedido p in pedidos)
-            {
-                Mesa mesa = mesasCadastradas.Find(m => m.Numero == Convert.ToInt32(cmbMesa.SelectedItem));
-
-               Pedido pedido = new Pedido(mesa.Numero, p.Garcom, p.Produto, p.Qtde, p.Preco);
-
+            foreach (Pedido pedido in pedidos)
                 listPedido.Items.Add(pedido);
+        }
+
+        private void btnGravar_Click(object sender, EventArgs e)
+        {
+            Mesa mesaSelecionada = (Mesa)cmbMesa.SelectedItem;
+            Garcom garcomSelecionado = (Garcom)cmbGarcom.SelectedItem;
+
+            //if (mesaSelecionada == null || garcomSelecionado == null || pedidos.Count == 0)
+            //{
+            //    MessageBox.Show("Selecione uma mesa, um garçom e adicione pelo menos um pedido");
+
+            //    return;
+            //}
+
+            conta = new Conta(mesaSelecionada, garcomSelecionado, pedidos);
+
+            List<string> erros = conta.Validar();
+
+            if (erros.Count > 0)
+            {
+                TelaPrincipalForm.Instancia.AtualizarRodape(erros[0]);
+
+                DialogResult = DialogResult.None;
 
             }
+
         }
     }
 }

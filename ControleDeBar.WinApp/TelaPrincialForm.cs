@@ -1,10 +1,10 @@
-using ControleDeBar.Dominio.ModuloPedido;
+using ControleDeBar.Dominio.ModuloConta;
 using ControleDeBar.Dominio.ModuloProduto;
 using ControleDeBar.Infra.Compartilhado;
-using ControleDeBar.Infra.ModuloPedido;
+using ControleDeBar.Infra.ModuloConta;
 using ControleDeBar.Infra.ModuloProduto;
 using ControleDeBar.WinApp.Compartilhado;
-using ControleDeBar.WinApp.ModuloPedido;
+using ControleDeBar.WinApp.ModuloConta;
 using ControleDeBar.WinApp.ModuloProduto;
 
 namespace ControleDeBar.WinApp
@@ -14,6 +14,7 @@ namespace ControleDeBar.WinApp
         ControladorBase controlador;
 
         IRepositorioProduto repositorioProduto;
+        IRepositorioConta repositorioConta;
        
 
         public static TelaPrincipalForm Instancia { get; private set; }
@@ -28,7 +29,7 @@ namespace ControleDeBar.WinApp
             ControleDeBarDbContext dbContext = new ControleDeBarDbContext();
 
             repositorioProduto = new RepositorioProduto(dbContext);
-           
+            repositorioConta = new RepositorioConta(dbContext);          
 
         }
 
@@ -40,7 +41,9 @@ namespace ControleDeBar.WinApp
         }
         private void contasMenuItem_Click(object sender, EventArgs e)
         {
+            controlador = new ControladorConta(repositorioConta, repositorioProduto);
 
+            ConfigurarTelaPrincipal(controlador);
         }
 
         public void AtualizarRodape(string texto)

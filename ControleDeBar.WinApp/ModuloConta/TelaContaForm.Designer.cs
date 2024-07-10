@@ -37,7 +37,6 @@
             gpbRegistroPedidos = new GroupBox();
             listPedido = new ListBox();
             btnRemoverPedido = new Button();
-            btnEditarPedido = new Button();
             btnAddPedido = new Button();
             nudQuantidade = new NumericUpDown();
             label5 = new Label();
@@ -106,7 +105,6 @@
             // 
             gpbRegistroPedidos.Controls.Add(listPedido);
             gpbRegistroPedidos.Controls.Add(btnRemoverPedido);
-            gpbRegistroPedidos.Controls.Add(btnEditarPedido);
             gpbRegistroPedidos.Controls.Add(btnAddPedido);
             gpbRegistroPedidos.Controls.Add(nudQuantidade);
             gpbRegistroPedidos.Controls.Add(label5);
@@ -114,7 +112,7 @@
             gpbRegistroPedidos.Controls.Add(label4);
             gpbRegistroPedidos.Location = new Point(12, 137);
             gpbRegistroPedidos.Name = "gpbRegistroPedidos";
-            gpbRegistroPedidos.Size = new Size(438, 303);
+            gpbRegistroPedidos.Size = new Size(406, 303);
             gpbRegistroPedidos.TabIndex = 4;
             gpbRegistroPedidos.TabStop = false;
             gpbRegistroPedidos.Text = "Registro de Pedidos";
@@ -125,12 +123,12 @@
             listPedido.ItemHeight = 20;
             listPedido.Location = new Point(7, 104);
             listPedido.Name = "listPedido";
-            listPedido.Size = new Size(425, 184);
+            listPedido.Size = new Size(386, 184);
             listPedido.TabIndex = 9;
             // 
             // btnRemoverPedido
             // 
-            btnRemoverPedido.Location = new Point(350, 70);
+            btnRemoverPedido.Location = new Point(279, 69);
             btnRemoverPedido.Name = "btnRemoverPedido";
             btnRemoverPedido.Size = new Size(83, 27);
             btnRemoverPedido.TabIndex = 8;
@@ -138,18 +136,9 @@
             btnRemoverPedido.UseVisualStyleBackColor = true;
             btnRemoverPedido.Click += btnRemoverPedido_Click;
             // 
-            // btnEditarPedido
-            // 
-            btnEditarPedido.Location = new Point(261, 70);
-            btnEditarPedido.Name = "btnEditarPedido";
-            btnEditarPedido.Size = new Size(83, 27);
-            btnEditarPedido.TabIndex = 7;
-            btnEditarPedido.Text = "Editar";
-            btnEditarPedido.UseVisualStyleBackColor = true;
-            // 
             // btnAddPedido
             // 
-            btnAddPedido.Location = new Point(172, 70);
+            btnAddPedido.Location = new Point(177, 70);
             btnAddPedido.Name = "btnAddPedido";
             btnAddPedido.Size = new Size(83, 27);
             btnAddPedido.TabIndex = 6;
@@ -176,15 +165,15 @@
             // cmbProduto
             // 
             cmbProduto.FormattingEnabled = true;
-            cmbProduto.Location = new Point(103, 31);
+            cmbProduto.Location = new Point(104, 31);
             cmbProduto.Name = "cmbProduto";
-            cmbProduto.Size = new Size(258, 28);
+            cmbProduto.Size = new Size(289, 28);
             cmbProduto.TabIndex = 3;
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(32, 34);
+            label4.Location = new Point(33, 34);
             label4.Name = "label4";
             label4.Size = new Size(65, 20);
             label4.TabIndex = 0;
@@ -214,7 +203,7 @@
             // btnCancelar
             // 
             btnCancelar.DialogResult = DialogResult.Cancel;
-            btnCancelar.Location = new Point(358, 451);
+            btnCancelar.Location = new Point(313, 447);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(92, 36);
             btnCancelar.TabIndex = 9;
@@ -224,18 +213,19 @@
             // btnGravar
             // 
             btnGravar.DialogResult = DialogResult.OK;
-            btnGravar.Location = new Point(260, 451);
+            btnGravar.Location = new Point(215, 447);
             btnGravar.Name = "btnGravar";
             btnGravar.Size = new Size(92, 36);
             btnGravar.TabIndex = 8;
             btnGravar.Text = "Gravar";
             btnGravar.UseVisualStyleBackColor = true;
+            btnGravar.Click += btnGravar_Click;
             // 
             // TelaContaForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(457, 495);
+            ClientSize = new Size(425, 495);
             Controls.Add(btnCancelar);
             Controls.Add(btnGravar);
             Controls.Add(txtValorTotal);
@@ -274,7 +264,6 @@
         private Label label5;
         private ListBox listPedido;
         private Button btnRemoverPedido;
-        private Button btnEditarPedido;
         private Label label6;
         private TextBox txtValorTotal;
         private Button btnCancelar;

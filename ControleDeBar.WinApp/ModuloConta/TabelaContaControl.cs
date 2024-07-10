@@ -23,9 +23,7 @@ namespace ControleDeBar.WinApp.ModuloConta
                 grid.Rows.Add(
                     c.Id,
                     c.Mesa.Numero,
-                    c.Garcom.Nome,
-                    c.Produtos,
-                    c.Quantidade,
+                    c.Garcom.Nome,                   
                     c.ValorTotal
                 );
         }

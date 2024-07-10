@@ -1,9 +1,6 @@
 ﻿using ControleDeBar.Dominio.ModuloConta;
-using ControleDeBar.Dominio.ModuloPedido;
 using ControleDeBar.Dominio.ModuloProduto;
-using ControleDeBar.Infra.ModuloPedido;
 using ControleDeBar.WinApp.Compartilhado;
-using ControleDeBar.WinApp.ModuloPedido;
 
 namespace ControleDeBar.WinApp.ModuloConta
 {
