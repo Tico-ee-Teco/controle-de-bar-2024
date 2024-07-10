@@ -1,6 +1,6 @@
-﻿namespace ControleDeBar.WinApp.ModuloGarcon
+﻿namespace ControleDeBar.WinApp.ModuloMesa
 {
-    partial class TelaGarconForm
+    partial class TelaMesaForm
     {
         /// <summary>
         /// Required designer variable.
@@ -29,58 +29,49 @@
         private void InitializeComponent()
         {
             txtID = new TextBox();
-            txtNome = new TextBox();
-            label1 = new Label();
-            label2 = new Label();
+            txtNumero = new TextBox();
+            chkOcupada = new CheckBox();
             btnGravar = new Button();
             btnCancelar = new Button();
+            id = new Label();
+            numero12345 = new Label();
             SuspendLayout();
             // 
             // txtID
             // 
-            txtID.Location = new Point(85, 41);
+            txtID.Location = new Point(110, 34);
             txtID.Name = "txtID";
             txtID.Size = new Size(100, 23);
             txtID.TabIndex = 0;
             txtID.Visible = false;
             // 
-            // txtNome
+            // txtNumero
             // 
-            txtNome.Location = new Point(85, 83);
-            txtNome.Name = "txtNome";
-            txtNome.Size = new Size(100, 23);
-            txtNome.TabIndex = 1;
+            txtNumero.Location = new Point(110, 79);
+            txtNumero.Name = "txtNumero";
+            txtNumero.Size = new Size(100, 23);
+            txtNumero.TabIndex = 1;
             // 
-            // label1
+            // chkOcupada
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 14F);
-            label1.Location = new Point(34, 39);
-            label1.Name = "label1";
-            label1.Size = new Size(34, 25);
-            label1.TabIndex = 2;
-            label1.Text = "ID:";
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 14F);
-            label2.Location = new Point(1, 76);
-            label2.Name = "label2";
-            label2.Size = new Size(67, 25);
-            label2.TabIndex = 3;
-            label2.Text = "Nome:";
+            chkOcupada.AutoSize = true;
+            chkOcupada.Enabled = false;
+            chkOcupada.Location = new Point(12, 122);
+            chkOcupada.Name = "chkOcupada";
+            chkOcupada.Size = new Size(105, 19);
+            chkOcupada.TabIndex = 2;
+            chkOcupada.Text = "Mesa Ocupada";
+            chkOcupada.UseVisualStyleBackColor = true;
             // 
             // btnGravar
             // 
             btnGravar.BackColor = Color.Lime;
             btnGravar.DialogResult = DialogResult.OK;
             btnGravar.Font = new Font("Segoe UI", 11.25F);
-            btnGravar.ForeColor = Color.Black;
-            btnGravar.Location = new Point(198, 151);
+            btnGravar.Location = new Point(179, 161);
             btnGravar.Name = "btnGravar";
-            btnGravar.Size = new Size(93, 64);
-            btnGravar.TabIndex = 4;
+            btnGravar.Size = new Size(112, 43);
+            btnGravar.TabIndex = 3;
             btnGravar.Text = "Gravar";
             btnGravar.UseVisualStyleBackColor = false;
             btnGravar.Click += btnGravar_Click;
@@ -90,27 +81,47 @@
             btnCancelar.BackColor = Color.FromArgb(192, 0, 0);
             btnCancelar.DialogResult = DialogResult.Cancel;
             btnCancelar.Font = new Font("Segoe UI", 11.25F);
-            btnCancelar.Location = new Point(297, 151);
+            btnCancelar.Location = new Point(297, 161);
             btnCancelar.Name = "btnCancelar";
-            btnCancelar.Size = new Size(93, 64);
-            btnCancelar.TabIndex = 5;
+            btnCancelar.Size = new Size(112, 43);
+            btnCancelar.TabIndex = 4;
             btnCancelar.Text = "Cancelar";
             btnCancelar.UseVisualStyleBackColor = false;
             // 
-            // TelaGarconForm
+            // id
+            // 
+            id.AutoSize = true;
+            id.Font = new Font("Segoe UI", 14F);
+            id.Location = new Point(65, 34);
+            id.Name = "id";
+            id.Size = new Size(39, 25);
+            id.TabIndex = 5;
+            id.Text = "ID :";
+            // 
+            // numero12345
+            // 
+            numero12345.AutoSize = true;
+            numero12345.Font = new Font("Segoe UI", 14F);
+            numero12345.Location = new Point(12, 79);
+            numero12345.Name = "numero12345";
+            numero12345.Size = new Size(90, 25);
+            numero12345.TabIndex = 6;
+            numero12345.Text = "Numero :";
+            // 
+            // TelaMesaForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(402, 227);
+            ClientSize = new Size(415, 216);
+            Controls.Add(numero12345);
+            Controls.Add(id);
             Controls.Add(btnCancelar);
             Controls.Add(btnGravar);
-            Controls.Add(label2);
-            Controls.Add(label1);
-            Controls.Add(txtNome);
+            Controls.Add(chkOcupada);
+            Controls.Add(txtNumero);
             Controls.Add(txtID);
-            FormBorderStyle = FormBorderStyle.FixedDialog;
-            Name = "TelaGarconForm";
-            Text = "Cadastro de Garcon";
+            Name = "TelaMesaForm";
+            Text = "TelaMesaForm";
             ResumeLayout(false);
             PerformLayout();
         }
@@ -118,10 +129,11 @@
         #endregion
 
         private TextBox txtID;
-        private TextBox txtNome;
-        private Label label1;
-        private Label label2;
+        private TextBox txtNumero;
+        private CheckBox chkOcupada;
         private Button btnGravar;
         private Button btnCancelar;
+        private Label id;
+        private Label numero12345;
     }
 }

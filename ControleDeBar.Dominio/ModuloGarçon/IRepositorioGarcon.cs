@@ -1,4 +1,6 @@
-﻿namespace ControleDeBar.Dominio.ModuloGarçon
+﻿
+
+namespace ControleDeBar.Dominio.ModuloGarçon
 {
     public interface IRepositorioGarcon
     {
