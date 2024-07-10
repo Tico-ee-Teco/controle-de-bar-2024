@@ -1,11 +1,14 @@
 using ControleDeBar.Dominio.ModuloGarçon;
+using ControleDeBar.Dominio.ModuloMesa;
 using ControleDeBar.Dominio.ModuloProduto;
 using ControleDeBar.Infra.Compartilhado;
 using ControleDeBar.Infra.ModuloGarcon;
 using ControleDeBar.Infra.ModuloProduto;
+using ControleDeBar.Infra.ModuloMesa;
 using ControleDeBar.WinApp.Compartilhado;
 using ControleDeBar.WinApp.ModuloGarcon;
 using ControleDeBar.WinApp.ModuloProduto;
+using ControleDeBar.WinApp.ModuloMesa;
 
 namespace ControleDeBar.WinApp
 {
@@ -15,6 +18,7 @@ namespace ControleDeBar.WinApp
 
         IRepositorioProduto repositorioProduto;
         IRepositorioGarcon repositorioGarcon;
+        IRepositorioMesa repositorioMesa;
 
         public static TelaPrincipalForm Instancia { get; private set; }
 
@@ -29,6 +33,7 @@ namespace ControleDeBar.WinApp
 
             repositorioProduto = new RepositorioProduto(dbContext);
             repositorioGarcon = new RepositorioGarcon(dbContext);
+            repositorioMesa = new RepositorioMesa(dbContext);
 
         }
         private void produtosMenuItem_Click(object sender, EventArgs e)
@@ -36,6 +41,13 @@ namespace ControleDeBar.WinApp
             controlador = new ControladorProduto(repositorioProduto);
 
             ConfigurarTelaPrincipal(controlador);
+        }
+        private void mesasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            controlador = new ControladorMesa(repositorioMesa);
+
+            ConfigurarTelaPrincipal(controlador);
+
         }
         private void garçonsToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -47,6 +59,7 @@ namespace ControleDeBar.WinApp
         public void AtualizarRodape(string texto)
         {
             statusLabelPrincipal.Text = texto;
+
         }
         private void btnAdicionar_Click(object sender, EventArgs e)
         {
@@ -63,15 +76,6 @@ namespace ControleDeBar.WinApp
             controlador.Excluir();
         }
 
-
-        //private void btnVisualizar_Click(object sender, EventArgs e)
-        //{
-        //    if (controlador is IControladorVisualizavel controladorVisualizavel)
-        //        controladorVisualizavel.VisualizarTeste();
-        //}
-
-
-
         private void ConfigurarTelaPrincipal(ControladorBase controladorSelecionado)
         {
             lblTipoCadastro.Text = "Cadastro de " + controladorSelecionado.TipoCadastro;
@@ -86,8 +90,6 @@ namespace ControleDeBar.WinApp
             btnEditar.Enabled = controladorSelecionado is ControladorBase;
             btnExcluir.Enabled = controladorSelecionado is ControladorBase;
 
-            //btnVisualizar.Enabled = controladorSelecionado is IControladorVisualizavel;
-
             ConfigurarToolTips(controladorSelecionado);
         }
 
@@ -96,10 +98,6 @@ namespace ControleDeBar.WinApp
             btnAdicionar.ToolTipText = controladorSelecionado.ToolTipAdicionar;
             btnEditar.ToolTipText = controladorSelecionado.ToolTipEditar;
             btnExcluir.ToolTipText = controladorSelecionado.ToolTipExcluir;
-
-            //if (controladorSelecionado is IControladorVisualizavel controladorVisualizavel)
-            //    btnVisualizar.ToolTipText = controladorVisualizavel.ToolTipVisualizar;
-
         }
 
         private void ConfigurarListagem(ControladorBase controladorSelecionado)

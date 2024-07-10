@@ -1,6 +1,6 @@
-﻿namespace ControleDeBar.WinApp.ModuloGarcon
+﻿namespace ControleDeBar.WinApp.ModuloMesa
 {
-    partial class TabelaGarconControl
+    partial class TabelaMesaControl
     {
         /// <summary> 
         /// Required designer variable.
@@ -38,16 +38,16 @@
             grid.Dock = DockStyle.Fill;
             grid.Location = new Point(0, 0);
             grid.Name = "grid";
-            grid.Size = new Size(534, 420);
+            grid.Size = new Size(617, 462);
             grid.TabIndex = 0;
             // 
-            // TabelaGarconControl
+            // TabelaMesaControl
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(grid);
-            Name = "TabelaGarconControl";
-            Size = new Size(534, 420);
+            Name = "TabelaMesaControl";
+            Size = new Size(617, 462);
             ((System.ComponentModel.ISupportInitialize)grid).EndInit();
             ResumeLayout(false);
         }

@@ -8,25 +8,31 @@ namespace ControleDeBar.Dominio.ModuloMesa
 {
     public class Mesa : EntidadeBase
     {
-        public int Numero { get; set; }
-        public Conta Conta { get; set; }
+        public string Numero { get; set; }
+        public bool Ocupada { get; set; }
 
-        public Mesa()
+        public Mesa() {  }
+
+        public Mesa(string numeromesa) : this()
         {
+            Numero = numeromesa;
+            
         }
-
-        public Mesa(int numero)
+        public void Ocupar()
         {
-            Numero = numero;
-            Conta = null; 
+            Ocupada = true;
+        }
+        public void Desocupar()
+        {
+            Ocupada = false;
         }
 
         public override List<string> Validar()
         {
             List<string> erros = new List<string>();
 
-            if (Numero <= 0)
-                erros.Add("Número da mesa é obrigatório e deve ser maior que zero");
+            if (string.IsNullOrEmpty(Numero))            
+            erros.Add("Número da mesa é obrigatório e deve ser maior que zero");
 
             return erros;
         }
@@ -34,13 +40,11 @@ namespace ControleDeBar.Dominio.ModuloMesa
         public override void AtualizarRegistro(EntidadeBase novoRegistro)
         {
             Mesa novaMesa = (Mesa)novoRegistro;
-            Numero = novaMesa.Numero;
-            Conta = novaMesa.Conta;
+            Numero = novaMesa.Numero;         
         }
-
         public override string ToString()
         {
-            return $"Mesa: {Numero}, Conta: {(Conta != null ? Conta.ToString() : "Nenhuma")}";
+            return $"Mesa: {Numero}";
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using ControleDeBar.Dominio.ModuloGarçon;
+using ControleDeBar.Dominio.ModuloMesa;
 using ControleDeBar.Dominio.ModuloProduto;
 using Microsoft.EntityFrameworkCore;
 
@@ -8,7 +9,7 @@ namespace ControleDeBar.Infra.Compartilhado
     {
         public DbSet<Produto> Produtos { get; set; }
         public DbSet<Garcom> Garcom{ get; set; }
-
+        public DbSet<Mesa> Mesa { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             string connectionString = 
@@ -47,6 +48,22 @@ namespace ControleDeBar.Infra.Compartilhado
                     .ValueGeneratedOnAdd();
 
                 GarcomBuilder.Property(p => p.Nome)
+                    .IsRequired()
+                    .HasColumnType("varchar(250)");
+            });
+            modelBuilder.Entity<Mesa>(produtoBuilder =>
+            {
+                produtoBuilder.ToTable("TBMesa");
+
+                produtoBuilder.Property(p => p.Id)
+                    .IsRequired()
+                    .ValueGeneratedOnAdd();
+
+                produtoBuilder.Property(p => p.Numero)
+                    .IsRequired()
+                    .HasColumnType("varchar(250)");
+
+                produtoBuilder.Property(p => p.Ocupada)
                     .IsRequired()
                     .HasColumnType("varchar(250)");
             });
