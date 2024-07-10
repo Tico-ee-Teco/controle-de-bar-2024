@@ -8,12 +8,16 @@ namespace ControleDeBar.Infra.Compartilhado
 {
     public class ControleDeBarDbContext : DbContext
     {
+        public DbSet<Mesa> Mesas { get; set; }
+        public DbSet<Garcom> Garcons{ get; set; }
         public DbSet<Produto> Produtos { get; set; }          
         public DbSet<Pedido> Pedidos { get; set; }        
         public DbSet<Conta> Contas { get; set;}
-        
-        public DbSet<Garcom> Garcom{ get; set; }
-        public DbSet<Mesa> Mesa { get; set; }
+
+        public ControleDeBarDbContext()
+        {
+        }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             string connectionString = 
@@ -26,6 +30,36 @@ namespace ControleDeBar.Infra.Compartilhado
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Mesa>(mesaBuilder =>
+            {
+                mesaBuilder.ToTable("TBMesa");
+
+                mesaBuilder.Property(p => p.Id)
+                    .IsRequired()
+                    .ValueGeneratedOnAdd();
+
+                mesaBuilder.Property(p => p.Numero)
+                    .IsRequired()
+                    .HasColumnType("varchar(10)");
+
+                mesaBuilder.Property(p => p.Ocupada)
+                    .IsRequired()
+                    .HasColumnType("bit");
+            });
+
+            modelBuilder.Entity<Garcom>(garcomBuilder =>
+            {
+                garcomBuilder.ToTable("TBGarcom");
+
+                garcomBuilder.Property(p => p.Id)
+                    .IsRequired()
+                    .ValueGeneratedOnAdd();
+
+                garcomBuilder.Property(p => p.Nome)
+                    .IsRequired()
+                    .HasColumnType("varchar(250)");
+            });
+
             modelBuilder.Entity<Produto>(produtoBuilder =>
             {
                 produtoBuilder.ToTable("TBProduto");
@@ -41,36 +75,7 @@ namespace ControleDeBar.Infra.Compartilhado
                 produtoBuilder.Property(p => p.Valor)
                     .IsRequired()
                     .HasColumnType("decimal");
-            });
-
-            modelBuilder.Entity<Garcom>(GarcomBuilder =>
-            {
-                GarcomBuilder.ToTable("TBGarcom");
-
-                GarcomBuilder.Property(p => p.Id)
-                    .IsRequired()
-                    .ValueGeneratedOnAdd();
-
-                GarcomBuilder.Property(p => p.Nome)
-                    .IsRequired()
-                    .HasColumnType("varchar(250)");
-            });
-            modelBuilder.Entity<Mesa>(produtoBuilder =>
-            {
-                produtoBuilder.ToTable("TBMesa");
-
-                produtoBuilder.Property(p => p.Id)
-                    .IsRequired()
-                    .ValueGeneratedOnAdd();
-
-                produtoBuilder.Property(p => p.Numero)
-                    .IsRequired()
-                    .HasColumnType("varchar(250)");
-
-                produtoBuilder.Property(p => p.Ocupada)
-                    .IsRequired()
-                    .HasColumnType("varchar(250)");
-            });
+            });            
 
             modelBuilder.Entity<Pedido>(pedidoBuilder => 
             {
@@ -106,21 +111,23 @@ namespace ControleDeBar.Infra.Compartilhado
                 contaBuidler.HasOne(c => c.Mesa)
                     .WithMany()
                     .HasForeignKey("Mesa_Id")
-                    .HasConstraintName("FK_TBConta_TBMesa")
+                    .IsRequired()
                     .OnDelete(DeleteBehavior.Restrict);
 
                 contaBuidler.HasOne(c => c.Garcom)
                     .WithMany()
-                    .HasForeignKey("Garcom_Id")
-                    .HasConstraintName("FK_TBConta_TBGarcom")
+                    .HasForeignKey("Garcom_Id")  
+                    .IsRequired()
                     .OnDelete(DeleteBehavior.Restrict);
 
                 contaBuidler.HasMany(c => c.Pedidos)
                     .WithOne()
                     .HasForeignKey("Conta_Id")
-                    .HasConstraintName("FK_TBPedido_TBConta")
-                    .OnDelete(DeleteBehavior.Restrict);
-            });           
+                    .HasConstraintName("FK_TBPedido_TBConta");
+            });
+
+            //modelBuilder.Ignore<Conta>();
+            //modelBuilder.Ignore<Mesa>();
 
             base.OnModelCreating(modelBuilder);
         }

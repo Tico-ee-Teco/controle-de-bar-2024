@@ -1,11 +1,5 @@
-﻿using ControleDeBar.Dominio.ModuloGarçon;
-using ControleDeBar.Dominio.ModuloMesa;
+﻿using ControleDeBar.Dominio.ModuloMesa;
 using ControleDeBar.Infra.Compartilhado;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ControleDeBar.Infra.ModuloMesa
 {
@@ -20,13 +14,13 @@ namespace ControleDeBar.Infra.ModuloMesa
 
         public void Adicionar(Mesa mesa)
         {
-            dbContext.Mesa.Add(mesa);
+            dbContext.Mesas.Add(mesa);
             dbContext.SaveChanges();
         }
 
         public bool Editar(int id, Mesa mesaAtualizada)
         {
-            Mesa mesa = dbContext.Mesa.Find(id)!;
+            Mesa mesa = dbContext.Mesas.Find(id)!;
 
             if (mesa == null)
             {
@@ -35,7 +29,7 @@ namespace ControleDeBar.Infra.ModuloMesa
 
             mesa.AtualizarRegistro(mesaAtualizada);
 
-            dbContext.Mesa.Update(mesa);
+            dbContext.Mesas.Update(mesa);
             dbContext.SaveChanges();
 
             return true;
@@ -43,14 +37,14 @@ namespace ControleDeBar.Infra.ModuloMesa
 
         public bool Excluir(int id)
         {
-            Mesa mesa = dbContext.Mesa.Find(id)!;
+            Mesa mesa = dbContext.Mesas.Find(id)!;
 
             if (mesa == null)
             {
                 return false;
             }
 
-            dbContext.Mesa.Remove(mesa);
+            dbContext.Mesas.Remove(mesa);
             dbContext.SaveChanges();
 
             return true;
@@ -58,12 +52,12 @@ namespace ControleDeBar.Infra.ModuloMesa
 
         public Mesa SelecionarPorId(int id)
         {
-            return dbContext.Mesa.Find(id)!;
+            return dbContext.Mesas.Find(id)!;
         }
 
         public List<Mesa> SelecionarTodos()
         {
-            return dbContext.Mesa.ToList();
+            return dbContext.Mesas.ToList();
         }
     }
 }

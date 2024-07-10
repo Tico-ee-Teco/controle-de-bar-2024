@@ -35,7 +35,7 @@ namespace ControleDeBar.WinApp.ModuloGarcon
             if (resultado != DialogResult.OK)
                 return;
 
-            Garcom novoRegistro = telaGarcon.garcom;
+            Garcom novoRegistro = telaGarcon.Garcom;
 
             if (repositorioGarcon.SelecionarTodos().Any(m => m.Nome.Equals(novoRegistro.Nome.Trim(), StringComparison.OrdinalIgnoreCase)))
             {

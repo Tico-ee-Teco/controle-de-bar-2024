@@ -9,6 +9,9 @@
     <ShowAsAssociation>
       <Property Name="Mesa" />
     </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="Pedidos" />
+    </ShowAsCollectionAssociation>
   </Class>
   <Class Name="ControleDeBar.Dominio.Garcom">
     <Position X="6.5" Y="3.5" Width="1.5" />
@@ -23,6 +26,9 @@
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABgAA=</HashCode>
       <FileName>Mesa.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Conta" />
+    </ShowAsAssociation>
   </Class>
   <Class Name="ControleDeBar.Dominio.Faturamento">
     <Position X="4.25" Y="3.5" Width="1.5" />
@@ -43,6 +49,20 @@
     <TypeIdentifier>
       <HashCode>AAAAACAAAABAAAAIAAAQBACAAAAAAQQAAAAEAAAAAAE=</HashCode>
       <FileName>ModuloPedido\Pedido.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ControleDeBar.Dominio.ModuloGarçon.Garcom">
+    <Position X="6.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEAAAAAACAAAAAAQAAAAAAAAEAAAA=</HashCode>
+      <FileName>ModuloGarçon\Garcom.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ControleDeBar.Dominio.ModuloMesa.Mesa">
+    <Position X="6.25" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEAAAAAACAAAAAAQAAAAAAAAABgAA=</HashCode>
+      <FileName>ModuloMesa\Mesa.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />

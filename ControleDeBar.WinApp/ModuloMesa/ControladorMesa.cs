@@ -28,8 +28,8 @@ namespace ControleDeBar.WinApp.ModuloMesa
 
         public override void Adicionar()
         {
-            List<Mesa> mesascadastradas = repositorioMesa.SelecionarTodos();
-            TelaMesaForm telaMesa = new TelaMesaForm(mesascadastradas);
+            List<Mesa> mesasCadastradas = repositorioMesa.SelecionarTodos();
+            TelaMesaForm telaMesa = new TelaMesaForm(mesasCadastradas);
 
             DialogResult resultado = telaMesa.ShowDialog();
 
@@ -38,7 +38,7 @@ namespace ControleDeBar.WinApp.ModuloMesa
 
             Mesa mesacriada = telaMesa.Mesa;
 
-            if (repositorioMesa.SelecionarTodos().Any(m => m.Numero.Equals(mesacriada.Numero.Trim(), StringComparison.OrdinalIgnoreCase)))
+            if(repositorioMesa.SelecionarTodos().Any(m => m.Numero.Equals(mesacriada.Numero.Trim(), StringComparison.OrdinalIgnoreCase)))
             {
                 MessageBox.Show(
                     $"Já existe uma Mesa com o numero \"{mesacriada.Numero}\".",
@@ -48,6 +48,17 @@ namespace ControleDeBar.WinApp.ModuloMesa
                 );
                 return;
             }
+
+            //if (repositorioMesa.SelecionarTodos().Any(m => m.Numero.Equals(mesacriada.Numero.Trim(), StringComparison.OrdinalIgnoreCase)))
+            //{
+            //    MessageBox.Show(
+            //        $"Já existe uma Mesa com o numero \"{mesacriada.Numero}\".",
+            //        "Erro",
+            //        MessageBoxButtons.OK,
+            //        MessageBoxIcon.Error
+            //    );
+            //    return;
+            //}
 
             repositorioMesa.Adicionar(mesacriada);
 

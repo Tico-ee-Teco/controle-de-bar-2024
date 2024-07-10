@@ -1,5 +1,6 @@
 ﻿using ControleDeBar.Dominio.Compartilhar;
 using ControleDeBar.Dominio.ModuloGarçon;
+using ControleDeBar.Dominio.ModuloMesa;
 
 namespace ControleDeBar.Dominio.ModuloConta
 {
@@ -19,13 +20,16 @@ namespace ControleDeBar.Dominio.ModuloConta
 
         public DateTime? Fechamento { get; set; }
 
-        public Conta() { }
+        public Conta()
+        {
+            
+        }
 
-        public Conta(Mesa mesa, Garcom garcom, List<Pedido> pedidos)
+        public Conta(Mesa mesa, Garcom garcom, List<Pedido> pedidos) : this()
         {
             Mesa = mesa;
             Garcom = garcom;
-            Pedidos = pedidos;
+            
             Abertura = DateTime.Now;            
         }
 

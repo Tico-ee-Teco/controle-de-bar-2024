@@ -5,11 +5,24 @@
 namespace ControleDeBar.Infra.Migrations
 {
     /// <inheritdoc />
-    public partial class Tabelasprodutoepedido : Migration
+    public partial class tabelas : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.CreateTable(
+                name: "TBGarcom",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Nome = table.Column<string>(type: "varchar(250)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_TBGarcom", x => x.Id);
+                });
+
             migrationBuilder.CreateTable(
                 name: "TBProduto",
                 columns: table => new
@@ -64,6 +77,9 @@ namespace ControleDeBar.Infra.Migrations
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "TBGarcom");
+
             migrationBuilder.DropTable(
                 name: "TBPedido");
 
