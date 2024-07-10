@@ -1,12 +1,5 @@
 ﻿using ControleDeBar.Dominio.ModuloGarçon;
-using ControleDeBar.Dominio.ModuloProduto;
 using ControleDeBar.WinApp.Compartilhado;
-using ControleDeBar.WinApp.ModuloProduto;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ControleDeBar.WinApp.ModuloGarcon
 {

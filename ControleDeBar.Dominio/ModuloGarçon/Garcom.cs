@@ -1,8 +1,4 @@
 ﻿using ControleDeBar.Dominio.Compartilhar;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace ControleDeBar.Dominio.ModuloGarçon
 {
@@ -28,9 +24,9 @@ namespace ControleDeBar.Dominio.ModuloGarçon
         }
         public override void AtualizarRegistro(EntidadeBase novoRegistro)
         {
-            Garcom novoGarcon = (Garcom)novoRegistro;
+            Garcom novoGarcom = (Garcom)novoRegistro;
             
-            Nome = novoGarcon.Nome;
+            Nome = novoGarcom.Nome;
         }
         public override string ToString()
         {

@@ -18,8 +18,6 @@ namespace ControleDeBar.WinApp
 
         IRepositorioProduto repositorioProduto;
         IRepositorioConta repositorioConta;
-       
-
         IRepositorioGarcon repositorioGarcon;
 
         public static TelaPrincipalForm Instancia { get; private set; }

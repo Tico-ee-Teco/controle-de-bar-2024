@@ -1,4 +1,5 @@
 ﻿using ControleDeBar.Dominio.Compartilhar;
+using ControleDeBar.Dominio.ModuloGarçon;
 
 namespace ControleDeBar.Dominio.ModuloConta
 {
@@ -20,13 +21,12 @@ namespace ControleDeBar.Dominio.ModuloConta
 
         public Conta() { }
 
-        public Conta(Mesa mesa, Garcom garcom, List<Pedido> pedidos, DateTime abertura, DateTime? fechamento)
+        public Conta(Mesa mesa, Garcom garcom, List<Pedido> pedidos)
         {
             Mesa = mesa;
             Garcom = garcom;
             Pedidos = pedidos;
-            Abertura = DateTime.Now;
-            Fechamento = fechamento;
+            Abertura = DateTime.Now;            
         }
 
         public override List<string> Validar()
