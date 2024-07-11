@@ -15,8 +15,9 @@ namespace ControleDeBar.WinApp.ModuloConta
             set
             {
                 txtId.Text = value.Id.ToString();
-                cmbMesa.SelectedItem = value.Mesa.Numero.ToString();
-                cmbGarcom.SelectedItem = value.Garcom.Nome;
+                cmbMesa.SelectedItem = value.Mesa.Numero;
+                cmbGarcom.SelectedItem = value.Garcom.Nome;                
+                cmbProduto.SelectedItem = value.Pedidos.Select(p => p.Produto).ToList();
 
                 foreach (Pedido pedido in value.Pedidos)
                     listPedido.Items.Add(pedido);
@@ -25,36 +26,37 @@ namespace ControleDeBar.WinApp.ModuloConta
 
         private Conta conta;
 
-        public List<Produto> produtosCadastrados;
+        public List<Produto> produtosCadastrados;        
         public List<Mesa> mesasCadastradas;
         public List<Garcom> garconsCadastrados;
         public List<Pedido> pedidos;
-        public TelaContaForm(List<Mesa> mesas, List<Garcom> garcons, List<Produto> produtos)
+        public TelaContaForm(List<Mesa> mesasCadastradas, List<Garcom> garconsCadastrados, List<Produto> produtosCadastrados)
         {
             InitializeComponent();
 
             this.ConfigurarDialog();
 
-            mesasCadastradas = mesas;
-            garconsCadastrados = garcons;
-            produtosCadastrados = produtos;
+            this.mesasCadastradas = mesasCadastradas;
+            this.garconsCadastrados = garconsCadastrados;
+            this.produtosCadastrados = produtosCadastrados;
             pedidos = new List<Pedido>();
 
-            CarregarInformacao();
+            CarregarInformacao();          
 
         }
 
         private void CarregarInformacao()
         {
-            cmbMesa.Items.Add(mesasCadastradas);
-            cmbGarcom.Items.Add(garconsCadastrados);
-            cmbProduto.Items.Add(produtosCadastrados);
+            cmbMesa.Items.AddRange(mesasCadastradas.ToArray());
+            cmbGarcom.Items.AddRange(garconsCadastrados.ToArray());
+            cmbProduto.Items.AddRange(produtosCadastrados.ToArray());
         }
 
         private void btnAddPedido_Click(object sender, EventArgs e)
         {
             Produto produtoSelecionado = (Produto)cmbProduto.SelectedItem;
             int quantidade = (int)nudQuantidade.Value;
+
 
             if (produtoSelecionado == null || quantidade <= 0)
             {

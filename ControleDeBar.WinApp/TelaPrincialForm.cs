@@ -63,7 +63,7 @@ namespace ControleDeBar.WinApp
         }
         private void contasMenuItem_Click(object sender, EventArgs e)
         {
-            controlador = new ControladorConta(repositorioConta, repositorioProduto);
+            controlador = new ControladorConta(repositorioConta, repositorioProduto, repositorioMesa, repositorioGarcon);
 
             ConfigurarTelaPrincipal(controlador);
         }

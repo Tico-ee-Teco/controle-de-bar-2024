@@ -14,6 +14,7 @@ namespace ControleDeBar.Infra.ModuloConta
 
         public void Adicionar(Conta conta)
         {
+            
             dbContext.Contas.Add(conta);
             dbContext.SaveChanges();
         }

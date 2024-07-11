@@ -30,7 +30,7 @@ namespace ControleDeBar.Dominio.ModuloGarçon
         }
         public override string ToString()
         {
-            return $"Nome: {Nome}";
+            return $"{Nome}";
 
         }
     }

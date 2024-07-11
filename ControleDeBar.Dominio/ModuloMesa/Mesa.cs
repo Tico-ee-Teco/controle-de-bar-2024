@@ -44,7 +44,7 @@ namespace ControleDeBar.Dominio.ModuloMesa
         }
         public override string ToString()
         {
-            return $"Mesa: {Numero}";
+            return $"{Numero}";
         }
     }
 }

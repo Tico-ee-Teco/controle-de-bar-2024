@@ -41,10 +41,8 @@ namespace ControleDeBar.Dominio.ModuloConta
                 erros.Add($"O campo Mesa é obrigatório!");           
 
            if (Garcom == null)
-                erros.Add($"O campo Garçom é obrigatório!"); 
-           
-           if (Pedidos == null || Pedidos.Count == 0)
-                erros.Add($"A conta deve ter pelo menos um pedido!");
+                erros.Add($"O campo Garçom é obrigatório!");            
+          
 
             return erros;
         }

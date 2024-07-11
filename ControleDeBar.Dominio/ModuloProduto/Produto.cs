@@ -45,7 +45,7 @@ namespace ControleDeBar.Dominio.ModuloProduto
 
         public override string ToString()
         {
-            return $"Nome: {Nome}, Valor: {Valor}";
+            return $"{Nome}";
         }
 
         public bool AdiconarPedido(Pedido pedido)
