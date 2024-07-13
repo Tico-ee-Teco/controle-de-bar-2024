@@ -65,9 +65,6 @@ namespace ControleDeBar.Infra.Migrations
                     b.Property<int?>("Conta_Id")
                         .HasColumnType("int");
 
-                    b.Property<int?>("ProdutoId")
-                        .HasColumnType("int");
-
                     b.Property<int>("Produto_Id")
                         .HasColumnType("int");
 
@@ -77,8 +74,6 @@ namespace ControleDeBar.Infra.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("Conta_Id");
-
-                    b.HasIndex("ProdutoId");
 
                     b.HasIndex("Produto_Id");
 
@@ -168,10 +163,6 @@ namespace ControleDeBar.Infra.Migrations
                         .HasForeignKey("Conta_Id")
                         .HasConstraintName("FK_TBPedido_TBConta");
 
-                    b.HasOne("ControleDeBar.Dominio.ModuloProduto.Produto", null)
-                        .WithMany("Pedidos")
-                        .HasForeignKey("ProdutoId");
-
                     b.HasOne("ControleDeBar.Dominio.ModuloProduto.Produto", "Produto")
                         .WithMany()
                         .HasForeignKey("Produto_Id")
@@ -183,11 +174,6 @@ namespace ControleDeBar.Infra.Migrations
                 });
 
             modelBuilder.Entity("ControleDeBar.Dominio.ModuloConta.Conta", b =>
-                {
-                    b.Navigation("Pedidos");
-                });
-
-            modelBuilder.Entity("ControleDeBar.Dominio.ModuloProduto.Produto", b =>
                 {
                     b.Navigation("Pedidos");
                 });

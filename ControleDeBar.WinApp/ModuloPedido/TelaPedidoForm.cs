@@ -48,18 +48,8 @@ namespace ControleDeBar.WinApp.ModuloPedido
             Produto produto = produtosCadastrados.Find(p => p.Nome == cmbItem.SelectedItem.ToString());
             //Produto produto = produtosCadastrados.Find(p => p.Nome == cmbItem.Text);
             int qtde = Convert.ToInt32(nudQtde.Value);
-            decimal preco = Convert.ToInt32(nudPreco.Value);
-
-           // pedido = new Pedido(numeroPedido, numeroMesa, produto, qtde, preco);
-
-            List<string> erros = pedido.Validar();
-
-            if (erros.Count > 0)
-            {
-                TelaPrincipalForm.Instancia.AtualizarRodape(erros[0]);
-
-                DialogResult = DialogResult.None;
-            }
+            decimal preco = Convert.ToInt32(nudPreco.Value);  
+           
         }
     }
 }

@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ControleDeBar.Infra.Migrations
 {
     [DbContext(typeof(ControleDeBarDbContext))]
-    [Migration("20240710195933_tabelas")]
-    partial class tabelas
+    [Migration("20240712165946_Add-Tabelas")]
+    partial class AddTabelas
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -25,6 +25,38 @@ namespace ControleDeBar.Infra.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.Entity("ControleDeBar.Dominio.ModuloConta.Conta", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("Abertura")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("ContaPaga")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("Fechamento")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Garcom_Id")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Mesa_Id")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("Garcom_Id");
+
+                    b.HasIndex("Mesa_Id");
+
+                    b.ToTable("TBConta", (string)null);
+                });
+
             modelBuilder.Entity("ControleDeBar.Dominio.ModuloConta.Pedido", b =>
                 {
                     b.Property<int>("Id")
@@ -33,7 +65,7 @@ namespace ControleDeBar.Infra.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int?>("ProdutoId")
+                    b.Property<int?>("Conta_Id")
                         .HasColumnType("int");
 
                     b.Property<int>("Produto_Id")
@@ -44,7 +76,7 @@ namespace ControleDeBar.Infra.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ProdutoId");
+                    b.HasIndex("Conta_Id");
 
                     b.HasIndex("Produto_Id");
 
@@ -68,6 +100,26 @@ namespace ControleDeBar.Infra.Migrations
                     b.ToTable("TBGarcom", (string)null);
                 });
 
+            modelBuilder.Entity("ControleDeBar.Dominio.ModuloMesa.Mesa", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Numero")
+                        .IsRequired()
+                        .HasColumnType("varchar(10)");
+
+                    b.Property<bool>("Ocupada")
+                        .HasColumnType("bit");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("TBMesa", (string)null);
+                });
+
             modelBuilder.Entity("ControleDeBar.Dominio.ModuloProduto.Produto", b =>
                 {
                     b.Property<int>("Id")
@@ -88,11 +140,31 @@ namespace ControleDeBar.Infra.Migrations
                     b.ToTable("TBProduto", (string)null);
                 });
 
+            modelBuilder.Entity("ControleDeBar.Dominio.ModuloConta.Conta", b =>
+                {
+                    b.HasOne("ControleDeBar.Dominio.ModuloGarçon.Garcom", "Garcom")
+                        .WithMany()
+                        .HasForeignKey("Garcom_Id")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("ControleDeBar.Dominio.ModuloMesa.Mesa", "Mesa")
+                        .WithMany()
+                        .HasForeignKey("Mesa_Id")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Garcom");
+
+                    b.Navigation("Mesa");
+                });
+
             modelBuilder.Entity("ControleDeBar.Dominio.ModuloConta.Pedido", b =>
                 {
-                    b.HasOne("ControleDeBar.Dominio.ModuloProduto.Produto", null)
+                    b.HasOne("ControleDeBar.Dominio.ModuloConta.Conta", null)
                         .WithMany("Pedidos")
-                        .HasForeignKey("ProdutoId");
+                        .HasForeignKey("Conta_Id")
+                        .HasConstraintName("FK_TBPedido_TBConta");
 
                     b.HasOne("ControleDeBar.Dominio.ModuloProduto.Produto", "Produto")
                         .WithMany()
@@ -104,7 +176,7 @@ namespace ControleDeBar.Infra.Migrations
                     b.Navigation("Produto");
                 });
 
-            modelBuilder.Entity("ControleDeBar.Dominio.ModuloProduto.Produto", b =>
+            modelBuilder.Entity("ControleDeBar.Dominio.ModuloConta.Conta", b =>
                 {
                     b.Navigation("Pedidos");
                 });

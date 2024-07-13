@@ -9,14 +9,14 @@ namespace ControleDeBar.Dominio.ModuloProduto
 
         public decimal Valor { get; set; }  
         
-        public List<Pedido> Pedidos { get; set; }
+        //public List<Pedido> Pedidos { get; set; }
 
         public Produto() 
         {
-            Pedidos = new List<Pedido>();
+            //Pedidos = new List<Pedido>();
         }
 
-        public Produto(string nome, decimal valor) : this()
+        public Produto(string nome, decimal valor)
         {
             Nome = nome;
             Valor = valor;            
@@ -48,14 +48,14 @@ namespace ControleDeBar.Dominio.ModuloProduto
             return $"{Nome}";
         }
 
-        public bool AdiconarPedido(Pedido pedido)
-        {
-            if(Pedidos.Contains(pedido))
-                return false;
+        //public bool AdiconarPedido(Pedido pedido)
+        //{
+        //    if(Pedidos.Contains(pedido))
+        //        return false;
 
-            Pedidos.Add(pedido);
+        //    Pedidos.Add(pedido);
 
-            return true;
-        }
+        //    return true;
+        //}
     }
 }

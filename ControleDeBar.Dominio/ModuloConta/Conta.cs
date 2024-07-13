@@ -8,29 +8,32 @@ namespace ControleDeBar.Dominio.ModuloConta
     {
         public Mesa Mesa { get; set; }        
 
-        public decimal ValorTotal { get; }
+        //public decimal ValorTotal { get; }
        
         public Garcom Garcom { get; set; }         
 
-        public bool ContaPaga { get; set; } = false;       
-       
-        public List<Pedido> Pedidos { get; set; }
+        public bool ContaPaga { get; set; } = false;      
 
         public DateTime Abertura { get; set; }
 
-        public DateTime? Fechamento { get; set; }
+        public DateTime Fechamento { get; set; }        
 
+        public List<Pedido> Pedidos { get; set; }
         public Conta()
         {
-            
+            Pedidos = new List<Pedido>();
         }
 
-        public Conta(Mesa mesa, Garcom garcom, List<Pedido> pedidos) : this()
+        public Conta(Mesa mesa, Garcom garcom) : this()
         {
             Mesa = mesa;
-            Garcom = garcom;
-            
-            Abertura = DateTime.Now;            
+            Garcom = garcom;            
+                    
+        }
+
+        public decimal CalcularValorTotal()
+        {
+            return Pedidos.Sum(p => p.CalcularTotalParcial());
         }
 
         public override List<string> Validar()
@@ -76,7 +79,7 @@ namespace ControleDeBar.Dominio.ModuloConta
 
         public override string ToString()
         {
-            return $"Mesa: {Mesa.Numero} - Garçom: {Garcom.Nome} - Valor Total: {ValorTotal}";
+            return $"Mesa: {Mesa.Numero} - Garçom: {Garcom.Nome}";
         }
     }
 }

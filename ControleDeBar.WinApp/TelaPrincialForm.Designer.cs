@@ -31,10 +31,10 @@
             components = new System.ComponentModel.Container();
             menuStrip1 = new MenuStrip();
             CadastroMenuItem = new ToolStripMenuItem();
+            contasMenuItem = new ToolStripMenuItem();
             produtosMenuItem = new ToolStripMenuItem();
             garçonsToolStripMenuItem = new ToolStripMenuItem();
             mesasToolStripMenuItem = new ToolStripMenuItem();
-            contasMenuItem = new ToolStripMenuItem();
             statusStrip1 = new StatusStrip();
             statusLabelPrincipal = new ToolStripStatusLabel();
             toolStrip1 = new ToolStrip();
@@ -43,6 +43,7 @@
             btnExcluir = new ToolStripButton();
             toolStripSeparator1 = new ToolStripSeparator();
             btnRelatorio = new ToolStripButton();
+            btnFiltrar = new ToolStripButton();
             lblTipoCadastro = new ToolStripLabel();
             toolTip1 = new ToolTip(components);
             pnlRegistros = new Panel();
@@ -62,40 +63,38 @@
             // 
             // CadastroMenuItem
             // 
-            CadastroMenuItem.DropDownItems.AddRange(new ToolStripItem[] { produtosMenuItem, garçonsToolStripMenuItem });
-            CadastroMenuItem.DropDownItems.AddRange(new ToolStripItem[] { produtosMenuItem, contasMenuItem });
-            CadastroMenuItem.DropDownItems.AddRange(new ToolStripItem[] { produtosMenuItem, garçonsToolStripMenuItem, mesasToolStripMenuItem });
+            CadastroMenuItem.DropDownItems.AddRange(new ToolStripItem[] { contasMenuItem, produtosMenuItem, garçonsToolStripMenuItem, mesasToolStripMenuItem });
             CadastroMenuItem.Name = "CadastroMenuItem";
             CadastroMenuItem.Size = new Size(66, 20);
             CadastroMenuItem.Text = "Cadastro";
             // 
+            // contasMenuItem
+            // 
+            contasMenuItem.Name = "contasMenuItem";
+            contasMenuItem.Size = new Size(122, 22);
+            contasMenuItem.Text = "Contas";
+            contasMenuItem.Click += contasMenuItem_Click;
+            // 
             // produtosMenuItem
             // 
             produtosMenuItem.Name = "produtosMenuItem";
-            produtosMenuItem.Size = new Size(180, 22);
+            produtosMenuItem.Size = new Size(122, 22);
             produtosMenuItem.Text = "Produtos";
             produtosMenuItem.Click += produtosMenuItem_Click;
             // 
             // garçonsToolStripMenuItem
             // 
             garçonsToolStripMenuItem.Name = "garçonsToolStripMenuItem";
-            garçonsToolStripMenuItem.Size = new Size(180, 22);
+            garçonsToolStripMenuItem.Size = new Size(122, 22);
             garçonsToolStripMenuItem.Text = "Garçons";
             garçonsToolStripMenuItem.Click += garçonsToolStripMenuItem_Click;
             // 
             // mesasToolStripMenuItem
             // 
             mesasToolStripMenuItem.Name = "mesasToolStripMenuItem";
-            mesasToolStripMenuItem.Size = new Size(180, 22);
+            mesasToolStripMenuItem.Size = new Size(122, 22);
             mesasToolStripMenuItem.Text = "Mesas";
             mesasToolStripMenuItem.Click += mesasToolStripMenuItem_Click;
-            // 
-            // contasMenuItem
-            // 
-            contasMenuItem.Name = "contasMenuItem";
-            contasMenuItem.Size = new Size(180, 22);
-            contasMenuItem.Text = "Contas";
-            contasMenuItem.Click += contasMenuItem_Click;
             // 
             // statusStrip1
             // 
@@ -114,7 +113,7 @@
             // 
             // toolStrip1
             // 
-            toolStrip1.Items.AddRange(new ToolStripItem[] { btnAdicionar, btnEditar, btnExcluir, toolStripSeparator1, btnRelatorio, lblTipoCadastro });
+            toolStrip1.Items.AddRange(new ToolStripItem[] { btnAdicionar, btnEditar, btnExcluir, toolStripSeparator1, btnRelatorio, btnFiltrar, lblTipoCadastro });
             toolStrip1.Location = new Point(0, 24);
             toolStrip1.Name = "toolStrip1";
             toolStrip1.Size = new Size(923, 25);
@@ -168,6 +167,17 @@
             btnRelatorio.Name = "btnRelatorio";
             btnRelatorio.Size = new Size(23, 22);
             btnRelatorio.Text = "Relatorio";
+            btnRelatorio.Click += btnRelatorio_Click;
+            // 
+            // btnFiltrar
+            // 
+            btnFiltrar.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            btnFiltrar.Image = Properties.Resources.btnFiltrar;
+            btnFiltrar.ImageTransparentColor = Color.Magenta;
+            btnFiltrar.Name = "btnFiltrar";
+            btnFiltrar.Size = new Size(23, 22);
+            btnFiltrar.Text = "Filtrar";
+            btnFiltrar.Click += btnFiltrar_Click;
             // 
             // lblTipoCadastro
             // 
@@ -229,5 +239,6 @@
         private ToolStripMenuItem garçonsToolStripMenuItem;
         private ToolStripMenuItem mesasToolStripMenuItem;
         private ToolStripMenuItem contasMenuItem;
+        private ToolStripButton btnFiltrar;
     }
 }

@@ -38,7 +38,11 @@ namespace ControleDeBar.WinApp
             repositorioProduto = new RepositorioProduto(dbContext);
             repositorioGarcon = new RepositorioGarcon(dbContext);
             repositorioMesa = new RepositorioMesa(dbContext);
-            repositorioConta = new RepositorioConta(dbContext);          
+            repositorioConta = new RepositorioConta(dbContext);
+
+            DateTime dataAtual = DateTime.Now;
+
+            AtualizarRodape($"Hoje é {dataAtual.ToShortDateString()}.");
 
         }
         private void produtosMenuItem_Click(object sender, EventArgs e)
@@ -63,7 +67,13 @@ namespace ControleDeBar.WinApp
         }
         private void contasMenuItem_Click(object sender, EventArgs e)
         {
-            controlador = new ControladorConta(repositorioConta, repositorioProduto, repositorioMesa, repositorioGarcon);
+            controlador = new ControladorConta
+            (
+                repositorioConta,
+                repositorioProduto,
+                repositorioMesa,
+                repositorioGarcon
+            );
 
             ConfigurarTelaPrincipal(controlador);
         }
@@ -87,7 +97,21 @@ namespace ControleDeBar.WinApp
         {
             controlador.Excluir();
         }
+        private void btnFiltrar_Click(object sender, EventArgs e)
+        {
+            if (controlador is IControladorFiltravel)
+            {
+                (controlador as IControladorFiltravel).Filtrar();
+            }
+        }
 
+        private void btnRelatorio_Click(object sender, EventArgs e)
+        {
+            if(controlador is IControladorVisualizavel)
+            {
+                (controlador as IControladorVisualizavel).Visualizar();
+            }
+        }
         private void ConfigurarTelaPrincipal(ControladorBase controladorSelecionado)
         {
             lblTipoCadastro.Text = "Cadastro de " + controladorSelecionado.TipoCadastro;
@@ -102,6 +126,9 @@ namespace ControleDeBar.WinApp
             btnEditar.Enabled = controladorSelecionado is ControladorBase;
             btnExcluir.Enabled = controladorSelecionado is ControladorBase;
 
+            btnFiltrar.Enabled = controladorSelecionado is IControladorFiltravel;
+            btnRelatorio.Enabled = controladorSelecionado is IControladorVisualizavel;
+
             ConfigurarToolTips(controladorSelecionado);
         }
 
@@ -110,6 +137,12 @@ namespace ControleDeBar.WinApp
             btnAdicionar.ToolTipText = controladorSelecionado.ToolTipAdicionar;
             btnEditar.ToolTipText = controladorSelecionado.ToolTipEditar;
             btnExcluir.ToolTipText = controladorSelecionado.ToolTipExcluir;
+
+            if (controlador is IControladorFiltravel controladorFiltravel)
+                btnFiltrar.ToolTipText = controladorFiltravel.ToolTipFiltrar;
+
+            if (controlador is IControladorVisualizavel controladorVisualizavel)
+                btnRelatorio.ToolTipText = controladorVisualizavel.ToolTipVisualizar;
         }
 
         private void ConfigurarListagem(ControladorBase controladorSelecionado)

@@ -1,10 +1,10 @@
-﻿using ControleDeBar.Dominio.Compartilhar;
-using ControleDeBar.Dominio.ModuloProduto;
+﻿using ControleDeBar.Dominio.ModuloProduto;
 
 namespace ControleDeBar.Dominio.ModuloConta
 {
-    public class Pedido : EntidadeBase
+    public class Pedido
     {
+        public int Id { get; set; }
         public Produto Produto { get; set; }
 
         public int Qtde { get; set; }
@@ -13,32 +13,15 @@ namespace ControleDeBar.Dominio.ModuloConta
 
         public Pedido() { }
 
-        public Pedido(Produto produto, int qtde)
+        public Pedido(Produto produto, int qtde) : this()
         {
             Produto = produto;
             Qtde = qtde;
-        }
-
-        public override List<string> Validar()
+        }     
+        
+        public decimal CalcularTotalParcial()
         {
-            List<string> erros = new List<string>();
-
-            if (Produto == null)
-                erros.Add($"O campo Produto é obrigatório!");
-
-            if (Qtde <= 0)
-                erros.Add($"O campo Quantidade é obrigatório!");
-
-            return erros;
-        }
-
-        public override void AtualizarRegistro(EntidadeBase novoRegistro)
-        {
-            Pedido pedidoEditado = (Pedido)novoRegistro;
-
-            Produto = pedidoEditado.Produto;
-            Qtde = pedidoEditado.Qtde;
-
+           return Produto.Valor * Qtde;
         }
 
         public override string ToString()

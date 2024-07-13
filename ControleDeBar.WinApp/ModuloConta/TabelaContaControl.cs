@@ -20,19 +20,23 @@ namespace ControleDeBar.WinApp.ModuloConta
             grid.Rows.Clear();            
 
             foreach (Conta c in contas)
+            {
+                string statusConta = c.ContaPaga ? "Paga" : "Não Paga";
+
                 grid.Rows.Add(
                     c.Id,
-                    c.Mesa,
-                    c.Garcom,                                       
-                    c.ValorTotal
-                   
+                    c.Mesa.Numero,
+                    c.Garcom.Nome,
+                    statusConta                                      
                 );
+
+            }
         }
 
         public int ObterRegistroSelecionado()
         {
             return grid.SelecionarId();
-        }
+        }       
 
         private DataGridViewColumn[] ObterColunas()
         {
@@ -41,9 +45,8 @@ namespace ControleDeBar.WinApp.ModuloConta
                 new DataGridViewTextBoxColumn { DataPropertyName = "Id", HeaderText = "Id" },
                 new DataGridViewTextBoxColumn { DataPropertyName = "Mesa", HeaderText = "Número da Mesa" },
                 new DataGridViewTextBoxColumn { DataPropertyName = "Garcom", HeaderText = "Nome do Garçom" },
-                new DataGridViewTextBoxColumn { DataPropertyName = "Produto", HeaderText = "Produto" },
-                new DataGridViewTextBoxColumn { DataPropertyName = "Quantidade", HeaderText = "Quantidade" },
-                new DataGridViewTextBoxColumn { DataPropertyName = "ValorTotal", HeaderText = "Total a Pagar R$" }
+                new DataGridViewTextBoxColumn { DataPropertyName = "ContaPaga", HeaderText = "Status da Conta" }
+               
             };
         }
     }

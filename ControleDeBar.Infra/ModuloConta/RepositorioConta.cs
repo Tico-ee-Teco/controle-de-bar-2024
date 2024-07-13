@@ -1,5 +1,6 @@
 ﻿using ControleDeBar.Dominio.ModuloConta;
 using ControleDeBar.Infra.Compartilhado;
+using Microsoft.EntityFrameworkCore;
 
 namespace ControleDeBar.Infra.ModuloConta
 {
@@ -13,47 +14,76 @@ namespace ControleDeBar.Infra.ModuloConta
         }
 
         public void Adicionar(Conta conta)
-        {
-            
+        {            
             dbContext.Contas.Add(conta);
             dbContext.SaveChanges();
         }
 
-        public bool Editar(int id, Conta contaAtualizada)
+        public bool AtualizarPedidos(Conta contaAtualizada, List<Pedido> pedidosRemovidos)
         {
-            Conta conta = dbContext.Contas.Find(id)!;
-
-            if (conta == null)
-            {
+            if(contaAtualizada == null)
                 return false;
-            }
 
-            conta.AtualizarRegistro(contaAtualizada);
+            dbContext.Contas.Update(contaAtualizada);
 
-            dbContext.Contas.Update(conta);
+            dbContext.Pedidos.RemoveRange(pedidosRemovidos); 
+
             dbContext.SaveChanges();
 
             return true;
         }
 
-        public bool Excluir(int id)
+        public bool AtualizarStatus(Conta contaFechada)
         {
-            Conta conta = dbContext.Contas.Find(id)!;
+            return false;
+        }
 
-            if (conta == null)
-            {
-                return false;
-            }
+        public List<Conta> SelecionarContas()
+        {
+            return dbContext.Contas
+               .Include(c => c.Mesa)
+               .Include(c => c.Garcom)
+               .ToList();
+        }
 
-            dbContext.Contas.Remove(conta);
-            dbContext.SaveChanges();
+        public List<Conta> SelecionarContasEmAberto()
+        {
+            return dbContext.Contas
+                .Where(c => c.ContaPaga)
+                .Include(c => c.Mesa)
+                .Include(c => c.Garcom)
+                .ToList();
+        }
 
-            return true;
+        public List<Conta> SelecionarContasFaturamento()
+        {
+            return dbContext.Contas
+                .Where(c => !c.ContaPaga)
+                .Include(c => c.Mesa)
+                .Include(c => c.Garcom)
+                .Include(c => c.Pedidos)
+                .ThenInclude(p => p.Produto)
+                .AsNoTracking()
+                .ToList();
+        }
+
+        public List<Conta> SelecionarContasFechadas()
+        {
+            return dbContext.Contas
+               .Where(c => !c.ContaPaga)
+               .Include(c => c.Mesa)
+               .Include(c => c.Garcom)
+               .ToList();
         }
 
         public Conta SelecionarPorId(int id)
         {
-            return dbContext.Contas.Find(id)!;
+           return dbContext.Contas
+                .Include(c => c.Mesa)
+                .Include(c => c.Garcom)
+                .Include(c => c.Pedidos)
+                .ThenInclude(p => p.Produto) 
+                .FirstOrDefault(c => c.Id == id)!;
         }
 
         public List<Conta> SelecionarTodos()

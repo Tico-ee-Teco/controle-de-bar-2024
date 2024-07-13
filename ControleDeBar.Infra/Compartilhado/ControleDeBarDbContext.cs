@@ -124,10 +124,7 @@ namespace ControleDeBar.Infra.Compartilhado
                     .WithOne()
                     .HasForeignKey("Conta_Id")
                     .HasConstraintName("FK_TBPedido_TBConta");
-            });
-
-            //modelBuilder.Ignore<Conta>();
-            //modelBuilder.Ignore<Mesa>();
+            });            
 
             base.OnModelCreating(modelBuilder);
         }

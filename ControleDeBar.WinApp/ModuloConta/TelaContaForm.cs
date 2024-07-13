@@ -14,13 +14,18 @@ namespace ControleDeBar.WinApp.ModuloConta
             get => conta;
             set
             {
+                conta = value;
+
                 txtId.Text = value.Id.ToString();
-                cmbMesa.SelectedItem = value.Mesa.Numero;
-                cmbGarcom.SelectedItem = value.Garcom.Nome;                
-                cmbProduto.SelectedItem = value.Pedidos.Select(p => p.Produto).ToList();
+
+                cmbMesa.SelectedItem = value.Mesa;
+                cmbGarcom.SelectedItem = value.Garcom;                                
 
                 foreach (Pedido pedido in value.Pedidos)
                     listPedido.Items.Add(pedido);
+
+                AtualizarTxtValorTotal();
+                
             }
         }
 
@@ -29,7 +34,7 @@ namespace ControleDeBar.WinApp.ModuloConta
         public List<Produto> produtosCadastrados;        
         public List<Mesa> mesasCadastradas;
         public List<Garcom> garconsCadastrados;
-        public List<Pedido> pedidos;
+        public List<Pedido> PedidosRemovidos { get; set; }
         public TelaContaForm(List<Mesa> mesasCadastradas, List<Garcom> garconsCadastrados, List<Produto> produtosCadastrados)
         {
             InitializeComponent();
@@ -39,9 +44,15 @@ namespace ControleDeBar.WinApp.ModuloConta
             this.mesasCadastradas = mesasCadastradas;
             this.garconsCadastrados = garconsCadastrados;
             this.produtosCadastrados = produtosCadastrados;
-            pedidos = new List<Pedido>();
+            
+            foreach(Mesa mesa in mesasCadastradas)
+                cmbMesa.Items.Add(mesa);
 
-            CarregarInformacao();          
+            foreach(Garcom garcom in garconsCadastrados)
+                cmbGarcom.Items.Add(garcom);
+
+            foreach(Produto produto in produtosCadastrados)
+                cmbProduto.Items.Add(produto);                     
 
         }
 
@@ -66,37 +77,37 @@ namespace ControleDeBar.WinApp.ModuloConta
             }
 
             Pedido pedido = new Pedido(produtoSelecionado, quantidade);
-            pedidos.Add(pedido);
-            AtualizarListaPedidos();
-            AtualizarValorTotal();
 
-        }
+            listPedido.Items.Add(pedido);
+
+            AtualizarTxtValorTotal();
+
+            ResetarQuantidadeSolicitada();
+        }        
+
         private void btnRemoverPedido_Click(object sender, EventArgs e)
         {
             Pedido pedidoSelecionado = (Pedido)listPedido.SelectedItem;
 
-            if (pedidoSelecionado != null)
+            if (pedidoSelecionado == null)
             {
-                pedidos.Remove(pedidoSelecionado);
-                AtualizarListaPedidos();
-                AtualizarValorTotal();
+                TelaPrincipalForm
+                 .Instancia
+                 .AtualizarRodape("Um pedido precisa ser selecionado antes de remover!");
+
+                return;
             }
+
+            conta.RemoverPedido(pedidoSelecionado);
+
+            PedidosRemovidos.Add(pedidoSelecionado);
+
+            listPedido.Items.Remove(pedidoSelecionado);
+
+            AtualizarTxtValorTotal();
         }
 
-        private void AtualizarValorTotal()
-        {
-            decimal valorTotal = pedidos.Sum(p => p.Produto.Valor * p.Qtde);
-
-            txtValorTotal.Text = valorTotal.ToString("C");
-        }
-
-        private void AtualizarListaPedidos()
-        {
-            listPedido.Items.Clear();
-
-            foreach (Pedido pedido in pedidos)
-                listPedido.Items.Add(pedido);
-        }
+        
 
         private void btnGravar_Click(object sender, EventArgs e)
         {
@@ -110,7 +121,7 @@ namespace ControleDeBar.WinApp.ModuloConta
             //    return;
             //}
 
-            conta = new Conta(mesaSelecionada, garcomSelecionado, pedidos);
+            conta = new Conta(mesaSelecionada, garcomSelecionado);
 
             List<string> erros = conta.Validar();
 
@@ -123,5 +134,15 @@ namespace ControleDeBar.WinApp.ModuloConta
             }
 
         }
+
+        private void AtualizarTxtValorTotal()
+        {
+            txtValorTotal.Text = conta.CalcularValorTotal().ToString("C");
+        }
+
+        private void ResetarQuantidadeSolicitada()
+        {
+            nudQuantidade.Value = nudQuantidade.Minimum;
+        }   
     }
 }

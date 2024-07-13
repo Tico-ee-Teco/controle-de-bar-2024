@@ -93,6 +93,16 @@ namespace ControleDeBar.WinApp.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap btnFiltrar {
+            get {
+                object obj = ResourceManager.GetObject("btnFiltrar", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap btnVisualizar {
             get {
                 object obj = ResourceManager.GetObject("btnVisualizar", resourceCulture);
