@@ -123,7 +123,7 @@ namespace ControleDeBar.WinApp.ModuloMesa
             }
 
             DialogResult resultado = MessageBox.Show(
-                $"Tem certeza que deseja excluir o Garcon \"{mesaselecionada.Numero}\"?",
+                $"Tem certeza que deseja excluir A mesa \"{mesaselecionada.Numero}\"?",
                 "Excluir Garcom",
                 MessageBoxButtons.YesNo,
                 MessageBoxIcon.Question);

@@ -26,7 +26,10 @@ namespace ControleDeBar.Infra.ModuloConta
 
             dbContext.Contas.Update(contaAtualizada);
 
-            dbContext.Pedidos.RemoveRange(pedidosRemovidos); 
+            if (pedidosRemovidos != null && pedidosRemovidos.Any())
+            {
+                dbContext.Pedidos.RemoveRange(pedidosRemovidos);
+            }
 
             dbContext.SaveChanges();
 

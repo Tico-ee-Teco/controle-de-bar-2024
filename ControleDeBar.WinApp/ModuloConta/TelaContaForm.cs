@@ -19,19 +19,19 @@ namespace ControleDeBar.WinApp.ModuloConta
                 txtId.Text = value.Id.ToString();
 
                 cmbMesa.SelectedItem = value.Mesa;
-                cmbGarcom.SelectedItem = value.Garcom;                                
+                cmbGarcom.SelectedItem = value.Garcom;
 
                 foreach (Pedido pedido in value.Pedidos)
                     listPedido.Items.Add(pedido);
 
                 AtualizarTxtValorTotal();
-                
+
             }
         }
 
         private Conta conta;
 
-        public List<Produto> produtosCadastrados;        
+        public List<Produto> produtosCadastrados;
         public List<Mesa> mesasCadastradas;
         public List<Garcom> garconsCadastrados;
         public List<Pedido> PedidosRemovidos { get; set; }
@@ -44,15 +44,15 @@ namespace ControleDeBar.WinApp.ModuloConta
             this.mesasCadastradas = mesasCadastradas;
             this.garconsCadastrados = garconsCadastrados;
             this.produtosCadastrados = produtosCadastrados;
-            
-            foreach(Mesa mesa in mesasCadastradas)
+
+            foreach (Mesa mesa in mesasCadastradas)
                 cmbMesa.Items.Add(mesa);
 
-            foreach(Garcom garcom in garconsCadastrados)
+            foreach (Garcom garcom in garconsCadastrados)
                 cmbGarcom.Items.Add(garcom);
 
-            foreach(Produto produto in produtosCadastrados)
-                cmbProduto.Items.Add(produto);                     
+            foreach (Produto produto in produtosCadastrados)
+                cmbProduto.Items.Add(produto);
 
         }
 
@@ -83,7 +83,7 @@ namespace ControleDeBar.WinApp.ModuloConta
             AtualizarTxtValorTotal();
 
             ResetarQuantidadeSolicitada();
-        }        
+        }
 
         private void btnRemoverPedido_Click(object sender, EventArgs e)
         {
@@ -107,7 +107,7 @@ namespace ControleDeBar.WinApp.ModuloConta
             AtualizarTxtValorTotal();
         }
 
-        
+
 
         private void btnGravar_Click(object sender, EventArgs e)
         {
@@ -136,6 +136,6 @@ namespace ControleDeBar.WinApp.ModuloConta
         private void ResetarQuantidadeSolicitada()
         {
             nudQuantidade.Value = nudQuantidade.Minimum;
-        }   
+        }
     }
 }

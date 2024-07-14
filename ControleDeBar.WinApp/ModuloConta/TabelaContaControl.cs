@@ -25,8 +25,8 @@ namespace ControleDeBar.WinApp.ModuloConta
 
                 grid.Rows.Add(
                     c.Id,
-                    c.Mesa.Numero,
-                    c.Garcom.Nome,
+                    c.Mesa?.Numero,
+                    c.Garcom?.Nome,
                     statusConta                                      
                 );
 
