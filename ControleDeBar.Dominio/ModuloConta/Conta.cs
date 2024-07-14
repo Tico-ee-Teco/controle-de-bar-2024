@@ -69,6 +69,17 @@ namespace ControleDeBar.Dominio.ModuloConta
             Pedidos.Add(pedido);
         }
 
+        public void abrirConta()
+        {
+            Abertura = DateTime.Now;
+        }
+
+        public void Fechar()
+        {
+            Fechamento = DateTime.Now;
+            ContaPaga = true;
+        }
+
         public void RemoverPedido(Pedido pedido)
         {
             if (pedido == null)

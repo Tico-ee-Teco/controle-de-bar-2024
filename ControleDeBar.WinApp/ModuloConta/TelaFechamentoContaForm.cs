@@ -21,7 +21,7 @@ namespace ControleDeBar.WinApp.ModuloConta
 
         private void ConfigurarCamposExibicao()
         {
-            txtId.Text = Conta.Id.ToString();            
+            txtId.Text = Conta.Id.ToString();
             txtMesa.Text = Conta.Mesa.ToString();
             txtGarcom.Text = Conta.Garcom.ToString();
 
@@ -29,6 +29,11 @@ namespace ControleDeBar.WinApp.ModuloConta
                 listPedidos.Items.Add(pedido);
 
             lblValorTotal.Text = Conta.CalcularValorTotal().ToString("C2");
+        }
+
+        private void btnGravar_Click(object sender, EventArgs e)
+        {
+            Conta.Fechar();
         }
     }
 }

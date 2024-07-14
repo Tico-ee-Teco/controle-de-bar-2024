@@ -6,7 +6,7 @@ using ControleDeBar.WinApp.Compartilhado;
 
 namespace ControleDeBar.WinApp.ModuloConta
 {
-    public class ControladorConta : ControladorBase, IControladorFiltravel, IControladorVisualizavel
+    public class ControladorConta : ControladorBase, IControladorFiltravel, IControladorVisualizavel, IControladorContaFechavel
     {
         TabelaContaControl tabelaConta;
         IRepositorioConta repositorioConta;
@@ -20,6 +20,8 @@ namespace ControleDeBar.WinApp.ModuloConta
         public override string ToolTipEditar => "Editar uma conta existente";
 
         public override string ToolTipExcluir => "Excluir uma conta existente";
+
+        public string ToolTipFecharConta => "Fechar uma conta";
 
         public string ToolTipFiltrar => "Filtrar contas";
 
@@ -59,11 +61,12 @@ namespace ControleDeBar.WinApp.ModuloConta
         public override void Editar()
         {
             AtualizarProduto();
-        }        
+        }
 
         public override void Excluir()
         {
-            FecharConta();
+            //FecharConta();
+            throw new NotImplementedException();
         }
         private void AtualizarProduto()
         {
@@ -106,7 +109,7 @@ namespace ControleDeBar.WinApp.ModuloConta
                 .AtualizarRodape($"Conta: {contaAtualizada.Id} atualizada com sucesso");
         }
 
-        private void FecharConta()
+        public void FecharConta()
         {
             int idSelecionado = tabelaConta.ObterRegistroSelecionado();
 
@@ -123,7 +126,7 @@ namespace ControleDeBar.WinApp.ModuloConta
                 return;
             }
 
-            if(!contaSelecionada.ContaPaga)
+            if(contaSelecionada.ContaPaga)
             {
                 MessageBox.Show(
                     "Conta não pode ser fechada, pois ainda não foi paga!",

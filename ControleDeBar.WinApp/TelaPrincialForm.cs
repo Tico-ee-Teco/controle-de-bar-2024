@@ -97,6 +97,13 @@ namespace ControleDeBar.WinApp
         {
             controlador.Excluir();
         }
+        private void btnFecharConta_Click(object sender, EventArgs e)
+        {
+            if (controlador is IControladorContaFechavel)
+            {
+                (controlador as IControladorContaFechavel).FecharConta();
+            }
+        }
         private void btnFiltrar_Click(object sender, EventArgs e)
         {
             if (controlador is IControladorFiltravel)
@@ -107,7 +114,7 @@ namespace ControleDeBar.WinApp
 
         private void btnRelatorio_Click(object sender, EventArgs e)
         {
-            if(controlador is IControladorVisualizavel)
+            if (controlador is IControladorVisualizavel)
             {
                 (controlador as IControladorVisualizavel).Visualizar();
             }
@@ -126,6 +133,8 @@ namespace ControleDeBar.WinApp
             btnEditar.Enabled = controladorSelecionado is ControladorBase;
             btnExcluir.Enabled = controladorSelecionado is ControladorBase;
 
+            btnFecharConta.Enabled = controladorSelecionado is ControladorConta;
+
             btnFiltrar.Enabled = controladorSelecionado is IControladorFiltravel;
             btnRelatorio.Enabled = controladorSelecionado is IControladorVisualizavel;
 
@@ -136,13 +145,16 @@ namespace ControleDeBar.WinApp
         {
             btnAdicionar.ToolTipText = controladorSelecionado.ToolTipAdicionar;
             btnEditar.ToolTipText = controladorSelecionado.ToolTipEditar;
-            btnExcluir.ToolTipText = controladorSelecionado.ToolTipExcluir;
+            btnExcluir.ToolTipText = controladorSelecionado.ToolTipExcluir;            
 
             if (controlador is IControladorFiltravel controladorFiltravel)
                 btnFiltrar.ToolTipText = controladorFiltravel.ToolTipFiltrar;
 
             if (controlador is IControladorVisualizavel controladorVisualizavel)
                 btnRelatorio.ToolTipText = controladorVisualizavel.ToolTipVisualizar;
+
+            if (controlador is IControladorContaFechavel controladorContaFechavel)
+                btnRelatorio.ToolTipText = controladorContaFechavel.ToolTipFecharConta;
         }
 
         private void ConfigurarListagem(ControladorBase controladorSelecionado)
