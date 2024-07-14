@@ -1,8 +1,4 @@
 ﻿using ControleDeBar.Dominio.Compartilhar;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace ControleDeBar.Dominio.ModuloMesa
 {
@@ -11,12 +7,12 @@ namespace ControleDeBar.Dominio.ModuloMesa
         public string Numero { get; set; }
         public bool Ocupada { get; set; }
 
-        public Mesa() {  }
+        public Mesa() { }
 
         public Mesa(string numeromesa) : this()
         {
             Numero = numeromesa;
-            
+
         }
         public void Ocupar()
         {
@@ -31,8 +27,8 @@ namespace ControleDeBar.Dominio.ModuloMesa
         {
             List<string> erros = new List<string>();
 
-            if (string.IsNullOrEmpty(Numero))            
-            erros.Add("Número da mesa é obrigatório e deve ser maior que zero");
+            if (string.IsNullOrEmpty(Numero))
+                erros.Add("Número da mesa é obrigatório e deve ser maior que zero");
 
             return erros;
         }
@@ -40,7 +36,7 @@ namespace ControleDeBar.Dominio.ModuloMesa
         public override void AtualizarRegistro(EntidadeBase novoRegistro)
         {
             Mesa novaMesa = (Mesa)novoRegistro;
-            Numero = novaMesa.Numero;         
+            Numero = novaMesa.Numero;
         }
         public override string ToString()
         {

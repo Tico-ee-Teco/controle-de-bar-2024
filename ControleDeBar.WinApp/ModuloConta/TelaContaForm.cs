@@ -114,13 +114,6 @@ namespace ControleDeBar.WinApp.ModuloConta
             Mesa mesaSelecionada = (Mesa)cmbMesa.SelectedItem;
             Garcom garcomSelecionado = (Garcom)cmbGarcom.SelectedItem;
 
-            //if (mesaSelecionada == null || garcomSelecionado == null || pedidos.Count == 0)
-            //{
-            //    MessageBox.Show("Selecione uma mesa, um garçom e adicione pelo menos um pedido");
-
-            //    return;
-            //}
-
             conta = new Conta(mesaSelecionada, garcomSelecionado);
 
             List<string> erros = conta.Validar();

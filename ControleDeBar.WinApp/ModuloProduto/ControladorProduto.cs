@@ -1,6 +1,5 @@
 ﻿using ControleDeBar.Dominio.ModuloProduto;
 using ControleDeBar.WinApp.Compartilhado;
-using System.Drawing.Drawing2D;
 
 namespace ControleDeBar.WinApp.ModuloProduto
 {

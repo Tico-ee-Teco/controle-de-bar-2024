@@ -7,8 +7,6 @@ namespace ControleDeBar.Dominio.ModuloConta
     public class Conta : EntidadeBase
     {
         public Mesa Mesa { get; set; }        
-
-        //public decimal ValorTotal { get; }
        
         public Garcom Garcom { get; set; }         
 
