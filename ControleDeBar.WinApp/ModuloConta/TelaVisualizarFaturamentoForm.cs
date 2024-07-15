@@ -6,7 +6,83 @@ namespace ControleDeBar.WinApp.ModuloConta
 {
     public partial class TelaVisualizarFaturamentoForm : Form
     {
+        //private List<Conta> contasFechadas;
+        //public TelaVisualizarFaturamentoForm(List<Conta> contasFechadas)
+        //{
+        //    InitializeComponent();
+
+        //    this.ConfigurarDialog();
+
+        //    this.contasFechadas = contasFechadas;
+
+        //    gridFaturamento.ConfigurarGridSomenteLeitura();
+        //    gridFaturamento.ConfigurarGridZebrado();
+        //    gridFaturamento.Columns.AddRange(ObterColunas());
+
+        //    Array valoresEnum = Enum.GetValues(typeof(TipoFaturamentoEnum));
+
+        //    foreach (object valor in valoresEnum)
+        //        cmbTiposFiltro.Items.Add(valor);
+
+        //    cmbTiposFiltro.SelectedIndex = 0;
+        //}
+        //private void cmbTiposFiltro_SelectedIndexChanged(object sender, EventArgs e)
+        //{
+        //    TipoFaturamentoEnum tipoSelecionado =
+        //        (TipoFaturamentoEnum)cmbTiposFiltro.SelectedItem;
+
+        //    if(tipoSelecionado == TipoFaturamentoEnum.Periodo)
+        //    {
+
+        //        lblDataInicial.Visible = true;
+        //        lblDataFinal.Visible = true;
+
+        //        txtDataInicial.Visible = true;
+        //        txtDataInicial.MinDate = new DateTime(2020, 01, 01);
+        //        txtDataInicial.MaxDate = DateTime.Today;
+        //        txtDataInicial.Value = DateTime.Now.AddDays(-7);
+
+        //        txtDataFinal.Visible = true;
+        //        txtDataFinal.MinDate = txtDataInicial.MinDate;
+        //        txtDataFinal.MaxDate = DateTime.Now;
+        //        txtDataFinal.Value = DateTime.Today;
+        //    }
+        //    else
+        //    {
+        //        lblDataInicial.Visible = false;
+        //        lblDataFinal.Visible = false;
+
+        //        txtDataInicial.Visible = false;
+        //        txtDataFinal.Visible = false;
+        //    }
+
+        //    gridFaturamento.Rows.Clear();
+        //}
+
+
+        //private void btnFiltrar_Click(object sender, EventArgs e)
+        //{
+        //    TipoFaturamentoEnum tipoSelecionado =
+        //        (TipoFaturamentoEnum)cmbTiposFiltro.SelectedItem;
+
+        //    Faturamento faturamento = new Faturamento(tipoSelecionado, contasFechadas);
+        //}
+
+        //private DataGridViewColumn[] ObterColunas()
+        //{
+        //    var colunas = new DataGridViewColumn[]
+        //    {
+        //       new DataGridViewTextBoxColumn { DataPropertyName = "Mesa", HeaderText = "Mesa"},
+        //       new DataGridViewTextBoxColumn { DataPropertyName = "Garcom", HeaderText = "Garçom"},
+        //       new DataGridViewTextBoxColumn { DataPropertyName = "ValorTotal", HeaderText = "Valor Total"},
+        //       new DataGridViewTextBoxColumn { DataPropertyName = "Fechamento", HeaderText = "Fechamento"},
+
+        //    };
+
+        //    return colunas;
+        //}
         private List<Conta> contasFechadas;
+
         public TelaVisualizarFaturamentoForm(List<Conta> contasFechadas)
         {
             InitializeComponent();
@@ -26,14 +102,14 @@ namespace ControleDeBar.WinApp.ModuloConta
 
             cmbTiposFiltro.SelectedIndex = 0;
         }
+
         private void cmbTiposFiltro_SelectedIndexChanged(object sender, EventArgs e)
         {
             TipoFaturamentoEnum tipoSelecionado =
-                (TipoFaturamentoEnum)cmbTiposFiltro.SelectedItem;
+              (TipoFaturamentoEnum)cmbTiposFiltro.SelectedItem;
 
-            if(tipoSelecionado == TipoFaturamentoEnum.Periodo)
+            if (tipoSelecionado == TipoFaturamentoEnum.Periodo)
             {
-
                 lblDataInicial.Visible = true;
                 lblDataFinal.Visible = true;
 
@@ -59,24 +135,53 @@ namespace ControleDeBar.WinApp.ModuloConta
             gridFaturamento.Rows.Clear();
         }
 
-
         private void btnFiltrar_Click(object sender, EventArgs e)
         {
             TipoFaturamentoEnum tipoSelecionado =
                 (TipoFaturamentoEnum)cmbTiposFiltro.SelectedItem;
 
             Faturamento faturamento = new Faturamento(tipoSelecionado, contasFechadas);
+
+            decimal totalFaturamento;
+            List<Conta> contasFaturamento;
+
+            if (tipoSelecionado == TipoFaturamentoEnum.Periodo)
+            {
+                DateTime inicioPeriodo = txtDataInicial.Value;
+                DateTime finalPeriodo = txtDataFinal.Value.AddHours(23);
+
+                totalFaturamento = faturamento
+                    .calcularTotalPeriodo(inicioPeriodo, finalPeriodo, out contasFaturamento);
+            }
+            else
+                totalFaturamento = faturamento.CalcularTotal(out contasFaturamento);
+
+            lblValorTotal.Text = totalFaturamento.ToString("C2");
+
+            gridFaturamento.Rows.Clear();
+
+            foreach (Conta c in contasFaturamento)
+            {
+                gridFaturamento.Rows.Add(
+                    c.Id,
+                    c.Fechamento.ToShortDateString(),
+                    c.Mesa,
+                    c.Garcom,
+                    c.CalcularValorTotal().ToString("C2")
+                );
+            }
         }
 
         private DataGridViewColumn[] ObterColunas()
         {
             var colunas = new DataGridViewColumn[]
             {
-               new DataGridViewTextBoxColumn { DataPropertyName = "Mesa", HeaderText = "Mesa"},
-               new DataGridViewTextBoxColumn { DataPropertyName = "Garcom", HeaderText = "Garçom"},
-               new DataGridViewTextBoxColumn { DataPropertyName = "ValorTotal", HeaderText = "Valor Total"},
-               new DataGridViewTextBoxColumn { DataPropertyName = "Fechamento", HeaderText = "Fechamento"},
-
+                new DataGridViewTextBoxColumn { Name = "Id", HeaderText = "Id" },
+                new DataGridViewTextBoxColumn { Name = "Fechamento", HeaderText = "Fechamento" },
+                new DataGridViewTextBoxColumn { Name = "Titular", HeaderText = "Titular", },
+                new DataGridViewTextBoxColumn { Name = "Mesa.Numero", HeaderText = "Mesa" },
+                new DataGridViewTextBoxColumn { Name = "Garcom.Nome", HeaderText = "Garçom" },
+                new DataGridViewTextBoxColumn { Name = "Total", HeaderText = "Total" },
             };
 
             return colunas;
