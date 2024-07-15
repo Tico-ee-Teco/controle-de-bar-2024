@@ -1,13 +1,10 @@
 ﻿
+using ControleDeBar.Dominio.Compartilhar;
+
 namespace ControleDeBar.Dominio.ModuloMesa
 {
-    public interface IRepositorioMesa 
+    public interface IRepositorioMesa : IRepositorio<Mesa>
     {
-        void Adicionar(Mesa mesa);
-        bool Editar(int id, Mesa mesa);
-        bool Excluir(int id);
-
-        Mesa SelecionarPorId(int id);
-        List<Mesa> SelecionarTodos();
+ 
     }
 }

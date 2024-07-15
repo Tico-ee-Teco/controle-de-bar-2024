@@ -12,39 +12,34 @@ namespace ControleDeBar.Infra.ModuloMesa
             this.dbContext = dbContext;
         }
 
-        public void Adicionar(Mesa mesa)
+        public void Adicionar(Mesa registro)
         {
-            dbContext.Mesas.Add(mesa);
+            dbContext.Mesas.Add(registro);
+
             dbContext.SaveChanges();
         }
 
-        public bool Editar(int id, Mesa mesaAtualizada)
+        public bool Editar(Mesa registroOriginal, Mesa registroAtualizado)
         {
-            Mesa mesa = dbContext.Mesas.Find(id)!;
-
-            if (mesa == null)
-            {
+            if (registroOriginal == null || registroAtualizado == null)
                 return false;
-            }
 
-            mesa.AtualizarRegistro(mesaAtualizada);
+            registroOriginal.AtualizarRegistro(registroAtualizado);
 
-            dbContext.Mesas.Update(mesa);
+            dbContext.Mesas.Update(registroOriginal);
+
             dbContext.SaveChanges();
 
             return true;
         }
 
-        public bool Excluir(int id)
+        public bool Excluir(Mesa registro)
         {
-            Mesa mesa = dbContext.Mesas.Find(id)!;
-
-            if (mesa == null)
-            {
+            if (registro == null)
                 return false;
-            }
 
-            dbContext.Mesas.Remove(mesa);
+            dbContext.Mesas.Remove(registro);
+
             dbContext.SaveChanges();
 
             return true;

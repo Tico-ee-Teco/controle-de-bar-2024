@@ -62,7 +62,7 @@
             menuStrip1.Size = new Size(923, 24);
             menuStrip1.TabIndex = 1;
             menuStrip1.Text = "menuStrip1";
-            menuStrip1.ItemClicked += menuStrip1_ItemClicked;
+           
             // 
             // CadastroMenuItem
             // 
@@ -90,14 +90,14 @@
             garçonsToolStripMenuItem.Name = "garçonsToolStripMenuItem";
             garçonsToolStripMenuItem.Size = new Size(122, 22);
             garçonsToolStripMenuItem.Text = "Garçons";
-            garçonsToolStripMenuItem.Click += garçonsToolStripMenuItem_Click;
+            //garçonsToolStripMenuItem.Click += garçonsToolStripMenuItem_Click;
             // 
             // mesasToolStripMenuItem
             // 
             mesasToolStripMenuItem.Name = "mesasToolStripMenuItem";
             mesasToolStripMenuItem.Size = new Size(122, 22);
             mesasToolStripMenuItem.Text = "Mesas";
-            mesasToolStripMenuItem.Click += mesasToolStripMenuItem_Click;
+            //mesasToolStripMenuItem.Click += mesasToolStripMenuItem_Click;
             // 
             // statusStrip1
             // 
@@ -164,7 +164,7 @@
             // btnFecharConta
             // 
             btnFecharConta.DisplayStyle = ToolStripItemDisplayStyle.Image;
-            btnFecharConta.Image = Properties.Resources.btnFecharConta;
+            btnFecharConta.Image = Properties.Resources.btnExcluir;
             btnFecharConta.ImageTransparentColor = Color.Magenta;
             btnFecharConta.Name = "btnFecharConta";
             btnFecharConta.Size = new Size(23, 22);
@@ -180,7 +180,7 @@
             btnRelatorio.Name = "btnRelatorio";
             btnRelatorio.Size = new Size(23, 22);
             btnRelatorio.Text = "Relatorio";
-            btnRelatorio.Click += btnRelatorio_Click;
+            //btnRelatorio.Click += btnRelatorio_Click;
             // 
             // btnFiltrar
             // 

@@ -97,7 +97,7 @@ namespace ControleDeBar.WinApp.ModuloGarcon
                 return;
             }
 
-            repositorioGarcon.Editar(idSelecionado, garconEditado);
+            repositorioGarcon.Editar(garconSelecionado, garconEditado);
 
             CarregarRegistros();
 
@@ -132,7 +132,7 @@ namespace ControleDeBar.WinApp.ModuloGarcon
             if (resultado != DialogResult.Yes)
                 return;
 
-            repositorioGarcon.Excluir(idSelecionado);
+            repositorioGarcon.Excluir(garcomselecionado);
 
             CarregarRegistros();
 

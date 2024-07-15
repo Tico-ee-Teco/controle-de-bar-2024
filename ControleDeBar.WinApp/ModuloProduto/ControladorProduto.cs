@@ -100,7 +100,7 @@ namespace ControleDeBar.WinApp.ModuloProduto
                 return;
             }
 
-            repositorioProduto.Editar(idSelecionado, produtoEditado);
+            repositorioProduto.Editar(produtoSelecionado, produtoEditado);
 
             CarregarRegistros();
 
@@ -135,7 +135,7 @@ namespace ControleDeBar.WinApp.ModuloProduto
             if(resultado != DialogResult.Yes)
                 return;
 
-            repositorioProduto.Excluir(idSelecionado);
+            repositorioProduto.Excluir(produtoSelecionado);
 
             CarregarRegistros();
 

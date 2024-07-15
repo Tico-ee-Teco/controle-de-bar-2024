@@ -7,7 +7,7 @@ using ControleDeBar.WinApp.Compartilhado;
 
 namespace ControleDeBar.WinApp.ModuloConta
 {
-    public class ControladorConta : ControladorBase, IControladorFiltravel, IControladorVisualizavel, IControladorContaFechavel
+    public class ControladorConta : ControladorBase, IControladorFiltravel, IControladorVisualizavel
     {
         public override string TipoCadastro => "Contas";
         public override string ToolTipAdicionar => "Abrir Conta";
@@ -26,19 +26,7 @@ namespace ControleDeBar.WinApp.ModuloConta
         IRepositorioGarcon repositorioGarcom;
         IRepositorioConta repositorioConta;
 
-        public override string ToolTipAdicionar => "Cadastrar uma nova conta";
-
-        public override string ToolTipEditar => "Editar uma conta existente";
-
-        public override string ToolTipExcluir => "Excluir uma conta existente";
-
-        public string ToolTipFecharConta => "Fechar uma conta";
-
-        public string ToolTipFiltrar => "Filtrar contas";
-
-        public string ToolTipVisualizar => "Visualizar Faturamento";
-
-        public ControladorConta(IRepositorioConta repositorioConta, IRepositorioProduto repositorioProduto, IRepositorioMesa repositorioMesa, IRepositorioGarcon repositorioGarcon)
+        public ControladorConta(IRepositorioProduto repositorioProduto, IRepositorioMesa repositorioMesa, IRepositorioGarcon repositorioGarcom, IRepositorioConta repositorioConta)
         {
             this.repositorioProduto = repositorioProduto;
             this.repositorioMesa = repositorioMesa;
@@ -78,8 +66,7 @@ namespace ControleDeBar.WinApp.ModuloConta
 
         public override void Excluir()
         {
-            //FecharConta();
-            throw new NotImplementedException();
+            FecharConta();
         }
 
         public void AtualizarProdutos()
