@@ -42,8 +42,10 @@
             btnEditar = new ToolStripButton();
             btnExcluir = new ToolStripButton();
             toolStripSeparator1 = new ToolStripSeparator();
+            btnFecharConta = new ToolStripButton();
             btnRelatorio = new ToolStripButton();
             btnFiltrar = new ToolStripButton();
+            toolStripSeparator2 = new ToolStripSeparator();
             lblTipoCadastro = new ToolStripLabel();
             toolTip1 = new ToolTip(components);
             pnlRegistros = new Panel();
@@ -114,7 +116,7 @@
             // 
             // toolStrip1
             // 
-            toolStrip1.Items.AddRange(new ToolStripItem[] { btnAdicionar, btnEditar, btnExcluir, toolStripSeparator1, btnRelatorio, btnFiltrar, lblTipoCadastro });
+            toolStrip1.Items.AddRange(new ToolStripItem[] { btnAdicionar, btnEditar, btnExcluir, toolStripSeparator1, btnFecharConta, btnRelatorio, btnFiltrar, toolStripSeparator2, lblTipoCadastro });
             toolStrip1.Location = new Point(0, 24);
             toolStrip1.Name = "toolStrip1";
             toolStrip1.Size = new Size(923, 25);
@@ -159,6 +161,16 @@
             toolStripSeparator1.Name = "toolStripSeparator1";
             toolStripSeparator1.Size = new Size(6, 25);
             // 
+            // btnFecharConta
+            // 
+            btnFecharConta.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            btnFecharConta.Image = Properties.Resources.btnFecharConta;
+            btnFecharConta.ImageTransparentColor = Color.Magenta;
+            btnFecharConta.Name = "btnFecharConta";
+            btnFecharConta.Size = new Size(23, 22);
+            btnFecharConta.Text = "Fechar Conta";
+            btnFecharConta.Click += btnFecharConta_Click;
+            // 
             // btnRelatorio
             // 
             btnRelatorio.DisplayStyle = ToolStripItemDisplayStyle.Image;
@@ -179,6 +191,11 @@
             btnFiltrar.Size = new Size(23, 22);
             btnFiltrar.Text = "Filtrar";
             btnFiltrar.Click += btnFiltrar_Click;
+            // 
+            // toolStripSeparator2
+            // 
+            toolStripSeparator2.Name = "toolStripSeparator2";
+            toolStripSeparator2.Size = new Size(6, 25);
             // 
             // lblTipoCadastro
             // 
@@ -241,5 +258,7 @@
         private ToolStripMenuItem mesasToolStripMenuItem;
         private ToolStripMenuItem contasMenuItem;
         private ToolStripButton btnFiltrar;
+        private ToolStripSeparator toolStripSeparator2;
+        private ToolStripButton btnFecharConta;
     }
 }

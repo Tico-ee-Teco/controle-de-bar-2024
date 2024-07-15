@@ -240,7 +240,13 @@ namespace ControleDeBar.WinApp
         {
             controlador.Excluir();
         }
-
+        private void btnFecharConta_Click(object sender, EventArgs e)
+        {
+            if (controlador is IControladorContaFechavel)
+            {
+                (controlador as IControladorContaFechavel).FecharConta();
+            }
+        }
         private void btnFiltrar_Click(object sender, EventArgs e)
         {
             if (controlador is IControladorFiltravel cF)
@@ -267,6 +273,8 @@ namespace ControleDeBar.WinApp
             btnEditar.Enabled = controladorSelecionado is ControladorBase;
             btnExcluir.Enabled = controladorSelecionado is ControladorBase;
 
+            btnFecharConta.Enabled = controladorSelecionado is ControladorConta;
+
             btnFiltrar.Enabled = controladorSelecionado is IControladorFiltravel;
             btnRelatorio.Enabled = controladorSelecionado is IControladorVisualizavel;
 
@@ -278,7 +286,7 @@ namespace ControleDeBar.WinApp
         {
             btnAdicionar.ToolTipText = controladorSelecionado.ToolTipAdicionar;
             btnEditar.ToolTipText = controladorSelecionado.ToolTipEditar;
-            btnExcluir.ToolTipText = controladorSelecionado.ToolTipExcluir;
+            btnExcluir.ToolTipText = controladorSelecionado.ToolTipExcluir;            
 
             btnAdicionar.Text = "Adicionar";
             btnEditar.Text = "Editar";
@@ -289,6 +297,9 @@ namespace ControleDeBar.WinApp
 
             if (controlador is IControladorVisualizavel controladorVisualizavel)
                 btnRelatorio.ToolTipText = controladorVisualizavel.ToolTipVisualizar;
+
+            if (controlador is IControladorContaFechavel controladorContaFechavel)
+                btnRelatorio.ToolTipText = controladorContaFechavel.ToolTipFecharConta;
 
             if (controlador is ControladorConta controladorConta)
             {
