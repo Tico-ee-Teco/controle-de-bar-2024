@@ -198,7 +198,7 @@
             txtValorTotal.Name = "txtValorTotal";
             txtValorTotal.Size = new Size(74, 20);
             txtValorTotal.TabIndex = 6;
-            txtValorTotal.Text = "R$ 200,00";
+            txtValorTotal.Text = "R$ 0,00";
             // 
             // btnCancelar
             // 
