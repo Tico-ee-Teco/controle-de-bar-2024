@@ -43,9 +43,9 @@
             cmbProduto = new ComboBox();
             label4 = new Label();
             label6 = new Label();
-            txtValorTotal = new TextBox();
             btnCancelar = new Button();
             btnGravar = new Button();
+            lblValorTotal = new Label();
             gpbRegistroPedidos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)nudQuantidade).BeginInit();
             SuspendLayout();
@@ -144,7 +144,7 @@
             btnAddPedido.TabIndex = 6;
             btnAddPedido.Text = "Adicionar";
             btnAddPedido.UseVisualStyleBackColor = true;
-            btnAddPedido.Click += btnAddPedido_Click;
+            btnAddPedido.Click += btnAdicionarPedido_Click;
             // 
             // nudQuantidade
             // 
@@ -189,17 +189,6 @@
             label6.TabIndex = 5;
             label6.Text = "Valor Total:";
             // 
-            // txtValorTotal
-            // 
-            txtValorTotal.BackColor = SystemColors.Control;
-            txtValorTotal.BorderStyle = BorderStyle.None;
-            txtValorTotal.ForeColor = Color.FromArgb(0, 192, 0);
-            txtValorTotal.Location = new Point(78, 451);
-            txtValorTotal.Name = "txtValorTotal";
-            txtValorTotal.Size = new Size(74, 20);
-            txtValorTotal.TabIndex = 6;
-            txtValorTotal.Text = "R$ 0,00";
-            // 
             // btnCancelar
             // 
             btnCancelar.DialogResult = DialogResult.Cancel;
@@ -221,14 +210,25 @@
             btnGravar.UseVisualStyleBackColor = true;
             btnGravar.Click += btnGravar_Click;
             // 
+            // lblValorTotal
+            // 
+            lblValorTotal.AutoSize = true;
+            lblValorTotal.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold);
+            lblValorTotal.ForeColor = Color.ForestGreen;
+            lblValorTotal.Location = new Point(82, 453);
+            lblValorTotal.Name = "lblValorTotal";
+            lblValorTotal.Size = new Size(40, 20);
+            lblValorTotal.TabIndex = 14;
+            lblValorTotal.Text = "0,00";
+            // 
             // TelaContaForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(425, 495);
+            Controls.Add(lblValorTotal);
             Controls.Add(btnCancelar);
             Controls.Add(btnGravar);
-            Controls.Add(txtValorTotal);
             Controls.Add(label6);
             Controls.Add(gpbRegistroPedidos);
             Controls.Add(cmbGarcom);
@@ -265,8 +265,8 @@
         private ListBox listPedido;
         private Button btnRemoverPedido;
         private Label label6;
-        private TextBox txtValorTotal;
         private Button btnCancelar;
         private Button btnGravar;
+        private Label lblValorTotal;
     }
 }

@@ -1,6 +1,7 @@
 ﻿using ControleDeBar.Dominio.Compartilhar;
 using ControleDeBar.Dominio.ModuloGarçon;
 using ControleDeBar.Dominio.ModuloMesa;
+using ControleDeBar.Dominio.ModuloProduto;
 
 namespace ControleDeBar.Dominio.ModuloConta
 {
@@ -59,12 +60,14 @@ namespace ControleDeBar.Dominio.ModuloConta
             ContaPaga = contaEditado.ContaPaga;     
         }
 
-        public void AdicionarPedido(Pedido pedido)
+        public Pedido AdicionarPedido(Produto produto, int quantidadeEscolhida)
         {
-            if(Pedidos == null)
-                Pedidos = new List<Pedido>();
+            Pedido novoPedido = new Pedido(produto, quantidadeEscolhida);
 
-            Pedidos.Add(pedido);
+            Pedidos.Add(novoPedido);
+
+            return novoPedido;
+            
         }
 
         public void RemoverPedido(Pedido pedido)
