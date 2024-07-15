@@ -1,4 +1,4 @@
-﻿using ControleDeBar.Dominio;
+﻿
 using ControleDeBar.Dominio.ModuloConta;
 using ControleDeBar.WinApp.Compartilhado.Extensions;
 

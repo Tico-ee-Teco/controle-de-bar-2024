@@ -2,18 +2,29 @@
 using ControleDeBar.Dominio.ModuloGarçon;
 using ControleDeBar.Dominio.ModuloMesa;
 using ControleDeBar.Dominio.ModuloProduto;
+using ControleDeBar.Infra.ModuloGarcon;
 using ControleDeBar.WinApp.Compartilhado;
 
 namespace ControleDeBar.WinApp.ModuloConta
 {
     public class ControladorConta : ControladorBase, IControladorFiltravel, IControladorVisualizavel, IControladorContaFechavel
     {
+        public override string TipoCadastro => "Contas";
+        public override string ToolTipAdicionar => "Abrir Conta";
+        public override string ToolTipEditar => "Atualizar Produtos";
+        public override string ToolTipExcluir => "Fechar Conta";
+        public string ToolTipFiltrar => "Filtrar Contas";
+        public string ToolTipVisualizar => "Visualizar Faturamento";
+
+        public Bitmap IconeAdicionarProduto => Properties.Resources.btnAdicionar;
+        public Bitmap IconeFecharConta => Properties.Resources.btnExcluir;
+
         TabelaContaControl tabelaConta;
-        IRepositorioConta repositorioConta;
+
         IRepositorioProduto repositorioProduto;
         IRepositorioMesa repositorioMesa;
-        IRepositorioGarcon repositorioGarcon;
-        public override string TipoCadastro => "Conta";
+        IRepositorioGarcon repositorioGarcom;
+        IRepositorioConta repositorioConta;
 
         public override string ToolTipAdicionar => "Cadastrar uma nova conta";
 
@@ -29,38 +40,40 @@ namespace ControleDeBar.WinApp.ModuloConta
 
         public ControladorConta(IRepositorioConta repositorioConta, IRepositorioProduto repositorioProduto, IRepositorioMesa repositorioMesa, IRepositorioGarcon repositorioGarcon)
         {
-            this.repositorioConta = repositorioConta;
             this.repositorioProduto = repositorioProduto;
             this.repositorioMesa = repositorioMesa;
-            this.repositorioGarcon = repositorioGarcon;
+            this.repositorioGarcom = repositorioGarcom;
+            this.repositorioConta = repositorioConta;
         }
+
         public override void Adicionar()
         {
-            List<Produto> produtosCadastrados = repositorioProduto.SelecionarTodos();
-            List<Mesa> mesasCadastradas = repositorioMesa.SelecionarTodos();
-            List<Garcom> garconsCadastrados = repositorioGarcon.SelecionarTodos();
+            List<Mesa> mesas = repositorioMesa.SelecionarTodos();
 
-            TelaContaForm telaConta = new TelaContaForm(mesasCadastradas,garconsCadastrados,produtosCadastrados );
+            List<Garcom> garcons = repositorioGarcom.SelecionarTodos();
+
+            List<Produto> produtos = repositorioProduto.SelecionarTodos();
+
+            TelaContaForm telaConta = new TelaContaForm(mesas, garcons, produtos);
 
             DialogResult resultado = telaConta.ShowDialog();
 
-            if (resultado != DialogResult.OK)
-                return;
+            if (resultado != DialogResult.OK) return;
 
-            Conta novaConta = telaConta.Conta;
+            Conta contaCriada = telaConta.Conta;
 
-            repositorioConta.Adicionar(novaConta);
+            repositorioConta.Adicionar(contaCriada);
 
             CarregarRegistros();
 
             TelaPrincipalForm
                 .Instancia
-                .AtualizarRodape($"Conta: {novaConta.Id} inserida com sucesso");
+                .AtualizarRodape($"Conta \"{contaCriada.Id}\" aberta com sucesso!");
         }
 
         public override void Editar()
         {
-            AtualizarProduto();
+            AtualizarProdutos();
         }
 
         public override void Excluir()
@@ -68,10 +81,13 @@ namespace ControleDeBar.WinApp.ModuloConta
             //FecharConta();
             throw new NotImplementedException();
         }
-        private void AtualizarProduto()
+
+        public void AtualizarProdutos()
         {
             List<Mesa> mesas = repositorioMesa.SelecionarTodos();
-            List<Garcom> garcons = repositorioGarcon.SelecionarTodos();
+
+            List<Garcom> garcons = repositorioGarcom.SelecionarTodos();
+
             List<Produto> produtos = repositorioProduto.SelecionarTodos();
 
             int idSelecionado = tabelaConta.ObterRegistroSelecionado();
@@ -95,8 +111,7 @@ namespace ControleDeBar.WinApp.ModuloConta
 
             DialogResult resultado = telaConta.ShowDialog();
 
-            if (resultado != DialogResult.OK)
-                return;
+            if (resultado != DialogResult.OK) return;
 
             Conta contaAtualizada = telaConta.Conta;
 
@@ -106,7 +121,7 @@ namespace ControleDeBar.WinApp.ModuloConta
 
             TelaPrincipalForm
                 .Instancia
-                .AtualizarRodape($"Conta: {contaAtualizada.Id} atualizada com sucesso");
+                .AtualizarRodape($"Conta de \"{contaAtualizada.Id}\" foi atualizada com sucesso!");
         }
 
         public void FecharConta()
@@ -118,10 +133,10 @@ namespace ControleDeBar.WinApp.ModuloConta
             if (contaSelecionada == null)
             {
                 MessageBox.Show(
-                    "Selecione uma conta para fechar!",
-                    "Fechar Conta",
-                    MessageBoxButtons.OK, 
-                    MessageBoxIcon.Exclamation);
+                    "Você precisa selecionar um registro para executar esta ação!",
+                    "Aviso",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
 
                 return;
             }
@@ -129,21 +144,20 @@ namespace ControleDeBar.WinApp.ModuloConta
             if(contaSelecionada.ContaPaga)
             {
                 MessageBox.Show(
-                    "Conta não pode ser fechada, pois ainda não foi paga!",
-                    "Fechar Conta",
-                    MessageBoxButtons.OK, 
-                    MessageBoxIcon.Exclamation);
+                    "Esta conta já foi fechada!",
+                    "Aviso",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
 
                 return;
             }
 
-            TelaFechamentoContaForm telaFechamentoConta = 
+            TelaFechamentoContaForm telaFechamentoConta =
                 new TelaFechamentoContaForm(contaSelecionada);
 
             DialogResult resultado = telaFechamentoConta.ShowDialog();
 
-            if(resultado != DialogResult.OK)
-                return;
+            if (resultado != DialogResult.OK) return;
 
             Conta contaFechada = telaFechamentoConta.Conta;
 
@@ -153,7 +167,7 @@ namespace ControleDeBar.WinApp.ModuloConta
 
             TelaPrincipalForm
                 .Instancia
-                .AtualizarRodape($"Conta: {contaSelecionada.Id} fechada com sucesso");
+                .AtualizarRodape($"Conta de \"{contaSelecionada.Id}\" foi fechada com sucesso!");
         }
 
         public void Filtrar()
@@ -196,6 +210,13 @@ namespace ControleDeBar.WinApp.ModuloConta
             telaFaturamento.ShowDialog();
         }
 
+        public override void CarregarRegistros()
+        {
+            List<Conta> contas = repositorioConta.SelecionarContas();
+
+            tabelaConta.AtualizarRegistros(contas);
+        }
+
         public override UserControl ObterListagem()
         {
             if (tabelaConta == null)
@@ -205,15 +226,9 @@ namespace ControleDeBar.WinApp.ModuloConta
 
             return tabelaConta;
         }
-        public override void CarregarRegistros()
-        {
-            List<Conta> contas = repositorioConta.SelecionarTodos()!;
 
-            tabelaConta.AtualizarRegistros(contas);
-        }
 
-       
 
-       
+
     }
 }

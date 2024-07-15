@@ -11,10 +11,8 @@ namespace ControleDeBar.WinApp.ModuloPedido
             get => pedido;
             set
             {
-                txtId.Text = value.Id.ToString();                
-                //txtNumeroMesa.Text = value.NumeroMesa.ToString();                
+                txtId.Text = value.Id.ToString();                         
                 nudQtde.Value = value.Qtde;
-                //nudPreco.Value = value.Preco;
 
                 Produto produtoSelecionado = produtosCadastrados.Find(p => p.Nome == value.Produto.Nome);
 
@@ -46,7 +44,6 @@ namespace ControleDeBar.WinApp.ModuloPedido
             int numeroPedido = Convert.ToInt32(txtNumeroPedido.Text);
             int numeroMesa = Convert.ToInt32(txtNumeroMesa.Text);
             Produto produto = produtosCadastrados.Find(p => p.Nome == cmbItem.SelectedItem.ToString());
-            //Produto produto = produtosCadastrados.Find(p => p.Nome == cmbItem.Text);
             int qtde = Convert.ToInt32(nudQtde.Value);
             decimal preco = Convert.ToInt32(nudPreco.Value);  
            

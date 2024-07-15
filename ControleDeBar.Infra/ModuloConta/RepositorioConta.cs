@@ -26,7 +26,8 @@ namespace ControleDeBar.Infra.ModuloConta
 
             dbContext.Contas.Update(contaAtualizada);
 
-            dbContext.Pedidos.RemoveRange(pedidosRemovidos); 
+            dbContext.Pedidos.RemoveRange(pedidosRemovidos);
+            
 
             dbContext.SaveChanges();
 

@@ -1,8 +1,6 @@
-﻿using ControleDeBar.Dominio.ModuloGarçon;
+﻿
 using ControleDeBar.Dominio.ModuloMesa;
-using ControleDeBar.Infra.ModuloGarcon;
 using ControleDeBar.WinApp.Compartilhado;
-
 
 namespace ControleDeBar.WinApp.ModuloMesa
 {
@@ -48,17 +46,6 @@ namespace ControleDeBar.WinApp.ModuloMesa
                 );
                 return;
             }
-
-            //if (repositorioMesa.SelecionarTodos().Any(m => m.Numero.Equals(mesacriada.Numero.Trim(), StringComparison.OrdinalIgnoreCase)))
-            //{
-            //    MessageBox.Show(
-            //        $"Já existe uma Mesa com o numero \"{mesacriada.Numero}\".",
-            //        "Erro",
-            //        MessageBoxButtons.OK,
-            //        MessageBoxIcon.Error
-            //    );
-            //    return;
-            //}
 
             repositorioMesa.Adicionar(mesacriada);
 
@@ -136,7 +123,7 @@ namespace ControleDeBar.WinApp.ModuloMesa
             }
 
             DialogResult resultado = MessageBox.Show(
-                $"Tem certeza que deseja excluir o Garcon \"{mesaselecionada.Numero}\"?",
+                $"Tem certeza que deseja excluir A mesa \"{mesaselecionada.Numero}\"?",
                 "Excluir Garcom",
                 MessageBoxButtons.YesNo,
                 MessageBoxIcon.Question);

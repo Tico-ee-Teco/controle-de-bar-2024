@@ -1,14 +1,13 @@
 ﻿using ControleDeBar.Dominio.Compartilhar;
 using ControleDeBar.Dominio.ModuloGarçon;
 using ControleDeBar.Dominio.ModuloMesa;
+using ControleDeBar.Dominio.ModuloProduto;
 
 namespace ControleDeBar.Dominio.ModuloConta
 {
     public class Conta : EntidadeBase
     {
         public Mesa Mesa { get; set; }        
-
-        //public decimal ValorTotal { get; }
        
         public Garcom Garcom { get; set; }         
 
@@ -61,12 +60,14 @@ namespace ControleDeBar.Dominio.ModuloConta
             ContaPaga = contaEditado.ContaPaga;     
         }
 
-        public void AdicionarPedido(Pedido pedido)
+        public Pedido AdicionarPedido(Produto produto, int quantidadeEscolhida)
         {
-            if(Pedidos == null)
-                Pedidos = new List<Pedido>();
+            Pedido novoPedido = new Pedido(produto, quantidadeEscolhida);
 
-            Pedidos.Add(pedido);
+            Pedidos.Add(novoPedido);
+
+            return novoPedido;
+            
         }
 
         public void abrirConta()

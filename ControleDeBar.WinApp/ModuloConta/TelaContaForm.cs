@@ -16,74 +16,98 @@ namespace ControleDeBar.WinApp.ModuloConta
             {
                 conta = value;
 
-                txtId.Text = value.Id.ToString();
+                txtId.Text = value.Id.ToString();             
 
                 cmbMesa.SelectedItem = value.Mesa;
-                cmbGarcom.SelectedItem = value.Garcom;                                
+                cmbGarcom.SelectedItem = value.Garcom;
 
                 foreach (Pedido pedido in value.Pedidos)
                     listPedido.Items.Add(pedido);
 
-                AtualizarTxtValorTotal();
-                
+                ConfigurarCamposAtualizacaoConta();
+
+                AtualizarLabelValorTotal();
             }
         }
 
+        public List<Pedido> PedidosRemovidos { get; set; }
+
         private Conta conta;
 
-        public List<Produto> produtosCadastrados;        
-        public List<Mesa> mesasCadastradas;
-        public List<Garcom> garconsCadastrados;
-        public List<Pedido> PedidosRemovidos { get; set; }
-        public TelaContaForm(List<Mesa> mesasCadastradas, List<Garcom> garconsCadastrados, List<Produto> produtosCadastrados)
+        private List<Mesa> mesas;
+        private List<Garcom> garcons;
+        private List<Produto> produtos;
+
+        public TelaContaForm(List<Mesa> mesas, List<Garcom> garcons, List<Produto> produtos)
         {
             InitializeComponent();
 
             this.ConfigurarDialog();
 
-            this.mesasCadastradas = mesasCadastradas;
-            this.garconsCadastrados = garconsCadastrados;
-            this.produtosCadastrados = produtosCadastrados;
-            
-            foreach(Mesa mesa in mesasCadastradas)
+            this.mesas = mesas;
+            this.garcons = garcons;
+            this.produtos = produtos;
+
+            PedidosRemovidos = new List<Pedido>();
+
+            foreach (Mesa mesa in mesas)
                 cmbMesa.Items.Add(mesa);
 
-            foreach(Garcom garcom in garconsCadastrados)
-                cmbGarcom.Items.Add(garcom);
+            cmbMesa.SelectedIndex = 0;
 
-            foreach(Produto produto in produtosCadastrados)
-                cmbProduto.Items.Add(produto);                     
+            foreach (Garcom garcon in garcons)
+                cmbGarcom.Items.Add(garcon);
 
+            cmbGarcom.SelectedIndex = 0;
+
+            foreach (Produto produto in produtos)
+                cmbProduto.Items.Add(produto);
         }
 
-        private void CarregarInformacao()
+        private void btnGravar_Click(object sender, EventArgs e)
         {
-            cmbMesa.Items.AddRange(mesasCadastradas.ToArray());
-            cmbGarcom.Items.AddRange(garconsCadastrados.ToArray());
-            cmbProduto.Items.AddRange(produtosCadastrados.ToArray());
-        }
+            if (conta == null)
+                conta = ObterConta();
 
-        private void btnAddPedido_Click(object sender, EventArgs e)
-        {
-            Produto produtoSelecionado = (Produto)cmbProduto.SelectedItem;
-            int quantidade = (int)nudQuantidade.Value;
+            List<string> erros = conta.Validar();
 
-
-            if (produtoSelecionado == null || quantidade <= 0)
+            if (erros.Count > 0)
             {
-                MessageBox.Show("Selecione um produto e informe a quantidade");
+                TelaPrincipalForm
+                    .Instancia
+                    .AtualizarRodape(erros[0]);
+
+                DialogResult = DialogResult.None;
+
+                return;
+            }
+        }
+
+        private void btnAdicionarPedido_Click(object sender, EventArgs e)
+        {
+            if (!ContaPodeSerUtilizada())
+            {
+                TelaPrincipalForm
+                    .Instancia
+                    .AtualizarRodape("Preencha os campos anteriores antes de criar um pedido!");
 
                 return;
             }
 
-            Pedido pedido = new Pedido(produtoSelecionado, quantidade);
+            if (conta == null)
+                conta = ObterConta();
+
+            Produto produtoSelecionado = (Produto)cmbProduto.SelectedItem;
+            int quantidadeSolicitada = (int)nudQuantidade.Value;
+
+            Pedido pedido = conta.AdicionarPedido(produtoSelecionado, quantidadeSolicitada);
 
             listPedido.Items.Add(pedido);
 
-            AtualizarTxtValorTotal();
+            AtualizarLabelValorTotal();
 
             ResetarQuantidadeSolicitada();
-        }        
+        }
 
         private void btnRemoverPedido_Click(object sender, EventArgs e)
         {
@@ -92,8 +116,8 @@ namespace ControleDeBar.WinApp.ModuloConta
             if (pedidoSelecionado == null)
             {
                 TelaPrincipalForm
-                 .Instancia
-                 .AtualizarRodape("Um pedido precisa ser selecionado antes de remover!");
+                    .Instancia
+                    .AtualizarRodape("Um pedido precisa ser selecionado antes de remover!");
 
                 return;
             }
@@ -104,45 +128,43 @@ namespace ControleDeBar.WinApp.ModuloConta
 
             listPedido.Items.Remove(pedidoSelecionado);
 
-            AtualizarTxtValorTotal();
-        }
-
-        
-
-        private void btnGravar_Click(object sender, EventArgs e)
-        {
-            Mesa mesaSelecionada = (Mesa)cmbMesa.SelectedItem;
-            Garcom garcomSelecionado = (Garcom)cmbGarcom.SelectedItem;
-
-            //if (mesaSelecionada == null || garcomSelecionado == null || pedidos.Count == 0)
-            //{
-            //    MessageBox.Show("Selecione uma mesa, um garçom e adicione pelo menos um pedido");
-
-            //    return;
-            //}
-
-            conta = new Conta(mesaSelecionada, garcomSelecionado);
-
-            List<string> erros = conta.Validar();
-
-            if (erros.Count > 0)
-            {
-                TelaPrincipalForm.Instancia.AtualizarRodape(erros[0]);
-
-                DialogResult = DialogResult.None;
-
-            }
-
-        }
-
-        private void AtualizarTxtValorTotal()
-        {
-            txtValorTotal.Text = conta.CalcularValorTotal().ToString("C");
+            AtualizarLabelValorTotal();
         }
 
         private void ResetarQuantidadeSolicitada()
         {
             nudQuantidade.Value = nudQuantidade.Minimum;
-        }   
+        }
+
+        private void ConfigurarCamposAtualizacaoConta()
+        {
+            this.Text = "Gerência de Conta";
+
+            cmbMesa.Enabled = false;
+            cmbGarcom.Enabled = false;
+        }
+
+        private void AtualizarLabelValorTotal()
+        {
+            lblValorTotal.Text = conta.CalcularValorTotal().ToString("C2");
+        }
+
+        private bool ContaPodeSerUtilizada()
+        {
+            bool dadosEstaoPreenchidos =              
+                cmbMesa.SelectedItem != null &&
+                cmbGarcom.SelectedItem != null;
+
+            return dadosEstaoPreenchidos || conta != null;
+        }
+
+
+        private Conta ObterConta()
+        {
+            Mesa mesa = (Mesa)cmbMesa.SelectedItem;
+            Garcom garcom = (Garcom)cmbGarcom.SelectedItem;
+
+            return new Conta( mesa, garcom);
+        }
     }
 }
