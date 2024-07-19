@@ -159,16 +159,16 @@
             // 
             toolStripSeparator1.Name = "toolStripSeparator1";
             toolStripSeparator1.Size = new Size(6, 25);
-            // 
-            // btnFecharConta
-            // 
-            btnFecharConta.DisplayStyle = ToolStripItemDisplayStyle.Image;
-            btnFecharConta.Image = Properties.Resources.btnExcluir;
-            btnFecharConta.ImageTransparentColor = Color.Magenta;
-            btnFecharConta.Name = "btnFecharConta";
-            btnFecharConta.Size = new Size(23, 22);
-            btnFecharConta.Text = "Fechar Conta";
-            btnFecharConta.Click += btnFecharConta_Click;
+            //// 
+            //// btnFecharConta
+            //// 
+            //btnFecharConta.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            //btnFecharConta.Image = Properties.Resources.btnExcluir;
+            //btnFecharConta.ImageTransparentColor = Color.Magenta;
+            //btnFecharConta.Name = "btnFecharConta";
+            //btnFecharConta.Size = new Size(23, 22);
+            //btnFecharConta.Text = "Fechar Conta";
+            //btnFecharConta.Click += btnFecharConta_Click;
             // 
             // btnRelatorio
             // 
