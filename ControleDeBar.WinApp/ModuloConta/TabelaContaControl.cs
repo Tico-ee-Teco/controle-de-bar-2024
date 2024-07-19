@@ -40,7 +40,7 @@ namespace ControleDeBar.WinApp.ModuloConta
 
         private DataGridViewColumn[] ObterColunas()
         {
-            return new DataGridViewColumn[]
+            var colunas = new DataGridViewColumn[]
             {
                 new DataGridViewTextBoxColumn { DataPropertyName = "Id", HeaderText = "Id" },
                 new DataGridViewTextBoxColumn { DataPropertyName = "Mesa", HeaderText = "Número da Mesa" },
@@ -48,6 +48,8 @@ namespace ControleDeBar.WinApp.ModuloConta
                 new DataGridViewTextBoxColumn { DataPropertyName = "ContaPaga", HeaderText = "Status da Conta" }
                
             };
+
+            return colunas;
         }
     }
 }

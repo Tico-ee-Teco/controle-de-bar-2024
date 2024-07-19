@@ -42,7 +42,6 @@
             btnEditar = new ToolStripButton();
             btnExcluir = new ToolStripButton();
             toolStripSeparator1 = new ToolStripSeparator();
-            btnFecharConta = new ToolStripButton();
             btnRelatorio = new ToolStripButton();
             btnFiltrar = new ToolStripButton();
             toolStripSeparator2 = new ToolStripSeparator();
@@ -62,7 +61,6 @@
             menuStrip1.Size = new Size(923, 24);
             menuStrip1.TabIndex = 1;
             menuStrip1.Text = "menuStrip1";
-            menuStrip1.ItemClicked += menuStrip1_ItemClicked;
             // 
             // CadastroMenuItem
             // 
@@ -90,14 +88,12 @@
             garçonsToolStripMenuItem.Name = "garçonsToolStripMenuItem";
             garçonsToolStripMenuItem.Size = new Size(122, 22);
             garçonsToolStripMenuItem.Text = "Garçons";
-            garçonsToolStripMenuItem.Click += garçonsToolStripMenuItem_Click;
             // 
             // mesasToolStripMenuItem
             // 
             mesasToolStripMenuItem.Name = "mesasToolStripMenuItem";
             mesasToolStripMenuItem.Size = new Size(122, 22);
             mesasToolStripMenuItem.Text = "Mesas";
-            mesasToolStripMenuItem.Click += mesasToolStripMenuItem_Click;
             // 
             // statusStrip1
             // 
@@ -116,7 +112,7 @@
             // 
             // toolStrip1
             // 
-            toolStrip1.Items.AddRange(new ToolStripItem[] { btnAdicionar, btnEditar, btnExcluir, toolStripSeparator1, btnFecharConta, btnRelatorio, btnFiltrar, toolStripSeparator2, lblTipoCadastro });
+            toolStrip1.Items.AddRange(new ToolStripItem[] { btnAdicionar, btnEditar, btnExcluir, toolStripSeparator1, btnRelatorio, btnFiltrar, toolStripSeparator2, lblTipoCadastro });
             toolStrip1.Location = new Point(0, 24);
             toolStrip1.Name = "toolStrip1";
             toolStrip1.Size = new Size(923, 25);
@@ -161,16 +157,6 @@
             toolStripSeparator1.Name = "toolStripSeparator1";
             toolStripSeparator1.Size = new Size(6, 25);
             // 
-            // btnFecharConta
-            // 
-            btnFecharConta.DisplayStyle = ToolStripItemDisplayStyle.Image;
-            btnFecharConta.Image = Properties.Resources.btnFecharConta;
-            btnFecharConta.ImageTransparentColor = Color.Magenta;
-            btnFecharConta.Name = "btnFecharConta";
-            btnFecharConta.Size = new Size(23, 22);
-            btnFecharConta.Text = "Fechar Conta";
-            btnFecharConta.Click += btnFecharConta_Click;
-            // 
             // btnRelatorio
             // 
             btnRelatorio.DisplayStyle = ToolStripItemDisplayStyle.Image;
@@ -180,7 +166,6 @@
             btnRelatorio.Name = "btnRelatorio";
             btnRelatorio.Size = new Size(23, 22);
             btnRelatorio.Text = "Relatorio";
-            btnRelatorio.Click += btnRelatorio_Click;
             // 
             // btnFiltrar
             // 
@@ -259,6 +244,5 @@
         private ToolStripMenuItem contasMenuItem;
         private ToolStripButton btnFiltrar;
         private ToolStripSeparator toolStripSeparator2;
-        private ToolStripButton btnFecharConta;
     }
 }

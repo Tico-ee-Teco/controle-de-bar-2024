@@ -2,43 +2,30 @@
 using ControleDeBar.Dominio.ModuloGarçon;
 using ControleDeBar.Dominio.ModuloMesa;
 using ControleDeBar.Dominio.ModuloProduto;
-using ControleDeBar.Infra.ModuloGarcon;
 using ControleDeBar.WinApp.Compartilhado;
 
 namespace ControleDeBar.WinApp.ModuloConta
 {
-    public class ControladorConta : ControladorBase, IControladorFiltravel, IControladorVisualizavel, IControladorContaFechavel
+    public class ControladorConta : ControladorBase, IControladorFiltravel, IControladorVisualizavel
     {
         public override string TipoCadastro => "Contas";
         public override string ToolTipAdicionar => "Abrir Conta";
-        public override string ToolTipEditar => "Atualizar Produtos";
+        public override string ToolTipEditar => "Atualizar Produto";
         public override string ToolTipExcluir => "Fechar Conta";
         public string ToolTipFiltrar => "Filtrar Contas";
         public string ToolTipVisualizar => "Visualizar Faturamento";
 
-        public Bitmap IconeAdicionarProduto => Properties.Resources.btnAdicionar;
-        public Bitmap IconeFecharConta => Properties.Resources.btnExcluir;
+        public Bitmap IconeAdicionarProduto => Properties.Resources.btnAdicionarProduto;
+        public Bitmap IconeFecharConta => Properties.Resources.btnFecharConta;       
 
         TabelaContaControl tabelaConta;
 
         IRepositorioProduto repositorioProduto;
         IRepositorioMesa repositorioMesa;
         IRepositorioGarcon repositorioGarcom;
-        IRepositorioConta repositorioConta;
+        IRepositorioConta repositorioConta;      
 
-        public override string ToolTipAdicionar => "Cadastrar uma nova conta";
-
-        public override string ToolTipEditar => "Editar uma conta existente";
-
-        public override string ToolTipExcluir => "Excluir uma conta existente";
-
-        public string ToolTipFecharConta => "Fechar uma conta";
-
-        public string ToolTipFiltrar => "Filtrar contas";
-
-        public string ToolTipVisualizar => "Visualizar Faturamento";
-
-        public ControladorConta(IRepositorioConta repositorioConta, IRepositorioProduto repositorioProduto, IRepositorioMesa repositorioMesa, IRepositorioGarcon repositorioGarcon)
+        public ControladorConta(IRepositorioProduto repositorioProduto, IRepositorioMesa repositorioMesa, IRepositorioGarcon repositorioGarcom, IRepositorioConta repositorioConta)
         {
             this.repositorioProduto = repositorioProduto;
             this.repositorioMesa = repositorioMesa;
@@ -78,8 +65,7 @@ namespace ControleDeBar.WinApp.ModuloConta
 
         public override void Excluir()
         {
-            //FecharConta();
-            throw new NotImplementedException();
+            FecharConta();            
         }
 
         public void AtualizarProdutos()
@@ -226,9 +212,6 @@ namespace ControleDeBar.WinApp.ModuloConta
 
             return tabelaConta;
         }
-
-
-
 
     }
 }
