@@ -1,12 +1,9 @@
-﻿namespace ControleDeBar.Dominio.ModuloProduto
-{
-    public interface IRepositorioProduto
-    {
-        void Adicionar(Produto produto);
-        bool Editar(int id, Produto produto);
-        bool Excluir(int id);
+﻿using ControleDeBar.Dominio.Compartilhar;
 
-        Produto SelecionarPorId(int id);
-        List<Produto> SelecionarTodos();
+namespace ControleDeBar.Dominio.ModuloProduto
+{
+    public interface IRepositorioProduto : IRepositorio<Produto>
+    {
+       
     }
 }

@@ -18,6 +18,10 @@ namespace ControleDeBar.WinApp.ModuloConta
 
             ConfigurarCamposExibicao();
         }
+        private void btnFecharConta_Click(object sender, EventArgs e)
+        {
+            Conta.Fechar();
+        }
 
         private void ConfigurarCamposExibicao()
         {

@@ -1,14 +1,10 @@
 ﻿
+using ControleDeBar.Dominio.Compartilhar;
 
 namespace ControleDeBar.Dominio.ModuloGarçon
 {
-    public interface IRepositorioGarcon
+    public interface IRepositorioGarcon : IRepositorio<Garcom>
     {
-        void Adicionar(Garcom garcom);
-        bool Editar(int id, Garcom garcom);
-        bool Excluir(int id);
-
-        Garcom SelecionarPorId(int id);
-        List<Garcom> SelecionarTodos();
+      
     }
 }

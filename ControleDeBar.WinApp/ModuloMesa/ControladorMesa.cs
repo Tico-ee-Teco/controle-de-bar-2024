@@ -96,7 +96,7 @@ namespace ControleDeBar.WinApp.ModuloMesa
                 return;
             }
 
-            repositorioMesa.Editar(idSelecionado, mesaEditada);
+            repositorioMesa.Editar(mesaselecionada, mesaEditada);
 
             CarregarRegistros();
 
@@ -131,7 +131,7 @@ namespace ControleDeBar.WinApp.ModuloMesa
             if (resultado != DialogResult.Yes)
                 return;
 
-            repositorioMesa.Excluir(idSelecionado);
+            repositorioMesa.Excluir(mesaselecionada);
 
             CarregarRegistros();
 

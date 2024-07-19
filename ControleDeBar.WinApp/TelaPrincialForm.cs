@@ -15,7 +15,6 @@ using ControleDeBar.WinApp.ModuloMesa;
 
 namespace ControleDeBar.WinApp
 {
-   
     public partial class TelaPrincipalForm : Form
     {
         public static TelaPrincipalForm Instancia { get; private set; }
@@ -97,7 +96,7 @@ namespace ControleDeBar.WinApp
         {
             controlador.Excluir();
         }
-       
+
         private void btnFiltrar_Click(object sender, EventArgs e)
         {
             if (controlador is IControladorFiltravel cF)
@@ -135,7 +134,7 @@ namespace ControleDeBar.WinApp
         {
             btnAdicionar.ToolTipText = controladorSelecionado.ToolTipAdicionar;
             btnEditar.ToolTipText = controladorSelecionado.ToolTipEditar;
-            btnExcluir.ToolTipText = controladorSelecionado.ToolTipExcluir;            
+            btnExcluir.ToolTipText = controladorSelecionado.ToolTipExcluir;
 
             btnAdicionar.Text = "Adicionar";
             btnEditar.Text = "Editar";
@@ -146,9 +145,6 @@ namespace ControleDeBar.WinApp
 
             if (controlador is IControladorVisualizavel controladorVisualizavel)
                 btnRelatorio.ToolTipText = controladorVisualizavel.ToolTipVisualizar;
-
-            if (controlador is IControladorContaFechavel controladorContaFechavel)
-                btnRelatorio.ToolTipText = controladorContaFechavel.ToolTipFecharConta;
 
             if (controlador is ControladorConta controladorConta)
             {

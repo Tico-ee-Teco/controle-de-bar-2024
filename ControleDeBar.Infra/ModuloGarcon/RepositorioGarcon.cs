@@ -13,39 +13,34 @@ namespace ControleDeBar.Infra.ModuloGarcon
             this.dbContext = dbContext;
         }
 
-        public void Adicionar(Garcom garcom)
+        public void Adicionar(Garcom registro)
         {
-            dbContext.Garcons.Add(garcom);
+            dbContext.Garcons.Add(registro);
+
             dbContext.SaveChanges();
         }
 
-        public bool Editar(int id, Garcom garconatualizado)
+        public bool Editar(Garcom registroOriginal, Garcom registroAtualizado)
         {
-            Garcom garcom = dbContext.Garcons.Find(id)!;
-
-            if (garcom == null)
-            {
+            if (registroOriginal == null || registroAtualizado == null)
                 return false;
-            }
 
-            garcom.AtualizarRegistro(garconatualizado);
+            registroOriginal.AtualizarRegistro(registroAtualizado);
 
-            dbContext.Garcons.Update(garcom);
+            dbContext.Garcons.Update(registroOriginal);
+
             dbContext.SaveChanges();
 
             return true;
         }
 
-        public bool Excluir(int id)
+        public bool Excluir(Garcom registro)
         {
-            Garcom garcom = dbContext.Garcons.Find(id)!;
-
-            if (garcom == null)
-            {
+            if (registro == null)
                 return false;
-            }
 
-            dbContext.Garcons.Remove(garcom);
+            dbContext.Garcons.Remove(registro);
+
             dbContext.SaveChanges();
 
             return true;

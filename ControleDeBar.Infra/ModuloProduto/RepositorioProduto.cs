@@ -12,39 +12,34 @@ namespace ControleDeBar.Infra.ModuloProduto
             this.dbContext = dbContext;
         }
 
-        public void Adicionar(Produto produto)
+        public void Adicionar(Produto registro)
         {
-            dbContext.Produtos.Add(produto);
+            dbContext.Produtos.Add(registro);
+
             dbContext.SaveChanges();
         }
 
-        public bool Editar(int id,Produto produtoAtualizado)
+        public bool Editar(Produto registroOriginal, Produto registroAtualizado)
         {
-            Produto produto = dbContext.Produtos.Find(id)!;
-
-            if(produto == null)
-            {
+            if (registroOriginal == null || registroAtualizado == null)
                 return false;
-            }
 
-            produto.AtualizarRegistro(produtoAtualizado);
+            registroOriginal.AtualizarRegistro(registroAtualizado);
 
-            dbContext.Produtos.Update(produto);
+            dbContext.Produtos.Update(registroOriginal);
+
             dbContext.SaveChanges();
 
             return true;
         }
 
-        public bool Excluir(int id)
+        public bool Excluir(Produto registro)
         {
-            Produto produto = dbContext.Produtos.Find(id)!;
-
-            if(produto == null)
-            {
+            if (registro == null)
                 return false;
-            }
 
-            dbContext.Produtos.Remove(produto);
+            dbContext.Produtos.Remove(registro);
+
             dbContext.SaveChanges();
 
             return true;
@@ -52,12 +47,13 @@ namespace ControleDeBar.Infra.ModuloProduto
 
         public Produto SelecionarPorId(int id)
         {
-           return dbContext.Produtos.Find(id)!;
+            return dbContext.Produtos.Find(id)!;
         }
 
         public List<Produto> SelecionarTodos()
         {
-           return dbContext.Produtos.ToList();
+            return dbContext.Produtos.ToList();
         }
     }
 }
+
