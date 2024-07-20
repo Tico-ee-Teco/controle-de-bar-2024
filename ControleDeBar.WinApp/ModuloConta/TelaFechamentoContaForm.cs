@@ -5,7 +5,7 @@ namespace ControleDeBar.WinApp.ModuloConta
 {
     public partial class TelaFechamentoContaForm : Form
     {
-        public Conta Conta { get; set; }
+        public Conta Conta { get; private set; }
 
 
         public TelaFechamentoContaForm(Conta contaSelecionada)
@@ -35,9 +35,5 @@ namespace ControleDeBar.WinApp.ModuloConta
             lblValorTotal.Text = Conta.CalcularValorTotal().ToString("C2");
         }
 
-        private void btnGravar_Click(object sender, EventArgs e)
-        {
-            Conta.Fechar();
-        }
     }
 }

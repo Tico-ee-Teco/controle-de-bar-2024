@@ -194,7 +194,7 @@
             btnGravar.Text = "Fechar Conta";
             btnGravar.TextImageRelation = TextImageRelation.TextBeforeImage;
             btnGravar.UseVisualStyleBackColor = true;
-            btnGravar.Click += btnGravar_Click;
+            btnGravar.Click += btnFecharConta_Click;
             // 
             // TelaFechamentoContaForm
             // 

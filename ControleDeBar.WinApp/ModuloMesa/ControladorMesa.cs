@@ -1,5 +1,6 @@
 ﻿
 using ControleDeBar.Dominio.ModuloMesa;
+using ControleDeBar.Infra.ModuloConta;
 using ControleDeBar.WinApp.Compartilhado;
 
 namespace ControleDeBar.WinApp.ModuloMesa

@@ -127,7 +127,7 @@ namespace ControleDeBar.WinApp.ModuloConta
                 return;
             }
 
-            if(contaSelecionada.ContaPaga)
+            if(!contaSelecionada.ContaPaga)
             {
                 MessageBox.Show(
                     "Esta conta já foi fechada!",

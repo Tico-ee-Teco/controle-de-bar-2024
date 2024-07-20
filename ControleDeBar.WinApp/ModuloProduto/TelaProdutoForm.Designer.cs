@@ -74,24 +74,26 @@
             // 
             // btnGravar
             // 
+            btnGravar.BackColor = Color.Lime;
             btnGravar.DialogResult = DialogResult.OK;
             btnGravar.Location = new Point(121, 184);
             btnGravar.Name = "btnGravar";
-            btnGravar.Size = new Size(92, 36);
+            btnGravar.Size = new Size(92, 42);
             btnGravar.TabIndex = 6;
             btnGravar.Text = "Gravar";
-            btnGravar.UseVisualStyleBackColor = true;
+            btnGravar.UseVisualStyleBackColor = false;
             btnGravar.Click += btnGravar_Click;
             // 
             // btnCancelar
             // 
+            btnCancelar.BackColor = Color.FromArgb(192, 0, 0);
             btnCancelar.DialogResult = DialogResult.Cancel;
             btnCancelar.Location = new Point(219, 184);
             btnCancelar.Name = "btnCancelar";
-            btnCancelar.Size = new Size(92, 36);
+            btnCancelar.Size = new Size(92, 42);
             btnCancelar.TabIndex = 7;
             btnCancelar.Text = "Cancelar";
-            btnCancelar.UseVisualStyleBackColor = true;
+            btnCancelar.UseVisualStyleBackColor = false;
             // 
             // label4
             // 
@@ -106,6 +108,7 @@
             // 
             txtValor.DecimalPlaces = 2;
             txtValor.Location = new Point(67, 128);
+            txtValor.Maximum = new decimal(new int[] { 10000, 0, 0, 0 });
             txtValor.Name = "txtValor";
             txtValor.Size = new Size(103, 27);
             txtValor.TabIndex = 9;

@@ -78,6 +78,7 @@
             // 
             // cmbMesa
             // 
+            cmbMesa.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbMesa.FormattingEnabled = true;
             cmbMesa.Location = new Point(65, 85);
             cmbMesa.Name = "cmbMesa";
@@ -95,6 +96,7 @@
             // 
             // cmbGarcom
             // 
+            cmbGarcom.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbGarcom.FormattingEnabled = true;
             cmbGarcom.Location = new Point(291, 85);
             cmbGarcom.Name = "cmbGarcom";
@@ -128,30 +130,35 @@
             // 
             // btnRemoverPedido
             // 
+            btnRemoverPedido.BackColor = Color.FromArgb(192, 0, 0);
             btnRemoverPedido.Location = new Point(279, 69);
             btnRemoverPedido.Name = "btnRemoverPedido";
             btnRemoverPedido.Size = new Size(83, 27);
             btnRemoverPedido.TabIndex = 8;
             btnRemoverPedido.Text = "Remover";
-            btnRemoverPedido.UseVisualStyleBackColor = true;
+            btnRemoverPedido.UseVisualStyleBackColor = false;
             btnRemoverPedido.Click += btnRemoverPedido_Click;
             // 
             // btnAddPedido
             // 
+            btnAddPedido.BackColor = Color.Lime;
             btnAddPedido.Location = new Point(177, 70);
             btnAddPedido.Name = "btnAddPedido";
             btnAddPedido.Size = new Size(83, 27);
             btnAddPedido.TabIndex = 6;
             btnAddPedido.Text = "Adicionar";
-            btnAddPedido.UseVisualStyleBackColor = true;
+            btnAddPedido.UseVisualStyleBackColor = false;
             btnAddPedido.Click += btnAdicionarPedido_Click;
             // 
             // nudQuantidade
             // 
             nudQuantidade.Location = new Point(103, 70);
+            nudQuantidade.Maximum = new decimal(new int[] { 1000, 0, 0, 0 });
+            nudQuantidade.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
             nudQuantidade.Name = "nudQuantidade";
             nudQuantidade.Size = new Size(54, 27);
             nudQuantidade.TabIndex = 5;
+            nudQuantidade.Value = new decimal(new int[] { 1, 0, 0, 0 });
             // 
             // label5
             // 
@@ -164,6 +171,7 @@
             // 
             // cmbProduto
             // 
+            cmbProduto.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbProduto.FormattingEnabled = true;
             cmbProduto.Location = new Point(104, 31);
             cmbProduto.Name = "cmbProduto";
@@ -191,23 +199,25 @@
             // 
             // btnCancelar
             // 
+            btnCancelar.BackColor = Color.FromArgb(192, 0, 0);
             btnCancelar.DialogResult = DialogResult.Cancel;
             btnCancelar.Location = new Point(313, 447);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(92, 36);
             btnCancelar.TabIndex = 9;
             btnCancelar.Text = "Cancelar";
-            btnCancelar.UseVisualStyleBackColor = true;
+            btnCancelar.UseVisualStyleBackColor = false;
             // 
             // btnGravar
             // 
+            btnGravar.BackColor = Color.Lime;
             btnGravar.DialogResult = DialogResult.OK;
             btnGravar.Location = new Point(215, 447);
             btnGravar.Name = "btnGravar";
             btnGravar.Size = new Size(92, 36);
             btnGravar.TabIndex = 8;
             btnGravar.Text = "Gravar";
-            btnGravar.UseVisualStyleBackColor = true;
+            btnGravar.UseVisualStyleBackColor = false;
             btnGravar.Click += btnGravar_Click;
             // 
             // lblValorTotal

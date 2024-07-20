@@ -11,7 +11,7 @@ namespace ControleDeBar.Dominio.ModuloConta
        
         public Garcom Garcom { get; set; }         
 
-        public bool ContaPaga { get; set; } = false;      
+        public bool ContaPaga { get; set; }     
 
         public DateTime Abertura { get; set; }
 
@@ -26,8 +26,8 @@ namespace ControleDeBar.Dominio.ModuloConta
         public Conta(Mesa mesa, Garcom garcom) : this()
         {
             Mesa = mesa;
-            Garcom = garcom;            
-                    
+            Garcom = garcom;
+            abrirConta();
         }
 
         public decimal CalcularValorTotal()
@@ -72,13 +72,19 @@ namespace ControleDeBar.Dominio.ModuloConta
 
         public void abrirConta()
         {
+            ContaPaga = true;
             Abertura = DateTime.Now;
+
+            if (Mesa != null)
+                Mesa.Ocupar();
         }
 
         public void Fechar()
         {
+            ContaPaga = false;
             Fechamento = DateTime.Now;
-            ContaPaga = true;
+
+            Mesa.Desocupar();
         }
 
         public void RemoverPedido(Pedido pedido)

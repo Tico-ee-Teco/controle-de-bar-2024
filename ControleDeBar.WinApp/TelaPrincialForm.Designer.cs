@@ -61,7 +61,6 @@
             menuStrip1.Size = new Size(923, 24);
             menuStrip1.TabIndex = 1;
             menuStrip1.Text = "menuStrip1";
-           
             // 
             // CadastroMenuItem
             // 
@@ -73,30 +72,30 @@
             // contasMenuItem
             // 
             contasMenuItem.Name = "contasMenuItem";
-            contasMenuItem.Size = new Size(122, 22);
+            contasMenuItem.Size = new Size(180, 22);
             contasMenuItem.Text = "Contas";
             contasMenuItem.Click += contasMenuItem_Click;
             // 
             // produtosMenuItem
             // 
             produtosMenuItem.Name = "produtosMenuItem";
-            produtosMenuItem.Size = new Size(122, 22);
+            produtosMenuItem.Size = new Size(180, 22);
             produtosMenuItem.Text = "Produtos";
             produtosMenuItem.Click += produtosMenuItem_Click;
             // 
             // garçonsToolStripMenuItem
             // 
             garçonsToolStripMenuItem.Name = "garçonsToolStripMenuItem";
-            garçonsToolStripMenuItem.Size = new Size(122, 22);
+            garçonsToolStripMenuItem.Size = new Size(180, 22);
             garçonsToolStripMenuItem.Text = "Garçons";
-            //garçonsToolStripMenuItem.Click += garçonsToolStripMenuItem_Click;
+            garçonsToolStripMenuItem.Click += garconsMenuItem_Click;
             // 
             // mesasToolStripMenuItem
             // 
             mesasToolStripMenuItem.Name = "mesasToolStripMenuItem";
-            mesasToolStripMenuItem.Size = new Size(122, 22);
+            mesasToolStripMenuItem.Size = new Size(180, 22);
             mesasToolStripMenuItem.Text = "Mesas";
-            //mesasToolStripMenuItem.Click += mesasToolStripMenuItem_Click;
+            mesasToolStripMenuItem.Click += mesasMenuItem_Click;
             // 
             // statusStrip1
             // 
@@ -159,16 +158,6 @@
             // 
             toolStripSeparator1.Name = "toolStripSeparator1";
             toolStripSeparator1.Size = new Size(6, 25);
-            //// 
-            //// btnFecharConta
-            //// 
-            //btnFecharConta.DisplayStyle = ToolStripItemDisplayStyle.Image;
-            //btnFecharConta.Image = Properties.Resources.btnExcluir;
-            //btnFecharConta.ImageTransparentColor = Color.Magenta;
-            //btnFecharConta.Name = "btnFecharConta";
-            //btnFecharConta.Size = new Size(23, 22);
-            //btnFecharConta.Text = "Fechar Conta";
-            //btnFecharConta.Click += btnFecharConta_Click;
             // 
             // btnRelatorio
             // 
@@ -179,7 +168,7 @@
             btnRelatorio.Name = "btnRelatorio";
             btnRelatorio.Size = new Size(23, 22);
             btnRelatorio.Text = "Relatorio";
-            //btnRelatorio.Click += btnRelatorio_Click;
+            btnRelatorio.Click += btnVisualizar_Click;
             // 
             // btnFiltrar
             // 

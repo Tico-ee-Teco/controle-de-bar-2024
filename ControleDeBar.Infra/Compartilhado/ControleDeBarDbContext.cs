@@ -104,6 +104,13 @@ namespace ControleDeBar.Infra.Compartilhado
                     .IsRequired()
                     .ValueGeneratedOnAdd();
 
+                contaBuidler.Property(c => c.Abertura)
+                    .HasColumnType("datetime2");
+
+                contaBuidler.Property(c => c.Fechamento)
+                   .IsRequired()
+                   .HasColumnType("datetime2");
+
                 contaBuidler.Property(c => c.ContaPaga)
                     .IsRequired()
                     .HasColumnType("bit");

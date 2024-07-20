@@ -1,0 +1,2 @@
+﻿SET IDENTITY_INSERT [dbo].[TBConta] ON
+SET IDENTITY_INSERT [dbo].[TBConta] OFF
