@@ -100,6 +100,7 @@
             // 
             // txtId
             // 
+            txtId.Enabled = false;
             txtId.Font = new Font("Segoe UI", 11.25F);
             txtId.Location = new Point(66, 6);
             txtId.Name = "txtId";
