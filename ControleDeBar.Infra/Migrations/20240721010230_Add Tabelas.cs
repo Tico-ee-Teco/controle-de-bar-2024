@@ -62,7 +62,7 @@ namespace ControleDeBar.Infra.Migrations
                     Garcom_Id = table.Column<int>(type: "int", nullable: false),
                     ContaPaga = table.Column<bool>(type: "bit", nullable: false),
                     Abertura = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Fechamento = table.Column<DateTime>(type: "datetime2", nullable: true)
+                    Fechamento = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {

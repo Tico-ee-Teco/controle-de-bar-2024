@@ -55,5 +55,13 @@ namespace ControleDeBar.Infra.ModuloGarcon
         {
             return dbContext.Garcons.ToList();
         }
+
+        public bool ExisteContaComGarcon(Garcom registro)
+        {
+            if (registro == null)
+                return false;
+
+            return dbContext.Contas.Any(c => c.Garcom.Id == registro.Id && c.ContaPaga);
+        }
     }
 }

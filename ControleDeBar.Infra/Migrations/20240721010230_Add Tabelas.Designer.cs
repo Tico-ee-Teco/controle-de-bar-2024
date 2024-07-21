@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ControleDeBar.Infra.Migrations
 {
     [DbContext(typeof(ControleDeBarDbContext))]
-    [Migration("20240712165946_Add-Tabelas")]
+    [Migration("20240721010230_Add Tabelas")]
     partial class AddTabelas
     {
         /// <inheritdoc />
@@ -39,7 +39,7 @@ namespace ControleDeBar.Infra.Migrations
                     b.Property<bool>("ContaPaga")
                         .HasColumnType("bit");
 
-                    b.Property<DateTime?>("Fechamento")
+                    b.Property<DateTime>("Fechamento")
                         .HasColumnType("datetime2");
 
                     b.Property<int>("Garcom_Id")

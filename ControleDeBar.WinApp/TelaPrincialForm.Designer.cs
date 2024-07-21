@@ -42,7 +42,7 @@
             btnEditar = new ToolStripButton();
             btnExcluir = new ToolStripButton();
             toolStripSeparator1 = new ToolStripSeparator();
-            btnRelatorio = new ToolStripButton();
+            btnVisualizar = new ToolStripButton();
             btnFiltrar = new ToolStripButton();
             toolStripSeparator2 = new ToolStripSeparator();
             lblTipoCadastro = new ToolStripLabel();
@@ -72,28 +72,28 @@
             // contasMenuItem
             // 
             contasMenuItem.Name = "contasMenuItem";
-            contasMenuItem.Size = new Size(180, 22);
+            contasMenuItem.Size = new Size(122, 22);
             contasMenuItem.Text = "Contas";
             contasMenuItem.Click += contasMenuItem_Click;
             // 
             // produtosMenuItem
             // 
             produtosMenuItem.Name = "produtosMenuItem";
-            produtosMenuItem.Size = new Size(180, 22);
+            produtosMenuItem.Size = new Size(122, 22);
             produtosMenuItem.Text = "Produtos";
             produtosMenuItem.Click += produtosMenuItem_Click;
             // 
             // garçonsToolStripMenuItem
             // 
             garçonsToolStripMenuItem.Name = "garçonsToolStripMenuItem";
-            garçonsToolStripMenuItem.Size = new Size(180, 22);
+            garçonsToolStripMenuItem.Size = new Size(122, 22);
             garçonsToolStripMenuItem.Text = "Garçons";
             garçonsToolStripMenuItem.Click += garconsMenuItem_Click;
             // 
             // mesasToolStripMenuItem
             // 
             mesasToolStripMenuItem.Name = "mesasToolStripMenuItem";
-            mesasToolStripMenuItem.Size = new Size(180, 22);
+            mesasToolStripMenuItem.Size = new Size(122, 22);
             mesasToolStripMenuItem.Text = "Mesas";
             mesasToolStripMenuItem.Click += mesasMenuItem_Click;
             // 
@@ -114,7 +114,7 @@
             // 
             // toolStrip1
             // 
-            toolStrip1.Items.AddRange(new ToolStripItem[] { btnAdicionar, btnEditar, btnExcluir, toolStripSeparator1, btnRelatorio, btnFiltrar, toolStripSeparator2, lblTipoCadastro });
+            toolStrip1.Items.AddRange(new ToolStripItem[] { btnAdicionar, btnEditar, btnExcluir, toolStripSeparator1, btnVisualizar, btnFiltrar, toolStripSeparator2, lblTipoCadastro });
             toolStrip1.Location = new Point(0, 24);
             toolStrip1.Name = "toolStrip1";
             toolStrip1.Size = new Size(923, 25);
@@ -159,16 +159,16 @@
             toolStripSeparator1.Name = "toolStripSeparator1";
             toolStripSeparator1.Size = new Size(6, 25);
             // 
-            // btnRelatorio
+            // btnVisualizar
             // 
-            btnRelatorio.DisplayStyle = ToolStripItemDisplayStyle.Image;
-            btnRelatorio.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnRelatorio.Image = Properties.Resources.btnVisualizar;
-            btnRelatorio.ImageTransparentColor = Color.Magenta;
-            btnRelatorio.Name = "btnRelatorio";
-            btnRelatorio.Size = new Size(23, 22);
-            btnRelatorio.Text = "Relatorio";
-            btnRelatorio.Click += btnVisualizar_Click;
+            btnVisualizar.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            btnVisualizar.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnVisualizar.Image = Properties.Resources.btnVisualizar;
+            btnVisualizar.ImageTransparentColor = Color.Magenta;
+            btnVisualizar.Name = "btnVisualizar";
+            btnVisualizar.Size = new Size(23, 22);
+            btnVisualizar.Text = "Relatorio";
+            btnVisualizar.Click += btnVisualizar_Click;
             // 
             // btnFiltrar
             // 
@@ -239,7 +239,7 @@
         private ToolStripButton btnEditar;
         private ToolStripButton btnExcluir;
         private ToolStripSeparator toolStripSeparator1;
-        private ToolStripButton btnRelatorio;
+        private ToolStripButton btnVisualizar;
         private ToolStripStatusLabel statusLabelPrincipal;
         private Panel pnlRegistros;
         private ToolStripMenuItem garçonsToolStripMenuItem;

@@ -13,5 +13,6 @@ namespace ControleDeBar.Dominio.Compartilhar
         bool Excluir(TEntidade registro);
         TEntidade SelecionarPorId(int id);
         List<TEntidade> SelecionarTodos();
+        
     }
 }

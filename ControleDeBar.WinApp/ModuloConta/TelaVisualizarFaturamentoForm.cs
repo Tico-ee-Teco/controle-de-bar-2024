@@ -20,7 +20,7 @@ namespace ControleDeBar.WinApp.ModuloConta
             gridFaturamento.ConfigurarGridZebrado();
             gridFaturamento.Columns.AddRange(ObterColunas());
 
-            Array valoresEnum = Enum.GetValues(typeof(TipoFaturamentoEnum));
+            Array valoresEnum = Enum.GetValues(typeof(TipoFaturamentoEnum)); // TipoFaturamentoEnum é um enum
 
             foreach (object valor in valoresEnum)
                 cmbTiposFiltro.Items.Add(valor);
@@ -103,7 +103,7 @@ namespace ControleDeBar.WinApp.ModuloConta
             {
                 new DataGridViewTextBoxColumn { Name = "Id", HeaderText = "Id" },
                 new DataGridViewTextBoxColumn { Name = "Fechamento", HeaderText = "Fechamento" },
-                new DataGridViewTextBoxColumn { Name = "Titular", HeaderText = "Titular", },
+                //new DataGridViewTextBoxColumn { Name = "Titular", HeaderText = "Titular", },
                 new DataGridViewTextBoxColumn { Name = "Mesa.Numero", HeaderText = "Mesa" },
                 new DataGridViewTextBoxColumn { Name = "Garcom.Nome", HeaderText = "Garçom" },
                 new DataGridViewTextBoxColumn { Name = "Total", HeaderText = "Total" },

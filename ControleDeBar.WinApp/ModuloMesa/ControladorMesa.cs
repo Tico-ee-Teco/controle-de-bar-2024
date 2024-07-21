@@ -123,6 +123,17 @@ namespace ControleDeBar.WinApp.ModuloMesa
                 return;
             }
 
+            if(repositorioMesa.ExisteContaComMesa(mesaselecionada))
+            {
+                MessageBox.Show(
+                    $"A mesa \"{mesaselecionada.Numero}\" não pode ser excluída, pois já está associada a uma conta.",
+                    "Erro",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+
+                return;
+            }
+
             DialogResult resultado = MessageBox.Show(
                 $"Tem certeza que deseja excluir A mesa \"{mesaselecionada.Numero}\"?",
                 "Excluir Garcom",

@@ -8,7 +8,7 @@
         public Faturamento(TipoFaturamentoEnum tipoFaturamento, List<Conta> contasFechadas)
         {
             TipoFaturamento = tipoFaturamento;
-            contasFechadas = contasFechadas;
+            this.contasFechadas = contasFechadas;
         }
 
         public decimal CalcularTotal(out List<Conta> contasFiltradas)
@@ -18,7 +18,7 @@
             DateTime dataAtual = DateTime.Now;
 
             DateTime inicioSemana = dataAtual.AddDays(-(int)dataAtual.DayOfWeek);
-            DateTime fimSemana = inicioSemana.AddDays(-7).AddSeconds(-1);
+            DateTime fimSemana = inicioSemana.AddDays(7).AddSeconds(-1);
 
             DateTime inicioMes = new DateTime(dataAtual.Year, dataAtual.Month, 1);
             DateTime fimMes = inicioMes.AddMonths(1).AddSeconds(-1);

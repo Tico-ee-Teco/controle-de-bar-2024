@@ -124,7 +124,7 @@ namespace ControleDeBar.WinApp
             btnExcluir.Enabled = controladorSelecionado is ControladorBase;            
 
             btnFiltrar.Enabled = controladorSelecionado is IControladorFiltravel;
-            btnRelatorio.Enabled = controladorSelecionado is IControladorVisualizavel;
+            btnVisualizar.Enabled = controladorSelecionado is IControladorVisualizavel;
 
             ConfigurarIcones(controladorSelecionado);
             ConfigurarToolTips(controladorSelecionado);
@@ -144,7 +144,7 @@ namespace ControleDeBar.WinApp
                 btnFiltrar.ToolTipText = controladorFiltravel.ToolTipFiltrar;
 
             if (controlador is IControladorVisualizavel controladorVisualizavel)
-                btnRelatorio.ToolTipText = controladorVisualizavel.ToolTipVisualizar;
+                btnVisualizar.ToolTipText = controladorVisualizavel.ToolTipVisualizar;
 
             if (controlador is ControladorConta controladorConta)
             {

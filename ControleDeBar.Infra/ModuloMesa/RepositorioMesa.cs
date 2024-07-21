@@ -37,7 +37,7 @@ namespace ControleDeBar.Infra.ModuloMesa
         public bool Excluir(Mesa registro)
         {
             if (registro == null)
-                return false;
+                return false;            
 
             dbContext.Mesas.Remove(registro);
 
@@ -54,6 +54,14 @@ namespace ControleDeBar.Infra.ModuloMesa
         public List<Mesa> SelecionarTodos()
         {
             return dbContext.Mesas.ToList();
+        }
+
+        public bool ExisteContaComMesa(Mesa registro)
+        {
+            if (registro == null)
+                return false;            
+
+            return dbContext.Contas.Any(c => c.Mesa.Id == registro.Id && c.ContaPaga);
         }
     }
 }
