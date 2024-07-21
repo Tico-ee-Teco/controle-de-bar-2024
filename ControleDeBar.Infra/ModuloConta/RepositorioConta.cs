@@ -36,7 +36,20 @@ namespace ControleDeBar.Infra.ModuloConta
 
         public bool AtualizarStatus(Conta contaFechada)
         {
-            return false;
+            if (contaFechada == null)
+                return false;
+
+            var conta = dbContext.Contas.Find(contaFechada.Id);
+
+            if (conta == null)
+                return false;
+
+            conta.ContaPaga = contaFechada.ContaPaga;
+
+            dbContext.Contas.Update(conta);
+            dbContext.SaveChanges();
+
+            return true;
         }
 
         public List<Conta> SelecionarContas()
