@@ -3,6 +3,7 @@ using ControleDeBar.Dominio.ModuloGarçon;
 using ControleDeBar.Dominio.ModuloMesa;
 using ControleDeBar.Dominio.ModuloProduto;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 
 namespace ControleDeBar.Infra.Compartilhado
 {
@@ -20,8 +21,12 @@ namespace ControleDeBar.Infra.Compartilhado
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            string connectionString = 
-                "Server=(localdb)\\mssqllocaldb;Database=ControleDeBarDb;Trusted_Connection=True;";
+            IConfigurationRoot config = new ConfigurationBuilder()
+                .SetBasePath(Directory.GetCurrentDirectory())
+                .AddJsonFile("appsettings.json")
+                .Build();
+
+            string connectionString = config.GetConnectionString("SqlServer")!;
 
             optionsBuilder.UseSqlServer(connectionString);
 
