@@ -48,6 +48,8 @@ namespace ControleDeBar.WinApp.ModuloProduto
                 return;
             }
 
+
+
             repositorioProduto.Adicionar(novoRegistro);
 
             CarregarRegistros();
@@ -89,7 +91,7 @@ namespace ControleDeBar.WinApp.ModuloProduto
 
             Produto novoRegistro = telaProduto.Produto;
 
-            if (repositorioProduto.SelecionarTodos().Any(m => m.Nome.Equals(produtoEditado.Nome.Trim(), StringComparison.OrdinalIgnoreCase)))
+            if (repositorioProduto.SelecionarTodos().Any(m => m.Nome.Equals(produtoEditado.Nome.Trim(), StringComparison.OrdinalIgnoreCase) && m.Valor == produtoEditado.Valor))
             {
                 MessageBox.Show(
                     $"Já existe um Produto com o nome \"{produtoEditado.Nome}\".",

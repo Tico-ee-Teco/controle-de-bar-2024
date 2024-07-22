@@ -41,6 +41,9 @@ namespace ControleDeBar.WinApp.ModuloConta
 
             List<Produto> produtos = repositorioProduto.SelecionarTodos();
 
+            Conta contaSelecionada = new Conta();
+            
+
             TelaContaForm telaConta = new TelaContaForm(mesas, garcons, produtos);
 
             DialogResult resultado = telaConta.ShowDialog();
@@ -48,6 +51,21 @@ namespace ControleDeBar.WinApp.ModuloConta
             if (resultado != DialogResult.OK) return;
 
             Conta contaCriada = telaConta.Conta;
+
+            Conta contaDuplicada = repositorioConta.SelecionarTodos()
+               .FirstOrDefault(c => c.Mesa.Numero == contaCriada.Mesa.Numero && c.ContaPaga);
+
+            if (contaDuplicada != null)
+            {
+
+                MessageBox.Show(
+                     "Já existe uma conta aberta para esta mesa!",
+                     "Aviso",
+                     MessageBoxButtons.OK,
+                     MessageBoxIcon.Error);
+
+                return;
+            }
 
             repositorioConta.Adicionar(contaCriada);
 
@@ -90,6 +108,19 @@ namespace ControleDeBar.WinApp.ModuloConta
 
                 return;
             }
+
+            if(!contaSelecionada.ContaPaga)
+            {
+                MessageBox.Show(
+                    "Esta conta já foi fechada!",
+                    "Aviso",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+
+                return;
+            }
+
+           
 
             TelaContaForm telaConta = new TelaContaForm(mesas, garcons, produtos);
 

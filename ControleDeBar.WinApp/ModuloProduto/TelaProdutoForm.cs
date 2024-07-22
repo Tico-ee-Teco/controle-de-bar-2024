@@ -12,7 +12,7 @@ namespace ControleDeBar.WinApp.ModuloProduto
             {
                 txtId.Text = value.Id.ToString();
                 txtNome.Text = value.Nome;
-                txtValor.Text = value.Valor.ToString();
+                txtValor.Value = value.Valor;
             }
         }
 

@@ -54,6 +54,11 @@ namespace ControleDeBar.Infra.ModuloProduto
         {
             return dbContext.Produtos.ToList();
         }
+
+        public bool ExisteProdutoComPedido(Produto registro)
+        {
+            return dbContext.Pedidos.Any(p => p.Produto.Id == registro.Id);
+        }
     }
 }
 
