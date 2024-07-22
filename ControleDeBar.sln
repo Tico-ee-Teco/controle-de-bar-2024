@@ -15,7 +15,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ControleDeBar.WinApp", "Con
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ControleDeBar.Infra", "ControleDeBar.Infra\ControleDeBar.Infra.csproj", "{3EA8A282-8A2A-4D2E-99E2-63F90537886A}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.Testes", "4.Testes", "{A0684134-FB97-4732-9949-0D2493466D78}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4. Testes", "4. Testes", "{A0684134-FB97-4732-9949-0D2493466D78}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ControleDeBar.Testes.Unidade", "ControleDeBar.Testes.Unidade\ControleDeBar.Testes.Unidade.csproj", "{D9B24BED-BB8B-48BF-B587-4A5518BC5B41}"
 EndProject
