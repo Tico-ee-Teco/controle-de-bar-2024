@@ -1,5 +1,4 @@
-﻿
-using ControleDeBar.Dominio.ModuloMesa;
+﻿using ControleDeBar.Dominio.ModuloMesa;
 using ControleDeBar.WinApp.Compartilhado.Extensions;
 
 namespace ControleDeBar.WinApp.ModuloMesa

@@ -32,10 +32,8 @@
             listPedidos = new ListBox();
             txtGarcom = new TextBox();
             txtMesa = new TextBox();
-            txtTitular = new TextBox();
             txtId = new TextBox();
             label8 = new Label();
-            lblTitular = new Label();
             label7 = new Label();
             label1 = new Label();
             label5 = new Label();
@@ -69,7 +67,7 @@
             // 
             txtGarcom.Enabled = false;
             txtGarcom.Font = new Font("Segoe UI", 11.25F);
-            txtGarcom.Location = new Point(354, 72);
+            txtGarcom.Location = new Point(354, 51);
             txtGarcom.Name = "txtGarcom";
             txtGarcom.PlaceholderText = "Nome do Garçom";
             txtGarcom.Size = new Size(173, 27);
@@ -80,23 +78,12 @@
             // 
             txtMesa.Enabled = false;
             txtMesa.Font = new Font("Segoe UI", 11.25F);
-            txtMesa.Location = new Point(66, 72);
+            txtMesa.Location = new Point(66, 51);
             txtMesa.Name = "txtMesa";
             txtMesa.PlaceholderText = "Número da Mesa";
             txtMesa.Size = new Size(175, 27);
             txtMesa.TabIndex = 19;
             txtMesa.TabStop = false;
-            // 
-            // txtTitular
-            // 
-            txtTitular.Enabled = false;
-            txtTitular.Font = new Font("Segoe UI", 11.25F);
-            txtTitular.Location = new Point(66, 39);
-            txtTitular.Name = "txtTitular";
-            txtTitular.PlaceholderText = "Nome do Cliente";
-            txtTitular.Size = new Size(461, 27);
-            txtTitular.TabIndex = 20;
-            txtTitular.TabStop = false;
             // 
             // txtId
             // 
@@ -113,27 +100,17 @@
             // 
             label8.AutoSize = true;
             label8.Font = new Font("Segoe UI", 11.25F);
-            label8.Location = new Point(13, 75);
+            label8.Location = new Point(14, 54);
             label8.Name = "label8";
             label8.Size = new Size(47, 20);
             label8.TabIndex = 17;
             label8.Text = "Mesa:";
             // 
-            // lblTitular
-            // 
-            lblTitular.AutoSize = true;
-            lblTitular.Font = new Font("Segoe UI", 11.25F);
-            lblTitular.Location = new Point(6, 42);
-            lblTitular.Name = "lblTitular";
-            lblTitular.Size = new Size(54, 20);
-            lblTitular.TabIndex = 14;
-            lblTitular.Text = "Titular:";
-            // 
             // label7
             // 
             label7.AutoSize = true;
             label7.Font = new Font("Segoe UI", 11.25F);
-            label7.Location = new Point(284, 75);
+            label7.Location = new Point(284, 54);
             label7.Name = "label7";
             label7.Size = new Size(64, 20);
             label7.TabIndex = 16;
@@ -174,6 +151,7 @@
             // 
             // btnCacnelar
             // 
+            btnCacnelar.BackColor = Color.FromArgb(192, 0, 0);
             btnCacnelar.DialogResult = DialogResult.Cancel;
             btnCacnelar.Font = new Font("Segoe UI", 11.25F);
             btnCacnelar.Location = new Point(442, 495);
@@ -181,10 +159,11 @@
             btnCacnelar.Size = new Size(94, 39);
             btnCacnelar.TabIndex = 23;
             btnCacnelar.Text = "Cancelar";
-            btnCacnelar.UseVisualStyleBackColor = true;
+            btnCacnelar.UseVisualStyleBackColor = false;
             // 
             // btnGravar
             // 
+            btnGravar.BackColor = Color.Lime;
             btnGravar.DialogResult = DialogResult.OK;
             btnGravar.Font = new Font("Segoe UI", 11.25F);
             btnGravar.ForeColor = SystemColors.ControlText;
@@ -194,7 +173,7 @@
             btnGravar.TabIndex = 24;
             btnGravar.Text = "Fechar Conta";
             btnGravar.TextImageRelation = TextImageRelation.TextBeforeImage;
-            btnGravar.UseVisualStyleBackColor = true;
+            btnGravar.UseVisualStyleBackColor = false;
             btnGravar.Click += btnFecharConta_Click;
             // 
             // TelaFechamentoContaForm
@@ -209,10 +188,8 @@
             Controls.Add(groupBox1);
             Controls.Add(txtGarcom);
             Controls.Add(txtMesa);
-            Controls.Add(txtTitular);
             Controls.Add(txtId);
             Controls.Add(label8);
-            Controls.Add(lblTitular);
             Controls.Add(label7);
             Controls.Add(label1);
             Name = "TelaFechamentoContaForm";
@@ -228,10 +205,8 @@
         private ListBox listPedidos;
         private TextBox txtGarcom;
         private TextBox txtMesa;
-        private TextBox txtTitular;
         private TextBox txtId;
         private Label label8;
-        private Label lblTitular;
         private Label label7;
         private Label label1;
         private Label label5;

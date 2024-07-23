@@ -155,13 +155,15 @@
             // 
             // btnVoltar
             // 
+            btnVoltar.BackColor = Color.Lime;
             btnVoltar.DialogResult = DialogResult.OK;
-            btnVoltar.Location = new Point(478, 505);
+            btnVoltar.Font = new Font("Segoe UI", 11.25F);
+            btnVoltar.Location = new Point(436, 506);
             btnVoltar.Name = "btnVoltar";
-            btnVoltar.Size = new Size(121, 41);
+            btnVoltar.Size = new Size(163, 40);
             btnVoltar.TabIndex = 27;
             btnVoltar.Text = "Voltar";
-            btnVoltar.UseVisualStyleBackColor = true;
+            btnVoltar.UseVisualStyleBackColor = false;
             // 
             // TelaVisualizarFaturamentoForm
             // 

@@ -17,11 +17,9 @@ namespace ControleDeBar.WinApp.ModuloProduto
 
         public override string ToolTipExcluir => "Excluir um produto existe";
 
-
         public ControladorProduto(IRepositorioProduto repositorioProduto)
         {
-            this.repositorioProduto = repositorioProduto; 
-            
+            this.repositorioProduto = repositorioProduto;         
         }
 
         public override void Adicionar()
@@ -47,8 +45,6 @@ namespace ControleDeBar.WinApp.ModuloProduto
                 );
                 return;
             }
-
-
 
             repositorioProduto.Adicionar(novoRegistro);
 
@@ -91,7 +87,7 @@ namespace ControleDeBar.WinApp.ModuloProduto
 
             Produto novoRegistro = telaProduto.Produto;
 
-            if (repositorioProduto.SelecionarTodos().Any(m => m.Nome.Equals(produtoEditado.Nome.Trim(), StringComparison.OrdinalIgnoreCase) && m.Valor == produtoEditado.Valor))
+            if (repositorioProduto.SelecionarTodos().Any(m => m.Nome.Equals(produtoEditado.Nome.Trim(), StringComparison.OrdinalIgnoreCase) && m.Id != produtoSelecionado.Id))
             {
                 MessageBox.Show(
                     $"Já existe um Produto com o nome \"{produtoEditado.Nome}\".",
@@ -124,6 +120,17 @@ namespace ControleDeBar.WinApp.ModuloProduto
                     "Aviso",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Warning);
+
+                return;
+            }
+
+            if (repositorioProduto.ExisteContaComProduto(produtoSelecionado))
+            {
+                MessageBox.Show(
+                    $"O Produto \"{produtoSelecionado.Nome}\" não pode ser excluído, pois está associado a uma conta.",
+                    "Erro",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
 
                 return;
             }

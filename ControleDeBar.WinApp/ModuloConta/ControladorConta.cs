@@ -52,21 +52,6 @@ namespace ControleDeBar.WinApp.ModuloConta
 
             Conta contaCriada = telaConta.Conta;
 
-            Conta contaDuplicada = repositorioConta.SelecionarTodos()
-               .FirstOrDefault(c => c.Mesa.Numero == contaCriada.Mesa.Numero && c.ContaPaga);
-
-            if (contaDuplicada != null)
-            {
-
-                MessageBox.Show(
-                     "Já existe uma conta aberta para esta mesa!",
-                     "Aviso",
-                     MessageBoxButtons.OK,
-                     MessageBoxIcon.Error);
-
-                return;
-            }
-
             repositorioConta.Adicionar(contaCriada);
 
             CarregarRegistros();
@@ -118,9 +103,7 @@ namespace ControleDeBar.WinApp.ModuloConta
                     MessageBoxIcon.Warning);
 
                 return;
-            }
-
-           
+            }     
 
             TelaContaForm telaConta = new TelaContaForm(mesas, garcons, produtos);
 

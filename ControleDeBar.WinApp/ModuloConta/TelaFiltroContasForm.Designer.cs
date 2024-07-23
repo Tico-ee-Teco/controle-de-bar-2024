@@ -86,6 +86,7 @@
             // 
             // btnCacnelar
             // 
+            btnCacnelar.BackColor = Color.FromArgb(192, 0, 0);
             btnCacnelar.DialogResult = DialogResult.Cancel;
             btnCacnelar.Font = new Font("Segoe UI", 11.25F);
             btnCacnelar.Location = new Point(332, 163);
@@ -93,10 +94,11 @@
             btnCacnelar.Size = new Size(94, 50);
             btnCacnelar.TabIndex = 6;
             btnCacnelar.Text = "Cancelar";
-            btnCacnelar.UseVisualStyleBackColor = true;
+            btnCacnelar.UseVisualStyleBackColor = false;
             // 
             // btnGravar
             // 
+            btnGravar.BackColor = Color.Lime;
             btnGravar.DialogResult = DialogResult.OK;
             btnGravar.Font = new Font("Segoe UI", 11.25F);
             btnGravar.Location = new Point(232, 163);
@@ -104,7 +106,7 @@
             btnGravar.Size = new Size(94, 50);
             btnGravar.TabIndex = 7;
             btnGravar.Text = "Gravar";
-            btnGravar.UseVisualStyleBackColor = true;
+            btnGravar.UseVisualStyleBackColor = false;
             btnGravar.Click += btnGravar_Click;
             // 
             // TelaFiltroContasForm

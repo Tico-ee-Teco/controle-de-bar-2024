@@ -22,8 +22,8 @@ namespace ControleDeBar.WinApp.ModuloProduto
             foreach (Produto p in produtos)
                 grid.Rows.Add(
                     p.Id, 
-                    p.Nome, 
-                    p.Valor
+                    p.Nome,
+                    $"R${p.Valor}"
                  );
         }
 

@@ -1,5 +1,4 @@
-﻿using ControleDeBar.Dominio;
-using ControleDeBar.Dominio.ModuloConta;
+﻿using ControleDeBar.Dominio.ModuloConta;
 using ControleDeBar.Dominio.ModuloGarçon;
 using ControleDeBar.Dominio.ModuloMesa;
 using ControleDeBar.Dominio.ModuloProduto;
@@ -50,7 +49,9 @@ namespace ControleDeBar.WinApp.ModuloConta
 
             PedidosRemovidos = new List<Pedido>();
 
-            foreach (Mesa mesa in mesas)
+            List<Mesa> mesasDisponiveis = mesas.Where(m => !m.Ocupada).ToList();
+
+            foreach (Mesa mesa in mesasDisponiveis)
                 cmbMesa.Items.Add(mesa);
 
             cmbMesa.SelectedIndex = 0;
@@ -157,7 +158,6 @@ namespace ControleDeBar.WinApp.ModuloConta
 
             return dadosEstaoPreenchidos || conta != null;
         }
-
 
         private Conta ObterConta()
         {

@@ -1,5 +1,4 @@
 ﻿using ControleDeBar.Dominio.ModuloGarçon;
-using ControleDeBar.Infra.ModuloMesa;
 using ControleDeBar.WinApp.Compartilhado;
 
 namespace ControleDeBar.WinApp.ModuloGarcon
@@ -126,7 +125,7 @@ namespace ControleDeBar.WinApp.ModuloGarcon
             if (repositorioGarcon.ExisteContaComGarcon(garcomselecionado))
             {
                 MessageBox.Show(
-                    $"A mesa \"{garcomselecionado.Nome}\" não pode ser excluído, pois já está associada a uma conta.",
+                    $"O Garçom \"{garcomselecionado.Nome}\" não pode ser excluído, pois já está associada a uma conta.",
                     "Erro",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);

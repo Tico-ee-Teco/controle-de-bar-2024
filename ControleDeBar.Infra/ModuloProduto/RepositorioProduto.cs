@@ -1,4 +1,5 @@
-﻿using ControleDeBar.Dominio.ModuloProduto;
+﻿using ControleDeBar.Dominio.ModuloMesa;
+using ControleDeBar.Dominio.ModuloProduto;
 using ControleDeBar.Infra.Compartilhado;
 
 namespace ControleDeBar.Infra.ModuloProduto
@@ -59,6 +60,14 @@ namespace ControleDeBar.Infra.ModuloProduto
         {
             return dbContext.Pedidos.Any(p => p.Produto.Id == registro.Id);
         }
+        public bool ExisteContaComProduto(Produto registro)
+        {
+            if (registro == null)
+                return false;
+
+            return dbContext.Contas.Any(c => c.Pedidos.Any(p => p.Produto.Id == registro.Id) && c.ContaPaga);
+        }
     }
 }
+
 

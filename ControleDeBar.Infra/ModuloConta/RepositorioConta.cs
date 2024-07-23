@@ -1,4 +1,5 @@
 ﻿using ControleDeBar.Dominio.ModuloConta;
+using ControleDeBar.Dominio.ModuloMesa;
 using ControleDeBar.Infra.Compartilhado;
 using Microsoft.EntityFrameworkCore;
 

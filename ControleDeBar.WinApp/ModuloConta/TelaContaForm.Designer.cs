@@ -133,7 +133,7 @@
             btnRemoverPedido.BackColor = Color.FromArgb(192, 0, 0);
             btnRemoverPedido.Location = new Point(279, 69);
             btnRemoverPedido.Name = "btnRemoverPedido";
-            btnRemoverPedido.Size = new Size(83, 27);
+            btnRemoverPedido.Size = new Size(83, 29);
             btnRemoverPedido.TabIndex = 8;
             btnRemoverPedido.Text = "Remover";
             btnRemoverPedido.UseVisualStyleBackColor = false;
@@ -144,7 +144,7 @@
             btnAddPedido.BackColor = Color.Lime;
             btnAddPedido.Location = new Point(177, 70);
             btnAddPedido.Name = "btnAddPedido";
-            btnAddPedido.Size = new Size(83, 27);
+            btnAddPedido.Size = new Size(83, 28);
             btnAddPedido.TabIndex = 6;
             btnAddPedido.Text = "Adicionar";
             btnAddPedido.UseVisualStyleBackColor = false;
