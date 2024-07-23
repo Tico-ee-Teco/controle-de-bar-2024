@@ -1,5 +1,4 @@
 ﻿using ControleDeBar.Dominio.Compartilhar;
-using ControleDeBar.Dominio.ModuloConta;
 
 namespace ControleDeBar.Dominio.ModuloProduto
 {
@@ -44,6 +43,5 @@ namespace ControleDeBar.Dominio.ModuloProduto
         {
             return $"{Nome}";
         }
-
     }
 }

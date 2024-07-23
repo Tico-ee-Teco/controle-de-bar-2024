@@ -1,5 +1,4 @@
-﻿
-using ControleDeBar.Dominio.Compartilhar;
+﻿using ControleDeBar.Dominio.Compartilhar;
 
 namespace ControleDeBar.Dominio.ModuloGarçon
 {

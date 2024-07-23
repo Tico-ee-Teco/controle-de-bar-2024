@@ -1,5 +1,4 @@
 ﻿using ControleDeBar.Dominio.ModuloGarçon;
-
 using ControleDeBar.Infra.Compartilhado;
 
 namespace ControleDeBar.Infra.ModuloGarcon

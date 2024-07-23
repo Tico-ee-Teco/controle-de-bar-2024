@@ -1,5 +1,4 @@
-﻿using ControleDeBar.Dominio.ModuloMesa;
-using ControleDeBar.Dominio.ModuloProduto;
+﻿using ControleDeBar.Dominio.ModuloProduto;
 using ControleDeBar.Infra.Compartilhado;
 
 namespace ControleDeBar.Infra.ModuloProduto

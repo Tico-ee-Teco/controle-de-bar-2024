@@ -124,6 +124,7 @@
             // btnAdicionar
             // 
             btnAdicionar.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            btnAdicionar.Enabled = false;
             btnAdicionar.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnAdicionar.Image = Properties.Resources.btnAdicionar;
             btnAdicionar.ImageTransparentColor = Color.Magenta;
@@ -135,6 +136,7 @@
             // btnEditar
             // 
             btnEditar.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            btnEditar.Enabled = false;
             btnEditar.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnEditar.Image = Properties.Resources.btnEditar;
             btnEditar.ImageTransparentColor = Color.Magenta;
@@ -146,6 +148,7 @@
             // btnExcluir
             // 
             btnExcluir.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            btnExcluir.Enabled = false;
             btnExcluir.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnExcluir.Image = Properties.Resources.btnExcluir;
             btnExcluir.ImageTransparentColor = Color.Magenta;
@@ -162,6 +165,7 @@
             // btnVisualizar
             // 
             btnVisualizar.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            btnVisualizar.Enabled = false;
             btnVisualizar.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnVisualizar.Image = Properties.Resources.btnVisualizar;
             btnVisualizar.ImageTransparentColor = Color.Magenta;
@@ -173,6 +177,7 @@
             // btnFiltrar
             // 
             btnFiltrar.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            btnFiltrar.Enabled = false;
             btnFiltrar.Image = Properties.Resources.btnFiltrar;
             btnFiltrar.ImageTransparentColor = Color.Magenta;
             btnFiltrar.Name = "btnFiltrar";
