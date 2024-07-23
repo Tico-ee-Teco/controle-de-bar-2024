@@ -1,6 +1,7 @@
 ﻿
 using ControleDeBar.Dominio.ModuloMesa;
 using ControleDeBar.Infra.Compartilhado;
+using Microsoft.EntityFrameworkCore;
 
 namespace ControleDeBar.Infra.ModuloMesa
 {
@@ -48,7 +49,9 @@ namespace ControleDeBar.Infra.ModuloMesa
 
         public Mesa SelecionarPorId(int id)
         {
-            return dbContext.Mesas.Find(id)!;
+            return dbContext.Mesas
+                //.Include(m => m.Contas)
+                .FirstOrDefault(m => m.Id == id)!;
         }
 
         public List<Mesa> SelecionarTodos()

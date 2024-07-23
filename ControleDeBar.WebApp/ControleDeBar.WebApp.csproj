@@ -7,6 +7,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Html\inserir-mesa-form.html" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Html\inserir-mesa-form.html" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\ControleDeBar.Dominio\ControleDeBar.Dominio.csproj" />
     <ProjectReference Include="..\ControleDeBar.Infra\ControleDeBar.Infra.csproj" />
   </ItemGroup>
