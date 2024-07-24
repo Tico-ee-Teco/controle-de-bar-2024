@@ -1,0 +1,24 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Detalhes da Mesa</title>
+</head>
+<body>
+    <h1>Detalhes da Mesa</h1>
+
+    <p>Id: @ViewBag.Mesa.Id</p>
+    <p>Número: @ViewBag.Mesa.Numero</p>
+    <p>Status: @(ViewBag.Mesa.Ocupada ? "Ocupada" : "Livre"; )</p>
+
+    <p>Contas relacionadas à mesa:</p>
+    <ul>
+        @foreach(var conta in ViewBag.Mesa.Contas)
+        {
+            <li>@conta.ToString()</li>
+        })
+    </ul>
+
+    <a href="/mesa/inserir">Inserir Nova Mesa</a>
+</body>
+</html>

@@ -1,0 +1,18 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Exclusão de Mesa</title>
+</head>
+<body>
+    <h1>Exclusão de Mesa</h1>
+
+    <p> Tem certeza que deseja excluir a mesa @ViewBag.Mesa.Numero ?</p>
+
+    <form action="/mesa/excluir/@ViewBag.Mesa.Id" method="post">
+        <button>Excluir</button>
+    </form>
+
+    <a href="/mesa/listar">Listar Mesas</a>
+</body>
+</html>
