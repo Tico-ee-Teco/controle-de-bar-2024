@@ -1,16 +1,14 @@
-﻿using ControleDeBar.Dominio.ModuloConta;
-using ControleDeBar.Dominio.ModuloMesa;
+﻿using ControleDeBar.Dominio.ModuloMesa;
 using ControleDeBar.Infra.Compartilhado;
 using ControleDeBar.Infra.ModuloMesa;
 using Microsoft.AspNetCore.Mvc;
-using System.Text;
 
 namespace ControleDeBar.WebApp.Controllers;
 
 public class MesaController: Controller
 {
-    [HttpGet, ActionName("listar")]
-    public ViewResult ListarMesas()
+    
+    public ViewResult Listar()
     {
         ControleDeBarDbContext db = new ControleDeBarDbContext();
         IRepositorioMesa repositorioMesa = new RepositorioMesa(db);
@@ -19,17 +17,17 @@ public class MesaController: Controller
 
         ViewBag.Mesas = mesas;
 
-        return View("listar-mesas");
+        return View();
     }
 
-    [HttpGet, ActionName("inserir")]
-    public ViewResult ExibirFormularioInserirMesa()
+    
+    public ViewResult Inserir()
     {  
-        return View("inserir-mesa-form");
+        return View();
     }
 
-    [HttpPost, ActionName("inserir")]
-    public ViewResult InserirMesas(Mesa novaMesa)
+    [HttpPost]
+    public ViewResult Inserir(Mesa novaMesa)
     {
         ControleDeBarDbContext db = new ControleDeBarDbContext();
         IRepositorioMesa repositorioMesa = new RepositorioMesa(db);      
@@ -40,12 +38,12 @@ public class MesaController: Controller
         
         ViewBag.Mensagem = $"O registro com o ID {novaMesa.Id} foi cadastrado com sucesso!";
 
-        return View("mensagens-mesa");
+        return View("mensagens");
        
     }
 
-    [HttpGet, ActionName("editar")]
-    public ViewResult ExibirFormularioEditarMesa(int id)
+    
+    public ViewResult Editar(int id)
     {
         ControleDeBarDbContext db = new ControleDeBarDbContext();
         IRepositorioMesa repositorioMesa = new RepositorioMesa(db);        
@@ -54,11 +52,11 @@ public class MesaController: Controller
 
         ViewBag.Mesa = mesa;
         
-        return View("editar-mesa-form");
+        return View();
     }
 
-    [HttpPost, ActionName("editar")]
-    public ViewResult EditarMesa(int id, Mesa mesaAtualizada)
+    [HttpPost]
+    public ViewResult Editar(int id, Mesa mesaAtualizada)
     {
         ControleDeBarDbContext db = new ControleDeBarDbContext();
         IRepositorioMesa repositorioMesa = new RepositorioMesa(db);        
@@ -73,11 +71,11 @@ public class MesaController: Controller
 
         ViewBag.Mensagem = $"O registro com o ID {mesaOriginal.Id} foi editado com sucesso";
         
-        return View("mensagens-mesa") ;
+        return View("mensagens") ;
     }
 
-    [HttpGet, ActionName("excluir")]
-    public ViewResult ExbirFormularioExcluirMesa(int id)
+    
+    public ViewResult Excluir(int id)
     {
         ControleDeBarDbContext db = new ControleDeBarDbContext();
         IRepositorioMesa repositorioMesa = new RepositorioMesa(db);        
@@ -86,7 +84,7 @@ public class MesaController: Controller
         
         ViewBag.Mesa = mesa;
 
-        return View("excluir-mesa-form");
+        return View();
     }
 
     [HttpPost, ActionName("excluir")]
@@ -103,10 +101,10 @@ public class MesaController: Controller
 
         ViewBag.Mensagem = $"A mesa \"{mesa.Id}\" foi excluda com sucesso!";
 
-        return View("mesangens-mesa");
+        return View("mesangens");
     }
-    [HttpGet, ActionName("detalhes")]
-    public ViewResult ExibirPaginaDetalhesMesa(int id)
+    
+    public ViewResult Detalhes(int id)
     {
         ControleDeBarDbContext db = new ControleDeBarDbContext();
         IRepositorioMesa repositorioMesa = new RepositorioMesa(db);       
@@ -115,6 +113,6 @@ public class MesaController: Controller
         
         ViewBag.Mesa = mesa;
 
-        return View("detalhes-mesa");
+        return View();
     }
 }
