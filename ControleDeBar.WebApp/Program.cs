@@ -4,17 +4,18 @@ namespace ControleDeBar.WebApp
     {
         public static void Main(string[] args)
         {
+            #region configurações da aplicação e dependências da aplicação
             var builder = WebApplication.CreateBuilder(args);
 
             builder.Services.AddControllersWithViews();
+
+            #endregion
 
             var app = builder.Build();
 
             app.MapControllerRoute("rotas-padrao", "{controller}/{action}/{id?}");
 
-            //app.MapGet("/", OlaMundo);
-
-           
+            //app.MapGet("/", OlaMundo);           
 
             app.Run();
         }
