@@ -14,16 +14,9 @@ namespace ControleDeBar.WebApp
             var app = builder.Build();
 
             app.MapControllerRoute("rotas-padrao", "{controller}/{action}/{id?}");
-
-            //app.MapGet("/", OlaMundo);           
-
+            
             app.Run();
         }
-        private static Task OlaMundo(HttpContext context)
-        {
-            context.Response.ContentType = "text/plain; charset=utf-8 ";   
-
-             return context.Response.WriteAsync("Olá Mundo!");
-        }
+       
     }
 }

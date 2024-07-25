@@ -38,6 +38,8 @@ public class MesaController: Controller
         
         ViewBag.Mensagem = $"O registro com o ID {novaMesa.Id} foi cadastrado com sucesso!";
 
+        ViewBag.Link = "/mesa/listar";
+
         return View("mensagens");
        
     }
@@ -70,7 +72,9 @@ public class MesaController: Controller
         HttpContext.Response.StatusCode = 200;
 
         ViewBag.Mensagem = $"O registro com o ID {mesaOriginal.Id} foi editado com sucesso";
-        
+
+        ViewBag.Link = "/mesa/listar";
+
         return View("mensagens") ;
     }
 
@@ -99,9 +103,11 @@ public class MesaController: Controller
 
         HttpContext.Response.StatusCode = 200;      
 
-        ViewBag.Mensagem = $"A mesa \"{mesa.Id}\" foi excluda com sucesso!";
+        ViewBag.Mensagem = $"A mesa \"{mesa.Id}\" foi excluída com sucesso!";
 
-        return View("mesangens");
+        ViewBag.Link = "/mesa/listar";
+
+        return View("mensagens");
     }
     
     public ViewResult Detalhes(int id)
