@@ -1,12 +1,10 @@
-﻿<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <title>Notificação</title>
-</head>
-<body>
-    <h3>@ViewBag.Mensagem </h3>
+﻿@{
+    string mensagem = ViewBag.Mensagem;
 
-    <a href="/mesa/listar"> Listar Mesas</a>
-</body>
-</html>
+    Layout = "_Layout";
+    ViewBag.Title = "Notificação";
+}
+
+    <h3>@mensagem </h3>
+
+    
