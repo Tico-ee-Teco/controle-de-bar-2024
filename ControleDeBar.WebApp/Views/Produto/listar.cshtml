@@ -1,0 +1,41 @@
+﻿@{
+    var produtos = ViewBag.Produto;
+
+    Layout = "_Layout";
+    ViewBag.Title = "Listagem de Produtos";
+}
+
+<div class="mt-3">
+    <a class="btn btn-primary px-4" href="/produto/inserir">
+        <i class="bi bi-plus-circle me-1 align-items-center"></i>
+        Inserir Novo Produto
+    </a>
+</div>
+
+<div class="row mt-3 gap-3 p-2">
+    @foreach (var produto in produtos)
+    {
+        <div class="card col-lg-4 col-xl-3">
+            <div class="card-body ">
+                <div class="row row-cols-2">
+                    <label class="card-title fs-5 fw-semibold">Produto: @produto.ToString()</label>
+                    <div class="text-end">
+                        <a class="btn btn-secondary btn-sm" href="/garcom/detalhes/@produto.Id">
+                            <i class="bi bi-search"></i>
+                        </a>
+
+                        <a class="btn btn-primary btn-sm" href="/garcom/editar/@produto.Id">
+                            <i class="bi bi-pencil-square"></i>
+                        </a>
+
+                        <a class="btn btn-danger btn-sm" href="/garcom/excluir/@produto.Id">
+                            <i class="bi bi-trash3"></i>
+                        </a>
+                    </div>
+                </div>
+                <p class="card-subtitle fs-6 "><strong>Nome:</strong>[@produto.Id]</p>
+                <p class="card-subtitle fs-6 "><strong>Valor:</strong>[@produto.valor]</p>
+            </div>
+        </div>
+    }
+</div>
