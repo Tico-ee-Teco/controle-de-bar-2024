@@ -1,21 +1,21 @@
 ﻿@{
     Layout = "_Layout";
-    ViewBag.Title = "Cadastrar da Garçom";
+    ViewBag.Title = "Inserir Novo Produtos";
 }
 
 <div class="container">
     <div class="row mt-3">
         <div class="col-lg-8">
-            <form class="d-grid gap-4" action="/garcom/inserir" method="post">
+            <form class="d-grid gap-4" action="/produto/inserir" method="post">
                 
                 <div class="mt-2">
-                    <label class="control-label fw-semibold">Nome do Garçom:</label>
+                    <label class="control-label fw-semibold">Nome do Produto:</label>
                     <input class="form-control" type="text" name="nome"/>
                 </div>
                 
                 <div class="mt-2">
-                    <label class="control-label fw-semibold">CPF do Garçom:</label>
-                    <input class="form-control" type="text" name="cpf" id="cpf"/>
+                    <label class="control-label fw-semibold">Valor do Produto (R$):</label>
+                    <input class="form-control" type="text" name="valor" id="valor" value="0.00"/>
                 </div>
 
                 <div class="mt-2 d-grid gap-2 d-md-block">
@@ -24,7 +24,7 @@
                         Gravar
                     </button>
 
-                    <a class="btn btn-secondary px-5" href="/garcom/listar">
+                    <a class="btn btn-secondary px-5" href="/produto/listar">
                         <i class="bi bi-arrow-return-left me-1"></i>
                         Voltar
                     </a>
@@ -37,7 +37,7 @@
 @section Scripts {
     <script>
         $(document).ready(function(){
-            $("#cpf").mask("000.000.000-00", {reverse: true});
+            $("#valor").mask("#.##0,00", {reverse: true});
         });
     </script>
 }

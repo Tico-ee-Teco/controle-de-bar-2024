@@ -1,6 +1,7 @@
 ﻿using ControleDeBar.Dominio.ModuloMesa;
 using ControleDeBar.Infra.Compartilhado;
 using ControleDeBar.Infra.ModuloMesa;
+using ControleDeBar.WebApp.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ControleDeBar.WebApp.Controllers;
@@ -15,11 +16,20 @@ public class MesaController: Controller
 
         List<Mesa> mesas = repositorioMesa.SelecionarTodos();
 
-        ViewBag.Mesas = mesas;
+        var listarMesasVm = mesas
+            .Select(m =>
+            {
+                return new ListarMesaViewModels
+                {
+                    Id = m.Id,
+                    Numero = m.Numero,
+                    Ocupado = m.Ocupada ? "Ocupado" : "Livre"
+                };
 
-        return View();
+            });
+
+        return View(listarMesasVm);
     }
-
     
     public ViewResult Inserir()
     {  
@@ -27,97 +37,122 @@ public class MesaController: Controller
     }
 
     [HttpPost]
-    public ViewResult Inserir(Mesa novaMesa)
+    public ViewResult Inserir(InserirMesaViewModel inserirMesaVm)
     {
-        ControleDeBarDbContext db = new ControleDeBarDbContext();
-        IRepositorioMesa repositorioMesa = new RepositorioMesa(db);      
+        var db = new ControleDeBarDbContext();
+        var repositorioMesa = new RepositorioMesa(db);
+
+        var novaMesa = new Mesa(inserirMesaVm.Numero);
 
         repositorioMesa.Adicionar(novaMesa);
 
         HttpContext.Response.StatusCode = 201; 
         
-        ViewBag.Mensagem = $"O registro com o ID {novaMesa.Id} foi cadastrado com sucesso!";
+        var mensagem = new MensagemViewModel()
+        {
+            Mensagem = $"O registro com o ID {novaMesa.Id} foi cadastrado com sucesso!",
+            LinkRedirecionamento = "/mesa/listar"
+        };
 
-        ViewBag.Link = "/mesa/listar";
-
-        return View("mensagens");
-       
+        return View("mensagens", mensagem);
     }
 
     
     public ViewResult Editar(int id)
     {
-        ControleDeBarDbContext db = new ControleDeBarDbContext();
-        IRepositorioMesa repositorioMesa = new RepositorioMesa(db);        
+        var db = new ControleDeBarDbContext();
+        var repositorioMesa = new RepositorioMesa(db);        
 
-        Mesa mesa = repositorioMesa.SelecionarPorId(id);
+        var mesa = repositorioMesa.SelecionarPorId(id);
 
-        ViewBag.Mesa = mesa;
+        var editarMesaVm = new EditarMesaViewModel
+        {
+            Id = mesa.Id,
+            Numero = mesa.Numero,
+            Ocupada = mesa.Ocupada
+        };
         
-        return View();
+        return View(editarMesaVm);
     }
 
     [HttpPost]
-    public ViewResult Editar(int id, Mesa mesaAtualizada)
+    public ViewResult Editar(EditarMesaViewModel editarMesaVm)
     {
-        ControleDeBarDbContext db = new ControleDeBarDbContext();
-        IRepositorioMesa repositorioMesa = new RepositorioMesa(db);        
+        var db = new ControleDeBarDbContext();
+        var repositorioMesa = new RepositorioMesa(db);        
 
-        Mesa mesaOriginal = repositorioMesa.SelecionarPorId(id);
+        var mesaOriginal = repositorioMesa.SelecionarPorId(editarMesaVm.Id);
 
-        mesaAtualizada.Ocupada = HttpContext.Request.Form["ocupada"] == "on";
+        mesaOriginal.Numero = editarMesaVm.Numero;
+        mesaOriginal.Ocupada = editarMesaVm.Ocupada;
 
-        repositorioMesa.Editar(mesaOriginal, mesaAtualizada);
+        repositorioMesa.Editar(mesaOriginal);
 
         HttpContext.Response.StatusCode = 200;
 
-        ViewBag.Mensagem = $"O registro com o ID {mesaOriginal.Id} foi editado com sucesso";
+        var mensagem = new MensagemViewModel()
+        {
+            Mensagem = $"O registro com o ID {mesaOriginal.Id} foi cadastrado com sucesso!",
+            LinkRedirecionamento = "/mesa/listar"
+        };
 
-        ViewBag.Link = "/mesa/listar";
-
-        return View("mensagens") ;
+        return View("mensagens", mensagem) ;
     }
 
     
     public ViewResult Excluir(int id)
     {
-        ControleDeBarDbContext db = new ControleDeBarDbContext();
-        IRepositorioMesa repositorioMesa = new RepositorioMesa(db);        
+        var db = new ControleDeBarDbContext();
+        var repositorioMesa = new RepositorioMesa(db);        
 
-        Mesa mesa = repositorioMesa.SelecionarPorId(id);  
+        var mesa = repositorioMesa.SelecionarPorId(Id);  
         
-        ViewBag.Mesa = mesa;
+        var excluirMesaVm = new ExcluirMesaViewModel
+        {
+            Id = mesa.Id,
+            Numero = mesa.Numero,
+            Ocupada = mesa.Ocupada ? "Ocupada" : "Livre",
+           // Contas = mesa.Contas.Select(c => new ListarContaMesaViewModel { titular = c.Titular })
+        };
 
-        return View();
+        return View(excluirMesaVm);
     }
 
     [HttpPost, ActionName("excluir")]
-    public ViewResult ExcluirMesa(int id)
+    public ViewResult ExcluirMesa(ExcluirMesaViewModel excluirMesaVm)
     {
         ControleDeBarDbContext db = new ControleDeBarDbContext();
         IRepositorioMesa repositorioMesa = new RepositorioMesa(db);        
 
-        Mesa mesa = repositorioMesa.SelecionarPorId(id);
+        var mesa = repositorioMesa.SelecionarPorId(excluirMesaVm.Id);
 
         repositorioMesa.Excluir(mesa);
 
-        HttpContext.Response.StatusCode = 200;      
+        HttpContext.Response.StatusCode = 200;
 
-        ViewBag.Mensagem = $"A mesa \"{mesa.Id}\" foi excluída com sucesso!";
+        var mensagem = new MensagemViewModel()
+        {
+            Mensagem = $"O registro com o ID {mesa.Id} foi excluído com sucesso!",
+            LinkRedirecionamento = "/mesa/listar"
+        };
 
-        ViewBag.Link = "/mesa/listar";
-
-        return View("mensagens");
+        return View("mensagens", mensagem);
     }
     
     public ViewResult Detalhes(int id)
     {
-        ControleDeBarDbContext db = new ControleDeBarDbContext();
-        IRepositorioMesa repositorioMesa = new RepositorioMesa(db);       
+        var db = new ControleDeBarDbContext();
+        var repositorioMesa = new RepositorioMesa(db);       
 
-        Mesa mesa = repositorioMesa.SelecionarPorId(id); 
+        var mesa = repositorioMesa.SelecionarPorId(id); 
         
-        ViewBag.Mesa = mesa;
+        var detalhesMesaVm = new DetalhesMesaViewModel
+        {
+            Id = mesa.Id,
+            Numero = mesa.Numero,
+            Ocupada = mesa.Ocupada ? "Ocupada" : "Livre",
+            //Contas = mesa.Contas.Select(c => new ListarContaMesaViewModel { titular = c.Titular })
+        };
 
         return View();
     }

@@ -1,6 +1,5 @@
-﻿@{
-    var mesa = ViewBag.Mesa;
-
+﻿@model DetalhesMesaViewModel
+@{
     Layout = "_Layout";
     ViewBag.Title = "Detalhes da Mesa";
 }
@@ -10,21 +9,21 @@
             
             
             <div class="d-grid">
-                <label class="f-5"><strong>Mesa:</strong> @mesa.Numero</label>
+                <label class="f-5"><strong>Mesa:</strong> @Model.Numero</label>
 
-                <label><strong>Id:</strong>[@mesa.Id]</label>
-                <label><strong>Status:</strong>@(mesa.Ocupada ? "Ocupada" : "Livre")</label>
+                <label><strong>Id:</strong>[@Model.Id]</label>
+                <label><strong>Status:</strong>@Model.Ocupada </label>
             </div>
 
-            @if (mesa.Contas.Count > 0)
+            @if (Model.Contas.Any())
             {
                 <div class="mt-3">
                     <h5>Contas relacionadas à mesa:</h5>
 
                     <ul>
-                        @foreach (var conta in mesa.Contas)
+                        @foreach (var conta in Model.Contas)
                         {
-                            <li>@conta.ToString()</li>
+                            <li>@conta.titular</li>
                         }
                     </ul>
                 </div>

@@ -1,5 +1,6 @@
-﻿@{
-    var produtos = ViewBag.Produto;
+﻿
+@{
+    var produtos = ViewBag.Produtos;
 
     Layout = "_Layout";
     ViewBag.Title = "Listagem de Produtos";
@@ -18,23 +19,26 @@
         <div class="card col-lg-4 col-xl-3">
             <div class="card-body ">
                 <div class="row row-cols-2">
-                    <label class="card-title fs-5 fw-semibold">Produto: @produto.ToString()</label>
+                    <label class="card-title fs-5 fw-semibold">Produto: @produto.Nome</label>
                     <div class="text-end">
-                        <a class="btn btn-secondary btn-sm" href="/garcom/detalhes/@produto.Id">
+                        <a class="btn btn-secondary btn-sm" href="/produto/detalhes/@produto.Id">
                             <i class="bi bi-search"></i>
                         </a>
 
-                        <a class="btn btn-primary btn-sm" href="/garcom/editar/@produto.Id">
+                        <a class="btn btn-primary btn-sm" href="/produto/editar/@produto.Id">
                             <i class="bi bi-pencil-square"></i>
                         </a>
 
-                        <a class="btn btn-danger btn-sm" href="/garcom/excluir/@produto.Id">
+                        <a class="btn btn-danger btn-sm" href="/produto/excluir/@produto.Id">
                             <i class="bi bi-trash3"></i>
                         </a>
                     </div>
                 </div>
-                <p class="card-subtitle fs-6 "><strong>Nome:</strong>[@produto.Id]</p>
-                <p class="card-subtitle fs-6 "><strong>Valor:</strong>[@produto.valor]</p>
+                
+                @*<label class="card-title fs-5 fw--semibold">@produto.Nome</label>*@
+
+                <p class="card-subtitle fs-6 "><strong>Id:</strong>[@produto.Id]</p>
+                <p class="card-subtitle fs-6 "><strong>Valor:</strong>[@produto.Valor]</p>
             </div>
         </div>
     }

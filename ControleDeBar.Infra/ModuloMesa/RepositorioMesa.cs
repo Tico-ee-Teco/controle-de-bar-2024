@@ -1,70 +1,35 @@
 ﻿
 using ControleDeBar.Dominio.ModuloMesa;
 using ControleDeBar.Infra.Compartilhado;
+using ControleDeBar.Infra.Orm.Compartilhado;
 using Microsoft.EntityFrameworkCore;
+
 
 namespace ControleDeBar.Infra.ModuloMesa
 {
-    public class RepositorioMesa : IRepositorioMesa
+    public class RepositorioMesa : RepositorioBaseEmOrm<Mesa>, IRepositorioMesa
     {
         ControleDeBarDbContext dbContext;
 
-        public RepositorioMesa(ControleDeBarDbContext dbContext)
+        public RepositorioMesa(ControleDeBarDbContext dbContext) : base(dbContext)
         {
-            this.dbContext = dbContext;
         }
 
-        public void Adicionar(Mesa registro)
+        protected override DbSet<Mesa> ObterRegistros()
         {
-            dbContext.Mesas.Add(registro);
-
-            dbContext.SaveChanges();
+            return dbContext.Mesas;
         }
 
-        public bool Editar(Mesa registroOriginal, Mesa registroAtualizado)
-        {
-            if (registroOriginal == null || registroAtualizado == null)
-                return false;
-
-            registroOriginal.AtualizarRegistro(registroAtualizado);
-
-            dbContext.Mesas.Update(registroOriginal);
-
-            dbContext.SaveChanges();
-
-            return true;
-        }
-
-        public bool Excluir(Mesa registro)
-        {
-            if (registro == null)
-                return false;            
-
-            dbContext.Mesas.Remove(registro);
-
-            dbContext.SaveChanges();
-
-            return true;
-        }
-
-        public Mesa SelecionarPorId(int id)
+        public override Mesa SelecionarPorId(int id)
         {
             return dbContext.Mesas
                 //.Include(m => m.Contas)
                 .FirstOrDefault(m => m.Id == id)!;
         }
 
-        public List<Mesa> SelecionarTodos()
-        {
-            return dbContext.Mesas.ToList();
-        }
-
         public bool ExisteContaComMesa(Mesa registro)
         {
-            if (registro == null)
-                return false;            
-
-            return dbContext.Contas.Any(c => c.Mesa.Id == registro.Id && c.ContaPaga);
+            throw new NotImplementedException();
         }
     }
 }

@@ -13,6 +13,8 @@ namespace ControleDeBar.WebApp
 
             var app = builder.Build();
 
+            app.UseStaticFiles();
+
             app.MapControllerRoute("rotas-padrao", "{controller}/{action}/{id?}");
             
             app.Run();
